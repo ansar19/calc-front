@@ -115,7 +115,7 @@
                         <i class="material-icons">delete_forever</i>
                       </d-button>
                     </template>
-                    <template else>
+                    <template v-if="loading">
                       <div class="spinner-border text-secondary" role="status">
                         <span class="sr-only">Loading...</span>
                       </div>
@@ -194,7 +194,6 @@
 
 <script>
 import api from '@/services/api';
-// import * as Vue2Leaflet from 'vue2-leaflet'
 import { latLngBounds } from 'leaflet';
 import {
   LMap,
@@ -272,45 +271,10 @@ export default {
       Positions: ['topleft', 'topright', 'bottomleft', 'bottomright'],
       tileProviders,
       markers: [],
-      // [
-      //   {
-      //     id: 'm1',
-      //     position: { lat: 51.18937607683871, lng: 71.49610376641303 },
-      //     tooltip: 'Источник 0001',
-      //     draggable: true,
-      //     visible: true,
-      //     icon: icon.glyph({
-      //       prefix: '',
-      //       glyph: 'A',
-      //     }),
-      //   },
-      //   {
-      //     id: 'm2',
-      //     position: { lat: 51.17417973812352, lng: 71.46521238608968 },
-      //     tooltip: 'Источник 0002',
-      //     draggable: true,
-      //     visible: true,
-      //   },
-      //   {
-      //     id: 'm3',
-      //     position: { lat: 51.18924239991849, lng: 71.50975225418117 },
-      //     tooltip: ' Источник 0003',
-      //     draggable: true,
-      //     visible: true,
-      //   },
-      //   {
-      //     id: 'm4',
-      //     position: { lat: 51.158902545525514, lng: 71.55979404537847 },
-      //     tooltip: 'Источник 0004',
-      //     draggable: true,
-      //     visible: true,
-      //   },
-      // ],
       stuff: [
         {
           id: 's1',
           markers: markers1,
-          // polyline: { points: poly1, visible: false },
           draggable: true,
           visible: true,
         },
@@ -375,51 +339,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* @import 'http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css'; */
-/* #full_div {
-  position: absolute;
-  overflow-x: auto;
-  top: 0;
-  right: 0;
-  left: 208px;
-  bottom: 0;
-  padding-left: 8px;
-  border-left: 1px solid #ccc;
-} */
-
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
-  border-bottom: 1px solid #ccc;
-}
-
-li:last-child {
-  border: none;
-}
-
-li a {
-  font-size: 15px;
-  padding-left: 8px;
-  text-decoration: none;
-  color: #000;
-  display: block;
-
-  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-  transition: font-size 0.3s ease, background-color 0.3s ease;
-}
-
-li a:hover {
-  font-size: 20px;
-  background: #f6f6f6;
-} */
-</style>

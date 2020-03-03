@@ -769,12 +769,6 @@
       "natureUserCategory": 1,
       "id": 6,
       "companyId": 1
-    },
-    {
-      "workSiteName": "new",
-      "natureUserCategory": 2,
-      "companyId": 1,
-      "id": 7
     }
   ],
   "facilities": [
@@ -1040,8 +1034,8 @@
       "tooltip": "Emission Source Name 8 ch",
       "visible": true,
       "position": {
-        "lat": 47.24776615916283,
-        "lng": 55.59082031250001
+        "lat": 49.92555666576,
+        "lng": 56.46972656250001
       }
     },
     {
@@ -1085,7 +1079,7 @@
     {
       "emissionSourceName": "Генераторная диз",
       "emissionSourceNumber": "0008",
-      "emissionSourceInventoryNumber": "hfuhjvjh7685454",
+      "emissionSourceInventoryNumber": "345345323423",
       "emissionSourceOrganized": true,
       "emissionSourceProductName": "Электричество",
       "pollutantFilter": true,
