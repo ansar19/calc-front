@@ -330,7 +330,7 @@ export default {
         .patchResource(
           'emissionSources',
           this.markers[index].id,
-          this.markers[index],
+          { positon: this.markers[index].position },
         )
         .then(() => {
           this.loading = false;

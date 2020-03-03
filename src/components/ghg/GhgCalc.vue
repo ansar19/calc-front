@@ -237,7 +237,7 @@ export default {
   methods: {
     save() {
       api.postResource('releaseSourcesGhgCalc', {
-        releaseSource: this.selectedReleaseSource.id,
+        releaseSourceId: this.selectedReleaseSource.id,
         releaseSourceName: this.selectedReleaseSource.releaseSourceName,
         co2emission: this.co2emission,
         no2emission: this.no2emission,
