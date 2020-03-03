@@ -58,12 +58,17 @@
             class="dropdown-menu dropdown-menu-small"
             accordion="sidebar-items-accordion"
           >
-            <d-dropdown-item
-              v-for="(subItem, subItemIdx) in item.items"
-              :key="subItemIdx"
-              :href="subItem.href"
-              :to="subItem.to"
-            >{{ subItem.title }}</d-dropdown-item>
+            <div v-for="(subItem, subItemIdx) in item.items" :key="subItemIdx">
+              <d-dropdown-item
+                v-if="subItem.disabled"
+                disabled
+              >{{ subItem.title }}</d-dropdown-item>
+              <d-dropdown-item
+                v-else
+                :href="subItem.href"
+                :to="subItem.to"
+              >{{ subItem.title }}</d-dropdown-item>
+            </div>
           </d-collapse>
         </li>
       </d-nav>

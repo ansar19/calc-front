@@ -49,12 +49,6 @@
         <task-status />
       </d-col>
     </d-row>
-    <!-- pollutants used limits Stat -->
-    <d-row>
-      <d-col class="mb-4">
-        <PollutantUsedLimitStat />
-      </d-col>
-    </d-row>
 
     <!-- Emissions Report -->
     <d-row>
@@ -77,7 +71,6 @@ import TopPollutantsPie from '@/components/pollutantstat/TopPollutantsPie.vue';
 import TaskStatus from '@/components/common/TaskStatus.vue';
 import CardStats from '@/components/common/CardStats.vue';
 import EmissionsReport from '@/components/common/EmissionsReport.vue';
-import PollutantUsedLimitStat from '@/components/common/PollutantUsedLimitStat.vue';
 import FrappeChart from '@/components/common/FrappeChart.vue';
 import FrapChart from '@/components/common/FrapChart.vue';
 import PieFrappe from '@/components/common/PieFrappe.vue';
@@ -89,7 +82,6 @@ export default {
     BasicStats,
     boEmissionsOverview: EmissionsOverview,
     boTopPollutantsPie: TopPollutantsPie,
-    PollutantUsedLimitStat,
     boTopPollutants: TopPollutants,
     boTopEmissionSources: TopEmissionSources,
     osEmissionsReport: EmissionsReport,

@@ -106,9 +106,7 @@ export default function () {
     items: [{
       title: 'Список задач',
       htmlBefore: '<i class="material-icons">note_add</i>',
-      to: {
-        name: 'list-tasks',
-      },
+      disabled: true,
     }],
   },
   {

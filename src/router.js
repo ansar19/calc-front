@@ -53,11 +53,6 @@ import UserShow from './components/user/UserShow.vue';
 import ImportUsersCsv from './components/user/ImportUsersCsv.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 
-// task
-import ListTasks from './views/ListTasks.vue';
-import Task from './views/Task.vue';
-import ShowTask from './components/task/ShowTask.vue';
-
 // limit
 import ListLimit from './views/ListLimit.vue';
 import NewLimit from './views/NewLimit.vue';
@@ -369,16 +364,6 @@ const router = new Router({
       name: 'bank-detail',
       component: CompanyBankDetails,
     },
-    {
-      path: '/task',
-      name: 'task',
-      component: Task,
-    },
-    {
-      path: '/tasks/:id',
-      name: 'tasks',
-      component: ShowTask,
-    },
 
     // Users
 
@@ -417,11 +402,6 @@ const router = new Router({
       path: '/errors',
       name: 'errors',
       component: Errors,
-    },
-    {
-      path: '/list-tasks',
-      name: 'list-tasks',
-      component: ListTasks,
     },
     {
       path: '/header-navigation',
