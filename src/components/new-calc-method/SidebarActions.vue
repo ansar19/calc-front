@@ -8,7 +8,7 @@
       <h6>Промплощадки ({{ workSiteList }})</h6>
 
       <d-input-group class="mb-2">
-        <d-input placeholder="Добавьте новую промплощадку" type="text" v-model="newWorkSite"/>
+        <d-input placeholder="Добавьте новую промплощадку" type="text" v-model="newWorkSite" />
         <d-input-group-addon append>
           <d-button class="btn-primary" v-on:click.stop.prevent="addWorkSite">
             <i class="material-icons">add</i>
@@ -49,7 +49,7 @@ export default {
 
   methods: {
     addWorkSite() {
-      if (this.newWorkSite == '') return;
+      if (this.newWorkSite === '') return;
       this.workSiteList.push({
         workSiteName: this.newWorkSite,
       });
@@ -89,23 +89,26 @@ export default {
     },
     workSiteList: {
       type: [Array, Object],
-      default: [
-        {
-          workSiteName: 'Скважина 2',
-        },
-        {
-          workSiteName: 'Завод металлоизделий',
-        },
-        {
-          workSiteName: 'База поддержки',
-        },
-      ],
+      default() {
+        return [
+          {
+            workSiteName: 'Скважина 2',
+          },
+          {
+            workSiteName: 'Завод металлоизделий',
+          },
+          {
+            workSiteName: 'База поддержки',
+          },
+        ];
+      },
+      newWorkSite: '',
+      workSite: '',
     },
-    newWorkSite: '',
-    workSite: '',
   },
 };
 </script>
+
 <style scoped>
 element {
   height: 25rem;

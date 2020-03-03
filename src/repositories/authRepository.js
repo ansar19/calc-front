@@ -28,7 +28,7 @@ export default {
   signOut() {
     console.log('signOut');
     securedAxiosInstance.delete('/sign_in')
-      .then((response) => {
+      .then(() => {
         delete localStorage.csrf;
         delete localStorage.signedIn;
         router.replace('/sign-in');

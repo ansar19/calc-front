@@ -526,6 +526,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { en, ru } from 'vuejs-datepicker/dist/locale';
 
 export default {
