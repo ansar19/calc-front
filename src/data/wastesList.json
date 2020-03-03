@@ -1,0 +1,111 @@
+ {
+   "wastesList": [{
+     "id": "1",
+     "senderLocation": "СТО",
+     "wasteName": "Масто моторное отработанное",
+     "hazardList": "Зеленый",
+     "wasteQty": "22",
+     "unit": "м3",
+     "transfereeCompanyName": "ГКП Таза Кала",
+     "lastUpdate": "15 Апр 2019"
+   }, {
+     "id": "2",
+     "senderLocation": "Склад",
+     "wasteName": "Отходы ЛКМ",
+     "hazardList": "Янтарный",
+     "wasteQty": "5",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "18 Май 2019"
+   }, {
+     "id": "3",
+     "senderLocation": "Участок обогащения",
+     "wasteName": "Строительные отходы",
+     "hazardList": "Зеленый",
+     "wasteQty": "9",
+     "unit": "тонн",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "27 Апр 2019"
+   }, {
+     "id": "4",
+     "senderLocation": "Вахтовый городок",
+     "wasteName": "Масло растительное",
+     "hazardList": "Зеленый",
+     "wasteQty": "8",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "23 Май 2019"
+   }, {
+     "id": "5",
+     "senderLocation": "Линия флотации",
+     "wasteName": "Отходы флотации",
+     "hazardList": "Янтарный",
+     "wasteQty": "2",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "18 Май 2019"
+   }, {
+     "id": "7",
+     "senderLocation": "Электролизный",
+     "wasteName": "Упаковка загрязненная химическими продуктами",
+     "hazardList": "Янтарный",
+     "wasteQty": "2.7",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "19 Май 2019"
+   }, {
+     "id": "8",
+     "senderLocation": "Котельная",
+     "wasteName": "Зола",
+     "hazardList": "Янтарный",
+     "wasteQty": "4.6",
+     "unit": "тонн",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "27 Февр 2019"
+   }, {
+     "id": "9",
+     "senderLocation": "Генераторная",
+     "wasteName": "Фильтры воздушные",
+     "hazardList": "Янтарный",
+     "wasteQty": "2.3",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "17 Май 2019"
+   }, {
+     "id": "10",
+     "senderLocation": "Пересыпки",
+     "wasteName": "Мешки биг-бэг",
+     "hazardList": "Зеленый",
+     "wasteQty": "4.6",
+     "unit": "м3",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "08 Май 2019"
+   }, {
+     "id": "11",
+     "senderLocation": "Ж.д. станция",
+     "wasteName": "Лампы люминисцентные",
+     "hazardList": "Янтарный",
+     "wasteQty": "523",
+     "unit": "шт",
+     "transfereeCompanyName": "ТОО Мрэк-А",
+     "lastUpdate": "12 Март 2019"
+   }, {
+     "id": "12",
+     "senderLocation": "Открытая площадка",
+     "wasteName": "Коммунальные отходы (смета с территории)",
+     "hazardList": "Зеленый",
+     "wasteQty": "6.7",
+     "unit": "м3",
+     "transfereeCompanyName": "ГКП Таза Кала",
+     "lastUpdate": "29 Апр 2019"
+   }, {
+     "id": "13",
+     "senderLocation": "Скв. №12",
+     "wasteName": "Шламы бурения",
+     "hazardList": "Янтарный",
+     "wasteQty": "1.2",
+     "unit": "тонн",
+     "transfereeCompanyName": "ТОО АссмА",
+     "lastUpdate": "15 Май 2019"
+   }]
+ }

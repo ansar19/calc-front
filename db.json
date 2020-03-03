@@ -1,0 +1,1773 @@
+{
+  "companies": [
+    {
+      "companyName": "Mine one xorp",
+      "binInn": "023123123123",
+      "companyEmail": "mone@mone.kz",
+      "companyPhone": "0233423434",
+      "companyDescription": "Mining",
+      "companyType": {
+        "id": 3,
+        "value": "jsc",
+        "text": "Акционерное общество",
+        "label": "Акционерное общество"
+      },
+      "companyHead": {
+        "companyHeadFirstname": "Smith",
+        "companyHeadSurename": "John",
+        "companyHeadPatronyme": "",
+        "companyHeadPosition": "President",
+        "companyHeadPhone": "7012588963",
+        "companyHeadEmail": "monesmith@one.kz"
+      },
+      "companyAddress": {
+        "legal": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Алматы",
+            "cities": [
+              "Алматы"
+            ]
+          },
+          "settlement": "Алматы",
+          "address": "пр. Назарбаева 248б - 209",
+          "zip": "520000"
+        },
+        "actual": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Алматы",
+            "cities": [
+              "Алматы"
+            ]
+          },
+          "settlement": "Алматы",
+          "address": "пр. Назарбаева 248б - 209",
+          "zip": "520000",
+          "addressComments": "2-й этаж"
+        }
+      },
+      "companyAccounts": [
+        {
+          "iban": "KZХХ ХХХХ ХХХХ ХХХХ ХХХХ",
+          "currency": "eur",
+          "bank": {
+            "value": "rbk",
+            "text": "Банк \"Bank RBK\"",
+            "label": "Банк \"Bank RBK\""
+          }
+        },
+        {
+          "iban": "KZХХ ХХХХ ХХХХ ХХХХ ХХХХ",
+          "currency": "kzt",
+          "bank": {
+            "value": "zaman",
+            "text": "Заман-Банк",
+            "label": "Заман-Банк"
+          }
+        }
+      ],
+      "id": 11
+    },
+    {
+      "companyName": "Uno",
+      "binInn": "123123123199",
+      "companyEmail": "uno@uno.kz",
+      "companyPhone": "324234399",
+      "companyDescription": "Переработка зерна",
+      "companyType": {
+        "id": 1,
+        "value": "too",
+        "text": "Товарищество с ограниченной ответственностью",
+        "label": "Товарищество с ограниченной ответственностью"
+      },
+      "companyHead": {
+        "companyHeadFirstname": "Иван",
+        "companyHeadSurename": "Иванов",
+        "companyHeadPatronyme": "Иванович",
+        "companyHeadPosition": "Президент",
+        "companyHeadPhone": "324234399",
+        "companyHeadEmail": "president-uno@uno.kz"
+      },
+      "companyAddress": {
+        "legal": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "Костанайская",
+            "cities": [
+              "Костанай",
+              "Лисаковск",
+              "Житикара",
+              "Аркалык"
+            ]
+          },
+          "settlement": "Костанай",
+          "address": "пр. Абая 78",
+          "zip": "3432499"
+        },
+        "actual": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "Костанайская",
+            "cities": [
+              "Костанай",
+              "Лисаковск",
+              "Житикара",
+              "Аркалык"
+            ]
+          },
+          "settlement": "Костанай",
+          "address": "пр. Абая 78",
+          "zip": "3432499",
+          "addressComments": "Напротив заправки КМГ"
+        }
+      },
+      "companyAccounts": [
+        {
+          "iban": "KZХХ ХХХХ ХХХХ ХХХХ ХХХХ",
+          "currency": "kzt",
+          "bank": {
+            "value": "sberbank",
+            "text": "Сбербанк России",
+            "label": "Сбербанк России"
+          }
+        }
+      ],
+      "id": 12
+    },
+    {
+      "companyName": "fsfdswew",
+      "binInn": "332432422232",
+      "companyEmail": "wewe@rer.er",
+      "companyPhone": "3434433434",
+      "companyDescription": "34dffdfdfd",
+      "companyType": {
+        "id": 2,
+        "value": "ip",
+        "text": "Индивидуальный предприниматель",
+        "label": "Индивидуальный предприниматель"
+      },
+      "companyHead": {
+        "companyHeadFirstname": "dfdf",
+        "companyHeadSurename": "dfdfd",
+        "companyHeadPatronyme": "dffdfd",
+        "companyHeadPosition": "dffdfdfd",
+        "companyHeadPhone": "564685484",
+        "companyHeadEmail": "dfdfdf@ijkl.ry"
+      },
+      "companyAddress": {
+        "legal": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Шымкент",
+            "cities": [
+              "Шымкент"
+            ]
+          },
+          "settlement": "Шымкент",
+          "address": "sdsdds - 56",
+          "zip": ""
+        },
+        "actual": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Нур-Султан",
+            "cities": [
+              "Нур-Султан"
+            ]
+          },
+          "settlement": "Нур-Султан",
+          "address": "sdsdds - 56",
+          "zip": "",
+          "addressComments": ""
+        }
+      },
+      "companyAccounts": [
+        {
+          "iban": "kz56782332",
+          "currency": "kzt",
+          "bank": {
+            "value": "sberbank",
+            "text": "Сбербанк России",
+            "label": "Сбербанк России"
+          }
+        }
+      ],
+      "tos": true,
+      "id": 13
+    },
+    {
+      "companyName": "Адал Ойл",
+      "binInn": "678909754324",
+      "companyEmail": "info@adaloil.kz",
+      "companyPhone": "7772569878",
+      "companyDescription": "Разведка и добыча углеводородов",
+      "companyType": {
+        "id": 3,
+        "value": "jsc",
+        "text": "Акционерное общество",
+        "label": "Акционерное общество"
+      },
+      "companyHead": {
+        "companyHeadFirstname": "Ерсайын",
+        "companyHeadSurename": "Ебелепкажиев",
+        "companyHeadPatronyme": "Елемесович",
+        "companyHeadPosition": "Президент",
+        "companyHeadPhone": "702678191",
+        "companyHeadEmail": "adal_oil_director@adaloil.kz"
+      },
+      "companyAddress": {
+        "legal": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Алматы",
+            "cities": [
+              "Алматы"
+            ]
+          },
+          "settlement": "Алматы",
+          "address": "проспект Аль-Фараби 248",
+          "zip": "520000"
+        },
+        "actual": {
+          "country": "Казахстан",
+          "oblast": {
+            "name": "г. Алматы",
+            "cities": [
+              "Алматы"
+            ]
+          },
+          "settlement": "Алматы",
+          "address": "проспект Аль-Фараби 248",
+          "zip": "520000",
+          "addressComments": ""
+        }
+      },
+      "companyAccounts": [
+        {
+          "iban": "KZCC23896432489",
+          "currency": "kzt",
+          "bank": {
+            "value": "sberbank",
+            "text": "Сбербанк России",
+            "label": "Сбербанк России"
+          }
+        }
+      ],
+      "id": 14
+    }
+  ],
+  "companyheads": [
+    {
+      "companyHeadFirstname": "Аман",
+      "companyHeadSurename": "Мамытов",
+      "id": 0
+    },
+    {
+      "companyHeadFirstname": "Петр",
+      "companyHeadSurename": "Васильев",
+      "id": 1
+    },
+    {
+      "companyHeadFirstname": "Сергей",
+      "companyHeadSurename": "Васильев",
+      "companyHeadPatronyme": "Петрович",
+      "companyHeadPosition": "Генеральный директор",
+      "companyHeadPhone": "7017893456",
+      "companyHeadEmail": "gendir_23@mail.ru",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "userEmail": "ivan365@mail.ru",
+      "userPhone": "7025672345",
+      "surename": "Иванов",
+      "firstname": "Иван",
+      "patronymic": "Иванович",
+      "position": "Завхоз",
+      "department": "СТО",
+      "roles": [
+        "reporter"
+      ],
+      "id": 1
+    },
+    {
+      "userEmail": "malagov23@mail.ru",
+      "userPhone": "7778924567",
+      "surename": "Малагов",
+      "firstname": "Еркин",
+      "patronymic": "Серикович",
+      "position": "Токарь",
+      "department": "СТО",
+      "roles": [
+        "reporter"
+      ],
+      "id": 2
+    },
+    {
+      "userEmail": "erkin24@mail.ru",
+      "userPhone": "7012345678",
+      "surename": "Маликов",
+      "firstname": "Еркинбай",
+      "patronymic": "Ерсаинович",
+      "position": "Плотник",
+      "department": "Столярный цех",
+      "roles": [
+        "reporter"
+      ],
+      "id": 3
+    },
+    {
+      "userEmail": "ekat2018@ok.ru",
+      "userPhone": "7025678956",
+      "surename": "Савельева",
+      "firstname": "Екатерина",
+      "patronymic": "Васильевна",
+      "position": "Бухгалтер",
+      "department": "Финансовый",
+      "roles": [
+        "financial",
+        "reporter"
+      ],
+      "id": 4
+    },
+    {
+      "userEmail": "aigul@mail.ru",
+      "userPhone": "7024563456",
+      "surename": "Жумагалиева",
+      "firstname": "Айгуль",
+      "patronymic": "Сметовна",
+      "position": "Главный бухгалтер",
+      "department": "Финансовый",
+      "roles": [
+        "financial",
+        "reporter"
+      ],
+      "id": 5
+    },
+    {
+      "userEmail": "afinance@yandex.ru",
+      "userPhone": "77758909089",
+      "surename": "Ахметов",
+      "firstname": "Ануар",
+      "patronymic": "",
+      "position": "Старший эколог",
+      "department": "HSE",
+      "roles": [
+        "reporter",
+        "company_admin"
+      ],
+      "id": 6
+    },
+    {
+      "userEmail": "dg3838@yandex.ru",
+      "userPhone": "7023456789",
+      "surename": "Жугунисов",
+      "firstname": "Сергей",
+      "patronymic": "",
+      "position": "Бригадир",
+      "department": "СМР",
+      "roles": [
+        "reporter"
+      ],
+      "id": 7
+    },
+    {
+      "userEmail": "death.dr@bk.ru",
+      "userPhone": "7775678821",
+      "surename": "Оспанов",
+      "firstname": "Темирлан",
+      "patronymic": "",
+      "position": "Начальник участка",
+      "department": "СМР",
+      "roles": "reporter",
+      "id": 8
+    },
+    {
+      "userEmail": "marat_ald@mail.ru",
+      "userPhone": "7012345678",
+      "surename": "Алиев",
+      "firstname": "Марат",
+      "patronymic": "",
+      "position": "Оператор",
+      "department": "",
+      "roles": "reporter",
+      "id": 9
+    },
+    {
+      "userEmail": "zhaken_95@mail.ru",
+      "userPhone": "7027895645",
+      "surename": "Сулейменов",
+      "firstname": "Жакен",
+      "patronymic": "",
+      "position": "Водитель спецтехники",
+      "department": "",
+      "roles": "reporter",
+      "id": 11
+    },
+    {
+      "userEmail": "death.dr@bk.ru",
+      "userPhone": "7775678821",
+      "surename": "Оспанов",
+      "firstname": "Темирлан",
+      "patronymic": "",
+      "position": "Начальник участка",
+      "department": "СМР",
+      "roles": "reporter",
+      "id": 8
+    },
+    {
+      "userEmail": "marat_ald@mail.ru",
+      "userPhone": "7012345678",
+      "surename": "Алиев",
+      "firstname": "Марат",
+      "patronymic": "",
+      "position": "Оператор",
+      "department": "",
+      "roles": "reporter",
+      "id": 9
+    },
+    {
+      "userEmail": "karbaeva_aidana@mail.ru",
+      "userPhone": "7785672345",
+      "surename": "Karbaeva",
+      "firstname": "Aidana",
+      "patronymic": "",
+      "position": "Менеджер",
+      "department": "",
+      "roles": "reporter",
+      "id": 10
+    },
+    {
+      "userEmail": "zhaken_95@mail.ru",
+      "userPhone": "7027895645",
+      "surename": "Сулейменов",
+      "firstname": "Жакен",
+      "patronymic": "",
+      "position": "Водитель спецтехники",
+      "department": "",
+      "roles": "reporter",
+      "id": 11
+    },
+    {
+      "userEmail": "jarkin@ok.kz",
+      "userPhone": "7027896756",
+      "surename": "Енсепов",
+      "firstname": "Жаркын",
+      "patronymic": "Есетович",
+      "position": "Плотник",
+      "department": "Столярная мастерская",
+      "roles": [
+        "reporter"
+      ],
+      "id": 12
+    },
+    {
+      "userEmail": "sss@sss.rt",
+      "userPhone": "7778976756",
+      "surename": "Sakenov",
+      "firstname": "Yklas",
+      "patronymic": "Sakenovich",
+      "position": "менеджер",
+      "department": "СТО",
+      "roles": [
+        "reporter"
+      ],
+      "id": 13
+    }
+  ],
+  "companyaddresses": [
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Актюбинская",
+        "cities": [
+          "Актобе",
+          "Кандагач",
+          "Шалкар",
+          "Хромтау",
+          "Алга",
+          "Эмба",
+          "Темир",
+          "Жем"
+        ]
+      },
+      "legal.city": "Кандагач",
+      "legal.address": "Солнечная 18",
+      "legal.zip": "343434",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "Актюбинская",
+        "cities": [
+          "Актобе",
+          "Кандагач",
+          "Шалкар",
+          "Хромтау",
+          "Алга",
+          "Эмба",
+          "Темир",
+          "Жем"
+        ]
+      },
+      "actual.city": "Актобе",
+      "actual.address": "Лаузурная 78",
+      "actual.zip": "343434",
+      "id": 0
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Акмолинская",
+        "cities": [
+          "Кокшетау",
+          "Степногорск",
+          "Щучинск",
+          "Атбасар",
+          "Макинск",
+          "Акколь",
+          "Есиль",
+          "Ерейментау",
+          "Державинск",
+          "Степняк"
+        ]
+      },
+      "legal.settlement": "Атбасар",
+      "legal.address": "Подгорная 675",
+      "legal.zip": "345345",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "Алматинская",
+        "cities": [
+          "Каскелен",
+          "Талгар",
+          "Капшагай",
+          "Жаркент",
+          "Есик",
+          "Текели",
+          "Уштобе",
+          "Ушарал",
+          "Сарканд"
+        ]
+      },
+      "actual.settlement": "Ушарал",
+      "actual.address": "Цветочная 89",
+      "actual.zip": "23423423",
+      "id": 1
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Акмолинская",
+        "cities": [
+          "Кокшетау",
+          "Степногорск",
+          "Щучинск",
+          "Атбасар",
+          "Макинск",
+          "Акколь",
+          "Есиль",
+          "Ерейментау",
+          "Державинск",
+          "Степняк"
+        ]
+      },
+      "legal.settlement": "Щучинск",
+      "legal.address": "dafsgdfh",
+      "legal.zip": "34565",
+      "actual.country": "Казахстан",
+      "actual.oblast": "",
+      "actual.settlement": null,
+      "actual.address": "",
+      "actual.zip": "",
+      "id": 2
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Алматинская",
+        "cities": [
+          "Каскелен",
+          "Талгар",
+          "Капшагай",
+          "Жаркент",
+          "Есик",
+          "Текели",
+          "Уштобе",
+          "Ушарал",
+          "Сарканд"
+        ]
+      },
+      "legal.settlement": "Талгар",
+      "legal.address": "ewtrhjyku",
+      "legal.zip": "35467",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "Актюбинская",
+        "cities": [
+          "Актобе",
+          "Кандагач",
+          "Шалкар",
+          "Хромтау",
+          "Алга",
+          "Эмба",
+          "Темир",
+          "Жем"
+        ]
+      },
+      "actual.settlement": "Кандагач",
+      "actual.address": "adgsfngmhgj",
+      "actual.zip": "534345",
+      "id": 3
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Акмолинская",
+        "cities": [
+          "Кокшетау",
+          "Степногорск",
+          "Щучинск",
+          "Атбасар",
+          "Макинск",
+          "Акколь",
+          "Есиль",
+          "Ерейментау",
+          "Державинск",
+          "Степняк"
+        ]
+      },
+      "legal.settlement": "Щучинск",
+      "legal.address": "ewtrhbv",
+      "legal.zip": "345345",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "г. Шымкент",
+        "cities": [
+          "Шымкент"
+        ]
+      },
+      "actual.settlement": "Шымкент",
+      "actual.address": "ghtjyfngbdfvd",
+      "actual.zip": "45345",
+      "id": 4
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Акмолинская",
+        "cities": [
+          "Кокшетау",
+          "Степногорск",
+          "Щучинск",
+          "Атбасар",
+          "Макинск",
+          "Акколь",
+          "Есиль",
+          "Ерейментау",
+          "Державинск",
+          "Степняк"
+        ]
+      },
+      "legal.settlement": "Атбасар",
+      "legal.address": "fesgdhfjgh,jmgnfbd",
+      "legal.zip": "33424",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "Восточно-Казахстанская",
+        "cities": [
+          "Усть-Каменогорск",
+          "Риддер",
+          "Аягоз",
+          "Зыряновск",
+          "Шемонаиха",
+          "Зайсан",
+          "Курчатов",
+          "Серебрянск",
+          "Чарск"
+        ]
+      },
+      "actual.settlement": "Шемонаиха",
+      "actual.address": "fsdeefwef",
+      "actual.zip": "54345",
+      "id": 5
+    },
+    {
+      "legal.country": "Казахстан",
+      "legal.oblast": {
+        "name": "Актюбинская",
+        "cities": [
+          "Актобе",
+          "Кандагач",
+          "Шалкар",
+          "Хромтау",
+          "Алга",
+          "Эмба",
+          "Темир",
+          "Жем"
+        ]
+      },
+      "legal.settlement": "Алга",
+      "legal.address": "sgdhfjh",
+      "legal.zip": "34534",
+      "actual.country": "Казахстан",
+      "actual.oblast": {
+        "name": "Восточно-Казахстанская",
+        "cities": [
+          "Усть-Каменогорск",
+          "Риддер",
+          "Аягоз",
+          "Зыряновск",
+          "Шемонаиха",
+          "Зайсан",
+          "Курчатов",
+          "Серебрянск",
+          "Чарск"
+        ]
+      },
+      "actual.settlement": "Зайсан",
+      "actual.address": "aferhtjhrgef",
+      "actual.zip": "wrhdtjfhmngbfv",
+      "actual.addressComments": "dhjfyngdbfv",
+      "id": 6
+    }
+  ],
+  "worksites": [
+    {
+      "workSiteName": "Завод металлоизделий 15",
+      "natureUserCategory": 2,
+      "id": 1,
+      "comapanyId": 1
+    },
+    {
+      "workSiteName": "Завод кирпичных изделий 2",
+      "natureUserCategory": 2,
+      "id": 2,
+      "comapanyId": 1
+    },
+    {
+      "workSiteName": "Пивзавод №1 3",
+      "natureUserCategory": 3,
+      "id": 3,
+      "comapanyId": 1
+    },
+    {
+      "workSiteName": "Маслодел 4",
+      "natureUserCategory": 4,
+      "id": 4,
+      "comapanyId": 1
+    },
+    {
+      "workSiteName": "Новая Фабрика 5",
+      "natureUserCategory": 1,
+      "comapanyId": 1,
+      "id": 5,
+      "companyId": 1
+    },
+    {
+      "workSiteName": "New Fabric 6",
+      "natureUserCategory": 1,
+      "id": 6,
+      "companyId": 1
+    },
+    {
+      "workSiteName": "new",
+      "natureUserCategory": 2,
+      "companyId": 1,
+      "id": 7
+    }
+  ],
+  "facilities": [
+    {
+      "id": 1,
+      "facilityName": "Генераторная 1",
+      "worksiteId": 1
+    },
+    {
+      "id": 2,
+      "facilityName": "Сварочная 2",
+      "worksiteId": 2
+    },
+    {
+      "id": 3,
+      "facilityName": "Формовочная 3",
+      "worksiteId": 3
+    },
+    {
+      "id": 4,
+      "facilityName": "Печная 4 ch",
+      "worksiteId": 4
+    },
+    {
+      "facilityName": "Ткацкий цех 5",
+      "worksiteId": 5,
+      "id": 5
+    },
+    {
+      "facilityName": "New Fabric Object 6",
+      "worksiteId": 6,
+      "id": 6
+    },
+    {
+      "facilityName": "Электроснабжения",
+      "worksiteId": 3,
+      "id": 7
+    }
+  ],
+  "facilityLocations": [
+    {
+      "id": 1,
+      "facilityLocationName": "Электроснабжения 1",
+      "facilityId": 1,
+      "worksiteId": 1
+    },
+    {
+      "id": 2,
+      "facilityLocationName": "facilityLocationName 2",
+      "facilityId": 2,
+      "worksiteId": 2
+    },
+    {
+      "id": 3,
+      "facilityLocationName": "facilityLocationName 3",
+      "facilityId": 3,
+      "worksiteId": 3
+    },
+    {
+      "id": 4,
+      "facilityLocationName": "Электроснабжения 4",
+      "facilityId": 4,
+      "worksiteId": 4
+    },
+    {
+      "facilityLocationName": "Закройка 5",
+      "worksiteId": 5,
+      "facilityId": 5,
+      "id": 5
+    },
+    {
+      "facilityLocationName": "New fabric location 6",
+      "worksiteId": 6,
+      "facilityId": 6,
+      "id": 6
+    },
+    {
+      "facilityLocationName": "Генераторный",
+      "facilityId": 7,
+      "worksiteId": 3,
+      "id": 7
+    }
+  ],
+  "emissionSources": [
+    {
+      "id": 1,
+      "emissionSourceName": "Emission Source Name 1 ch",
+      "emissionSourceOrganized": true,
+      "emissionSourceNumber": "60012345234111",
+      "emissionSourceInventoryNumber": "324623462345111",
+      "emissionSourceProductName": "Product Name ch",
+      "emissionSourceComments": "Emission Source Comments ch",
+      "pollutantFilter": false,
+      "facilityLocationId": 1,
+      "facilityId": 1,
+      "worksiteId": 1,
+      "tooltip": "Emission Source Name 1 ch",
+      "visible": true,
+      "position": {
+        "lat": 50.45688416583179,
+        "lng": 63.28125000000001
+      }
+    },
+    {
+      "id": 2,
+      "emissionSourceName": "Emission Source Name 2",
+      "emissionSourceOrganized": true,
+      "emissionSourceNumber": "00012435324",
+      "emissionSourceInventoryNumber": "324623462345",
+      "emissionSourceProductName": "Product Name",
+      "pollutantFilter": false,
+      "facilityLocationId": 2,
+      "facilityId": 2,
+      "worksiteId": 2,
+      "tooltip": "Emission Source Name 2",
+      "visible": true,
+      "position": {
+        "lat": 44.64937213144897,
+        "lng": 71.19140625000001
+      }
+    },
+    {
+      "id": 3,
+      "emissionSourceName": "Emission Source Name 3",
+      "emissionSourceOrganized": false,
+      "emissionSourceNumber": "6001234632",
+      "emissionSourceInventoryNumber": "324623462345",
+      "emissionSourceProductName": "Product Name",
+      "emissionSourceComments": "Emission Source Comments",
+      "pollutantFilter": false,
+      "facilityLocationId": 3,
+      "facilityId": 3,
+      "worksiteId": 3,
+      "tooltip": "Emission Source Name 3",
+      "visible": true,
+      "position": {
+        "lat": 45.26834611704246,
+        "lng": 65.47851562500001
+      }
+    },
+    {
+      "id": 4,
+      "emissionSourceName": "Emission Source Name 4",
+      "emissionSourceOrganized": true,
+      "emissionSourceNumber": "000145363455467",
+      "emissionSourceInventoryNumber": "324623462345",
+      "emissionSourceProductName": "Product Name",
+      "emissionSourceComments": "Emission Source Comments",
+      "pollutantFilter": false,
+      "facilityLocationId": 4,
+      "facilityId": 4,
+      "worksiteId": 4,
+      "tooltip": "Emission Source Name 4",
+      "visible": true,
+      "position": {
+        "lat": 45.82269315957727,
+        "lng": 58.62304687500001
+      }
+    },
+    {
+      "id": 5,
+      "emissionSourceName": "Генераторная 5",
+      "emissionSourceOrganized": true,
+      "emissionSourceNumber": "0001",
+      "emissionSourceInventoryNumber": "ZK234623454567",
+      "emissionSourceProductName": "Электричество",
+      "emissionSourceComments": "Генераторная на дизельном топливе",
+      "pollutantFilter": false,
+      "facilityLocationId": 1,
+      "facilityId": 1,
+      "worksiteId": 1,
+      "tooltip": "Генераторная 5",
+      "visible": true,
+      "position": {
+        "lat": 49.1507698115022,
+        "lng": 72.50976562500001
+      }
+    },
+    {
+      "id": 6,
+      "emissionSourceName": "Emission Source Name 6",
+      "emissionSourceOrganized": true,
+      "emissionSourceNumber": "0001543623",
+      "emissionSourceInventoryNumber": "32462346234522534",
+      "emissionSourceProductName": "Product Name",
+      "emissionSourceComments": "Emission Source Comments",
+      "pollutantFilter": false,
+      "facilityLocationId": 2,
+      "facilityId": 2,
+      "worksiteId": 2,
+      "tooltip": "Emission Source Name 6",
+      "visible": true,
+      "position": {
+        "lat": 52.750986659396574,
+        "lng": 66.62109375000001
+      }
+    },
+    {
+      "id": 7,
+      "emissionSourceName": "Emission Source Name 7",
+      "emissionSourceOrganized": false,
+      "emissionSourceNumber": "600132453245",
+      "emissionSourceInventoryNumber": "3246234623456547",
+      "emissionSourceProductName": "Product Name",
+      "emissionSourceComments": "Emission Source Comments",
+      "pollutantFilter": false,
+      "facilityLocationId": 3,
+      "facilityId": 3,
+      "worksiteId": 3,
+      "tooltip": "Emission Source Name 7",
+      "visible": true,
+      "position": {
+        "lat": 43.50795870565853,
+        "lng": 77.87109375
+      }
+    },
+    {
+      "emissionSourceName": "Emission Source Name 8 ch",
+      "emissionSourceNumber": "000134532452",
+      "emissionSourceInventoryNumber": "32462346234523456",
+      "emissionSourceOrganized": true,
+      "emissionSourceProductName": "Product Name",
+      "pollutantFilter": true,
+      "id": 8,
+      "emissionSourceComments": "Emission Source Comments",
+      "treatmentUnits": [
+        {
+          "id": 1,
+          "treatmentUnitName": "Фильтер УФ-2",
+          "treatmentUnitComment": "some comments",
+          "treatmentPollutants": [
+            {
+              "pollutantCode": "213",
+              "pollutantName": "some name",
+              "initialTreatment": 90,
+              "actualTreatment": 12
+            },
+            {
+              "pollutantCode": "101",
+              "pollutantName": "Ужс",
+              "initialTreatment": 100,
+              "actualTreatment": 60
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "treatmentUnitName": "Фильтер УФ-23",
+          "treatmentUnitComment": "some comments",
+          "treatmentPollutants": [
+            {
+              "pollutantCode": "213",
+              "pollutantName": "some name",
+              "initialTreatment": 90,
+              "actualTreatment": 12
+            }
+          ]
+        }
+      ],
+      "facilityLocationId": 4,
+      "facilityId": 4,
+      "worksiteId": 4,
+      "tooltip": "Emission Source Name 8 ch",
+      "visible": true,
+      "position": {
+        "lat": 47.24776615916283,
+        "lng": 55.59082031250001
+      }
+    },
+    {
+      "emissionSourceName": "new",
+      "emissionSourceNumber": "342342324",
+      "emissionSourceInventoryNumber": "3423423",
+      "emissionSourceOrganized": true,
+      "emissionSourceProductName": "asdfadsf",
+      "emissionSourceComments": "asdfasf",
+      "pollutantFilter": false,
+      "facilityLocationId": 1,
+      "facilityId": 1,
+      "worksiteId": 7,
+      "id": 9,
+      "tooltip": "new",
+      "visible": true,
+      "position": {
+        "lat": 47.76260673229672,
+        "lng": 49.21875000000001
+      }
+    },
+    {
+      "emissionSourceName": "New Fabric Emission 6",
+      "emissionSourceNumber": "32487098",
+      "emissionSourceInventoryNumber": "9485730948rdalsfkjh",
+      "emissionSourceOrganized": true,
+      "emissionSourceProductName": "New product",
+      "emissionSourceComments": "adsfjlasdkfj",
+      "pollutantFilter": true,
+      "facilityLocationId": 6,
+      "facilityId": 6,
+      "worksiteId": 6,
+      "id": 10,
+      "tooltip": "New Fabric Emission 6",
+      "visible": true,
+      "position": {
+        "lat": 51.93773553641327,
+        "lng": 71.13362903848453
+      }
+    },
+    {
+      "emissionSourceName": "Генераторная диз",
+      "emissionSourceNumber": "0008",
+      "emissionSourceInventoryNumber": "hfuhjvjh7685454",
+      "emissionSourceOrganized": true,
+      "emissionSourceProductName": "Электричество",
+      "pollutantFilter": true,
+      "facilityLocationId": 7,
+      "facilityId": 7,
+      "worksiteId": 3,
+      "id": 11,
+      "tooltip": "Генераторная диз",
+      "visible": true,
+      "position": {
+        "lat": 48.57227168006547,
+        "lng": 77.95898437500001
+      }
+    }
+  ],
+  "pollutantFilters": [
+    {
+      "id": 1,
+      "pollutanFilterName": "Фильтер УФ-2 ch",
+      "pollutantFilterComment": "some comments",
+      "emissionSourceId": 8
+    },
+    {
+      "id": 2,
+      "pollutanFilterName": "Фильтер УФ-23 ch",
+      "pollutantFilterComment": "some comments",
+      "emissionSourceId": 8
+    },
+    {
+      "pollutanFilterName": "New filter",
+      "pollutantFilterComment": "cool",
+      "emissionSourceId": 8,
+      "id": 3
+    },
+    {
+      "pollutanFilterName": "New Filter",
+      "pollutantFilterComment": "a;sdlfkjasf",
+      "emissionSourceId": 10,
+      "id": 4
+    },
+    {
+      "pollutanFilterName": "Фильтр на генераторе",
+      "pollutantFilterComment": "",
+      "emissionSourceId": 11,
+      "id": 5
+    }
+  ],
+  "filteredPollutants": [
+    {
+      "id": 1,
+      "pollutantFilterId": 1,
+      "pollutantName": "Взвешенные частицы РМ10 и менее",
+      "pollutantCode": "8",
+      "initialTreatmentLevel": 0.3,
+      "actualTreatmentLevel": 0.2
+    },
+    {
+      "id": 2,
+      "pollutantFilterId": 1,
+      "pollutantName": "Взвешенные частицы РМ2.5 и менее",
+      "pollutantCode": "10",
+      "initialTreatmentLevel": 0.16,
+      "actualTreatmentLevel": 0.1
+    },
+    {
+      "id": 3,
+      "pollutantFilterId": 2,
+      "pollutantName": "диАлюминий триоксид /в пересчете на алюминий/",
+      "pollutantCode": "101",
+      "initialTreatmentLevel": 0.1,
+      "actualTreatmentLevel": 0.01
+    },
+    {
+      "initialTreatmentLevel": "3",
+      "actualTreatmentLevel": "2",
+      "pollutantName": "Висмут оксид",
+      "pollutantCode": "111",
+      "pollutantFilterId": 3,
+      "id": 4
+    },
+    {
+      "initialTreatmentLevel": 2,
+      "actualTreatmentLevel": 3,
+      "pollutantName": "Висмут оксид",
+      "pollutantCode": "111",
+      "pollutantFilterId": 4,
+      "id": 5
+    },
+    {
+      "initialTreatmentLevel": 90,
+      "actualTreatmentLevel": 85,
+      "pollutantName": "диВанадий пентоксид (пыль) (Ванадия пятиокись)",
+      "pollutantCode": "110",
+      "pollutantFilterId": 5,
+      "id": 6
+    },
+    {
+      "initialTreatmentLevel": 98,
+      "actualTreatmentLevel": 92,
+      "pollutantName": "Вольфрам триоксид (Ангидрид вольфрамовый)",
+      "pollutantCode": "113",
+      "pollutantFilterId": 5,
+      "id": 7
+    },
+    {
+      "initialTreatmentLevel": 78,
+      "actualTreatmentLevel": 77,
+      "pollutantName": "Железо трихлорид /в пересчете на железо/ (Железа хлорид)",
+      "pollutantCode": "122",
+      "pollutantFilterId": 5,
+      "id": 8
+    }
+  ],
+  "releaseSources": [
+    {
+      "id": 1,
+      "releaseSourceName": "CAT 1334 1",
+      "releaseSourceNumber": "011213777",
+      "assetNumber": "sd78dq8asdf72323",
+      "ghgSource": false,
+      "emissionSourceId": 1,
+      "facilityLocationId": 1,
+      "facilityId": 1,
+      "worksiteId": 1,
+      "companyId": 1
+    },
+    {
+      "id": 2,
+      "releaseSourceName": "CAT 2334 2",
+      "releaseSourceNumber": "01",
+      "assetNumber": "sd78dqsadga872323",
+      "ghgSource": false,
+      "emissionSourceId": 2,
+      "facilityLocationId": 2,
+      "facilityId": 2,
+      "worksiteId": 2,
+      "companyId": 1
+    },
+    {
+      "id": 3,
+      "releaseSourceName": "CAT 3334 3",
+      "releaseSourceNumber": "01325",
+      "assetNumber": "sd78dq872323",
+      "ghgSource": false,
+      "worksiteId": 4,
+      "facilityId": 4,
+      "facilityLocationId": 4,
+      "emissionSourceId": 4
+    },
+    {
+      "id": 4,
+      "releaseSourceName": "CAT 4334 ch",
+      "releaseSourceNumber": "014351",
+      "assetNumber": "sd78dq8723231",
+      "ghgSource": false,
+      "worksiteId": 3,
+      "facilityId": 3,
+      "facilityLocationId": 3,
+      "emissionSourceId": 4
+    },
+    {
+      "id": 5,
+      "releaseSourceName": "CAT 5334 5",
+      "releaseSourceNumber": "01",
+      "assetNumber": "sd78dhgdq872323",
+      "ghgSource": false,
+      "emissionSourceId": 5,
+      "facilityLocationId": 1,
+      "facilityId": 1,
+      "worksiteId": 1,
+      "companyId": 1
+    },
+    {
+      "id": 6,
+      "releaseSourceName": "CAT 6334 6",
+      "releaseSourceNumber": "01",
+      "assetNumber": "sd78dq872323",
+      "ghgSource": false,
+      "emissionSourceId": 6,
+      "facilityLocationId": 2,
+      "facilityId": 2,
+      "worksiteId": 2,
+      "companyId": 1
+    },
+    {
+      "id": 7,
+      "releaseSourceName": "CAT 7334 7",
+      "releaseSourceNumber": "01567",
+      "assetNumber": "sd78dq872ghjk323",
+      "ghgSource": false,
+      "emissionSourceId": 7,
+      "facilityLocationId": 3,
+      "facilityId": 3,
+      "worksiteId": 3,
+      "companyId": 1
+    },
+    {
+      "id": 8,
+      "releaseSourceName": "SADFCAT 3341 CH 8",
+      "releaseSourceNumber": "013245234234234",
+      "assetNumber": "2342039487S;DFKLGJS",
+      "ghgSource": true,
+      "emissionSourceId": 8,
+      "facilityLocationId": 4,
+      "facilityId": 4,
+      "worksiteId": 4,
+      "companyId": 1
+    },
+    {
+      "id": 9,
+      "releaseSourceName": "HOULK 3341-8",
+      "releaseSourceNumber": "013245234234234",
+      "assetNumber": "2342039487SDFKLGJS",
+      "ghgSource": true,
+      "worksiteId": 5,
+      "facilityId": 5,
+      "facilityLocationId": 5,
+      "emissionSourceId": 11
+    },
+    {
+      "releaseSourceName": "New Release Source",
+      "releaseSourceNumber": "3242739487239",
+      "assetNumber": "owe8r7weru",
+      "ghgSource": true,
+      "worksiteId": 6,
+      "facilityId": 6,
+      "facilityLocationId": 6,
+      "emissionSourceId": 10,
+      "id": 10
+    },
+    {
+      "releaseSourceName": "Дизель генератор Детроит дизель 321",
+      "releaseSourceNumber": "01",
+      "ghgSource": false,
+      "assetNumber": "fff54564665asdasd",
+      "worksiteId": 3,
+      "facilityId": 7,
+      "facilityLocationId": 7,
+      "emissionSourceId": 11,
+      "id": 11
+    }
+  ],
+  "releaseSourcesGhgCalc": [
+    {
+      "releaseSource": 8,
+      "releaseSourceName": "SADFCAT 3341 CH 8",
+      "co2emission": "9.4477",
+      "no2emission": "0.0005",
+      "ch4emission": "0.0005",
+      "co2equivemission": "9.6132",
+      "fuelUsed": 3,
+      "vehiclecondition": 1,
+      "yearsused": 1.05,
+      "emissionfactorco2": 74.1,
+      "selectedch4n2o": "Бензин / Дизтопливо",
+      "vehicletype": 42.5,
+      "id": 1
+    }
+  ],
+  "releaseSourcesDieselCalc": [
+    {
+      "releaseSourceId": 4,
+      "releaseSourceName": "CAT 4334 ch",
+      "fuelConsumption": 3,
+      "releasesTable": [
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": 0.0000811111111111111,
+          "tyearcoef": 0.00000129
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": 0.04055555555555555,
+          "tyearcoef": 0.0012000000000000001
+        },
+        {
+          "code": "0328",
+          "name": "Углерод черный (Сажа)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        },
+        {
+          "code": "0330",
+          "name": "Серы диоксид (Ангидрид сернистый)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        },
+        {
+          "code": "0703",
+          "name": "Бенз/а/пирен (3-4-бензпирен)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        },
+        {
+          "code": "1325",
+          "name": "Формальдегид",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        },
+        {
+          "code": "2754",
+          "name": "Углеводороды предельные С12-С19 (в пересчете на С)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.0009599999999999999
+        }
+      ],
+      "id": 1
+    },
+    {
+      "releaseSourceId": 8,
+      "releaseSourceName": "SADFCAT 3341 CH 8",
+      "fuelConsumption": 4,
+      "releasesTable": [
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": 0.0000811111111111111,
+          "tyearcoef": 0.00000172
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": 0.04055555555555555,
+          "tyearcoef": 0.0016
+        },
+        {
+          "code": "0328",
+          "name": "Углерод черный (Сажа)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        },
+        {
+          "code": "0330",
+          "name": "Серы диоксид (Ангидрид сернистый)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        },
+        {
+          "code": "0703",
+          "name": "Бенз/а/пирен (3-4-бензпирен)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        },
+        {
+          "code": "1325",
+          "name": "Формальдегид",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        },
+        {
+          "code": "2754",
+          "name": "Углеводороды предельные С12-С19 (в пересчете на С)",
+          "gseccoef": 0.060833333333333336,
+          "tyearcoef": 0.00128
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "emissionSourceName": "Вентиляционная труба",
+      "emissionSourceNumber": "0003",
+      "releaseSourceName": "ДЭС САТ 300",
+      "reportingPeriodicity": "semiannual",
+      "reporter": {
+        "value": "death.dr@bk.ru",
+        "userFullName": "Темирлан Оспанов"
+      },
+      "linemanager": {
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "taskComments": "xbfgh j,hg gds",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "задержка",
+      "up_date": "18 Май 2019",
+      "id": 3
+    },
+    {
+      "emissionSourceName": "Склад сыпучих материалов",
+      "emissionSourceNumber": "0004",
+      "releaseSourceName": "Склад песка",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "value": "death.dr@bk.ru",
+        "userFullName": "Темирлан Оспанов"
+      },
+      "linemanager": {
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "weekly",
+      "taskComments": "grdnfhmtjy,mtnrteb",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "не предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 4
+    },
+    {
+      "emissionSourceName": "Вентиляционная труба",
+      "emissionSourceNumber": "0005",
+      "releaseSourceName": "FGWilson P150-5",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "linemanager": {
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "reportingType": "daily",
+      "taskComments": "safdhghj",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 5
+    },
+    {
+      "emissionSourceName": "Генератор",
+      "emissionSourceNumber": "0006",
+      "releaseSourceName": "Топливный бак ДГУ FGWilson P150-5",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "daily",
+      "reminder": 2,
+      "taskComments": "",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": true,
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 6
+    },
+    {
+      "emissionSourceName": "Вытяжной вентилятор системы дробления и классификации",
+      "emissionSourceNumber": "0007",
+      "releaseSourceName": "Дробилка №1 3320-FN-410",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "daily",
+      "reminder": 2,
+      "taskComments": "",
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 7
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "semiannual",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "weekly",
+      "reminder": 3,
+      "taskComments": "sfdsdf",
+      "id": 8
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "dgfhjgkuhk,jmgnfbdvcs",
+      "id": 9
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "dasfgdhjkj",
+      "id": 10
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "",
+      "id": 11
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 0,
+        "value": "afinance@yandex.ru",
+        "userFullName": "Ануар  Ахметов"
+      },
+      "linemanager": {
+        "index": 0,
+        "value": "afinance@yandex.ru",
+        "userFullName": "Ануар  Ахметов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "safdsgfhgjfhgh",
+      "id": 12
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "ghjkl;kjhgfdxcvjhb",
+      "rfc2445": "",
+      "id": 13
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "linemanager": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "asdasd",
+      "id": 14
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": "",
+      "linemanager": "",
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "czvbxc b",
+      "id": 15
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": "",
+      "linemanager": "",
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "sfdgfhgjhkjk",
+      "rfc2445": "",
+      "id": 16
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "dsfsd",
+      "id": 17
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "",
+      "rfc2445": "",
+      "id": 18
+    }
+  ]
+}
