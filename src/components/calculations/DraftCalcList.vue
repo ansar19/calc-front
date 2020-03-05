@@ -11,11 +11,6 @@
                   <font-awesome-icon icon="download" />
                 </download-excel>
               </d-button>
-              <router-link to="new-draft-calc">
-                <d-button size="sm" class="ml-2" text="Добавить" right>
-                  + черновой расчет
-                </d-button>
-              </router-link>
             </div>
             <div class="meta-table">
               <!-- <div>

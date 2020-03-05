@@ -37,6 +37,7 @@ import ReleaseSourceEdit from './views/ReleaseSourceEdit.vue';
 import ReleaseSourceAdd from './views/ReleaseSourceAdd.vue'
 
 // calculation
+import CalcAdd from './views/CalcAdd.vue'
 import CalculationsList from './views/CalculationsList.vue';
 import NewLimitCalc from './views/NewLimitCalc.vue';
 import NewDraftCalc from './views/NewDraftCalc.vue';
@@ -278,6 +279,11 @@ const router = new Router({
       path: '/calculations',
       name: 'calculations',
       component: CalculationsList,
+    },
+    {
+      path: '/calc-add',
+      name: 'calc-add',
+      component: CalcAdd,
     },
     {
       path: '/list-emissions',

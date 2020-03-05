@@ -261,7 +261,7 @@ export default {
           release_source: 'ЦА-32 УЗСТ-006-01 ',
           polCode: 703,
           polName: 'Бенз(а)пирен',
-          gsecemissions: 4.76e-7,
+          gsecemissions: 4.7656137033,
           tyearemissions: 0.0000015,
         },
         {

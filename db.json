@@ -1093,6 +1093,7 @@
       "companyId": 1
     }
   ],
+  "releaseSourceCalculations": [],
   "releaseSourcesGhgCalc": [
     {
       "releaseSource": 8,

@@ -9,7 +9,17 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="card card-small overflow-hidden mb-4 meta">
+        <d-card>
+        <!-- <div class="card card-small overflow-hidden mb-4 meta"> -->
+          <d-card-header>
+            <div class="block-handle mt-2" align="right">
+              <router-link to="calc-add">
+                <d-button size="sm" class="ml-2" text="Добавить">
+                  + расчет
+                </d-button>
+              </router-link>
+            </div>
+          </d-card-header>
           <d-card-body v-if="!loading">
             <!-- tabs -->
             <d-tabs>
@@ -25,7 +35,8 @@
             </d-tabs>
             <!-- tabs -->
           </d-card-body>
-        </div>
+        <!-- </div> -->
+        </d-card>
       </div>
     </div>
   </div>

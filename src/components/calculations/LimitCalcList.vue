@@ -11,11 +11,6 @@
                   <font-awesome-icon icon="download" />
                 </download-excel>
               </d-button>
-              <router-link to="new-limit-calc">
-                <d-button size="sm" class="ml-2" text="Добавить" right>
-                  + расчет лимитов
-                </d-button>
-              </router-link>
             </div>
             <div class="meta-table">
               <!-- List Manager -->
