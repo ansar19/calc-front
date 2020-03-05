@@ -37,8 +37,9 @@
                 <v-select
                   label="releaseSourceName"
                   :reduce="rel => rel.id"
-                  :value="releaseSource"
+                  :value="releaseSourceId"
                   :options="releaseSources"
+                  @input="setReleaseSourceId"
                 ></v-select>
               </div>
               <div class="form-group">
@@ -69,7 +70,7 @@
             <d-card-footer class="text-right border-top">
               <div class="d-flex">
                 <d-link @click="goBack">Назад</d-link>
-                <d-button type="submit" class="ml-auto">Рассчитать</d-button>
+                <d-button class="btn btn-success ml-auto" @click.prevent="saveCalc">Сохранить</d-button>
               </div>
             </d-card-footer>
           </d-form>
@@ -85,12 +86,6 @@
               <diesel-method v-if="calcMethod === 2"></diesel-method>
               <blast-method v-if="calcMethod === 3"></blast-method>
             </d-card-body>
-            <d-card-footer class="border-top">
-              <div class="d-flex">
-                <d-button outline theme="light" @click="goBack">Отменить</d-button>
-                <d-button class="btn btn-success ml-auto" @click="save">Сохранить</d-button>
-              </div>
-            </d-card-footer>
           </d-card>
         </div>
       </d-col>
@@ -102,6 +97,7 @@
 import api from '@/services/api';
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
 import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
+import { mapState, mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -111,7 +107,6 @@ export default {
   data() {
     return {
       releaseSources: [],
-      releaseSource: {},
       calcMethods: [
         {
           id: 2,
@@ -125,6 +120,10 @@ export default {
       calcMethod: null,
       calcData: {
         calcType: 'draft',
+      },
+      period: {
+        to: null,
+        from: null,
       },
       // vue-mj-daterangepicker related
       to: '',
@@ -155,14 +154,22 @@ export default {
   },
 
   methods: {
+    ...mapMutations('calcStore', ['setReleaseSourceId']),
     update(values) {
-      this.$router.push({
-        query: Object.assign({}, this.$route.query, {
-          to: values.to,
-          from: values.from,
-          panel: values.panel,
-        }),
-      });
+      this.period.to = values.to;
+      this.period.from = values.from;
+    },
+
+    saveCalc() {
+      api.postResource('releaseSourceCalculations', {
+        releaseSourceId: this.releaseSourceId,
+        calcMethodId: this.calcMethod,
+        calcType: this.calcData.calcType,
+        gsecTotal: this.gsecTotal,
+        tyearTotal: this.tyearTotal,
+        period: this.period,
+      })
+        .then(() => this.goBack());
     },
 
     goBack() {
@@ -170,7 +177,9 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    ...mapState('calcStore', ['releaseSourceId', 'calcMethodId', 'gsecTotal', 'tyearTotal']),
+  },
 
   created() {
     api.getResource('releaseSources').then((res) => {
