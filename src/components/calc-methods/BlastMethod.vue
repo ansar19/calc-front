@@ -6,7 +6,7 @@
       предприятий по производству строительных материалов", Приложение № 11 к Приказу Министра ООС РК от 18.04.2008 года
       № 100-п</h5>
 
-    <form>
+    <form class="mb-3">
       <div class="form-group">
         <label for="specificNOx">Удельное выделение i-того загрязняющего вещества при взрыве 1 тонны j-того взрывчатого
           вещества - NOx</label>
@@ -105,33 +105,6 @@
       </div>
 
     </form>
-    <button @click.prevent="addToOutputTable" class="btn btn-primary">addToOutputTable</button>
-    <pre> {{outputTable}} </pre>
-
-    <div id="table">
-      <table class="table table-sm table-stripped table-bordered table-hover">
-        <thead>
-          <th>Код ЗВ</th>
-          <th>Наименование ЗВ</th>
-          <th>Выбросы, г/сек</th>
-          <th>Выбросы, т/год</th>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in outputTable" :key="index">
-            <td>{{ item.polCode }}</td>
-            <td>{{ item.polName }}</td>
-            <td>{{ item.gSecEmission }}</td>
-            <td>{{ item.tyearEmission }}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>{{ gsecSubTotal }}</td>
-            <td>{{ tyearSubTotal }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
     <div class="table-responsive" v-if="seen">
       <table class="table table-sm table-stripped table-bordered table-hover">
@@ -196,40 +169,6 @@ export default {
       sigleBlastRock: '67751.75', // Максимальный объем взорванной горной породы за один массовый взрыв, м3/взрыв
       outputTable: [],
     };
-  },
-  methods: {
-    addToOutputTable() {
-      const outputTableElements =
-       [
-         {
-           polCode: '0301',
-           polName: 'Азота диоксид (Азот (IV) оксид)',
-           gSecEmission: this.g0301,
-           tyearEmission: this.m0301,
-         },
-         {
-           polCode: '0304',
-           polName: 'Азот (II) оксид (Азота оксид)',
-           gSecEmission: this.g0304,
-           tyearEmission: this.m0304,
-         },
-         {
-           polCode: '0337',
-           polName: 'Углерод оксид',
-           gSecEmission: this.g0337,
-           tyearEmission: this.m0337,
-         },
-         {
-           polCode: '2909',
-           polName: 'Пыль неорганическая: до 20% SiO2',
-           gSecEmission: this.g2909,
-           tyearEmission: this.m2909,
-         },
-         { gsecSubTotal: this.gsecSubTotal },
-         { tyearSubTotal: this.tyearSubTotal },
-       ];
-      this.outputTable.push(...outputTableElements);
-    },
   },
   computed: {
     g0301() {
