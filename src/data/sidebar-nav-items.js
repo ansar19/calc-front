@@ -104,12 +104,13 @@ export default function () {
       to: '/list-emissions',
       htmlBefore: '<i class="material-icons">&#xE8D1;</i>',
       htmlAfter: '',
-    }, {
-      title: 'Выбросы по ЗВ',
-      to: '/list-emissions-pollutants',
-      htmlBefore: '<i class="material-icons">&#xE8D1;</i>',
-      htmlAfter: '',
     },
+    // {
+    //   title: 'Выбросы по ЗВ',
+    //   to: '/list-emissions-pollutants',
+    //   htmlBefore: '<i class="material-icons">&#xE8D1;</i>',
+    //   htmlAfter: '',
+    // },
     {
       title: 'Эмиссий ЗВ в атмосферный воздух',
       to: '/pollutant-release-register',
