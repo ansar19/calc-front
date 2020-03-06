@@ -1210,21 +1210,6 @@
     {
       "releaseSourceId": 8,
       "releaseSourceName": "SADFCAT 3341 8",
-      "co2emission": "1086.4912",
-      "no2emission": "0.0660",
-      "ch4emission": "0.0660",
-      "co2equivemission": "1108.3372",
-      "fuelUsed": 345,
-      "vehiclecondition": 1.05,
-      "yearsused": 1.1,
-      "emissionfactorco2": 74.1,
-      "selectedch4n2o": "Бензин / Дизтопливо",
-      "vehicletype": 42.5,
-      "id": 2
-    },
-    {
-      "releaseSourceId": 8,
-      "releaseSourceName": "SADFCAT 3341 8",
       "co2emission": "70.0838",
       "no2emission": "0.0052",
       "ch4emission": "0.0052",
@@ -1365,6 +1350,317 @@
         }
       ],
       "id": 2
+    }
+  ],
+  "tasks": [
+    {
+      "emissionSourceName": "Вентиляционная труба",
+      "emissionSourceNumber": "0003",
+      "releaseSourceName": "ДЭС САТ 300",
+      "reportingPeriodicity": "semiannual",
+      "reporter": {
+        "value": "death.dr@bk.ru",
+        "userFullName": "Темирлан Оспанов"
+      },
+      "linemanager": {
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "taskComments": "xbfgh j,hg gds",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "задержка",
+      "up_date": "18 Май 2019",
+      "id": 3
+    },
+    {
+      "emissionSourceName": "Склад сыпучих материалов",
+      "emissionSourceNumber": "0004",
+      "releaseSourceName": "Склад песка",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "value": "death.dr@bk.ru",
+        "userFullName": "Темирлан Оспанов"
+      },
+      "linemanager": {
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "weekly",
+      "taskComments": "grdnfhmtjy,mtnrteb",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "не предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 4
+    },
+    {
+      "emissionSourceName": "Вентиляционная труба",
+      "emissionSourceNumber": "0005",
+      "releaseSourceName": "FGWilson P150-5",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "linemanager": {
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "reportingType": "daily",
+      "taskComments": "safdhghj",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": false,
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 5
+    },
+    {
+      "emissionSourceName": "Генератор",
+      "emissionSourceNumber": "0006",
+      "releaseSourceName": "Топливный бак ДГУ FGWilson P150-5",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "daily",
+      "reminder": 2,
+      "taskComments": "",
+      "taskDueDate": "28-02-2020",
+      "taskOverDue": true,
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 6
+    },
+    {
+      "emissionSourceName": "Вытяжной вентилятор системы дробления и классификации",
+      "emissionSourceNumber": "0007",
+      "releaseSourceName": "Дробилка №1 3320-FN-410",
+      "reportingPeriodicity": "weekly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "daily",
+      "reminder": 2,
+      "taskComments": "",
+      "status": "предоставлено",
+      "up_date": "18 Май 2019",
+      "id": 7
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "semiannual",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "weekly",
+      "reminder": 3,
+      "taskComments": "sfdsdf",
+      "id": 8
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "dgfhjgkuhk,jmgnfbdvcs",
+      "id": 9
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "dasfgdhjkj",
+      "id": 10
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "",
+      "id": 11
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 0,
+        "value": "afinance@yandex.ru",
+        "userFullName": "Ануар  Ахметов"
+      },
+      "linemanager": {
+        "index": 0,
+        "value": "afinance@yandex.ru",
+        "userFullName": "Ануар  Ахметов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "safdsgfhgjfhgh",
+      "id": 12
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "linemanager": {
+        "index": 5,
+        "value": "zhaken_95@mail.ru",
+        "userFullName": "Жакен Сулейменов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "ghjkl;kjhgfdxcvjhb",
+      "rfc2445": "",
+      "id": 13
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "linemanager": {
+        "index": 4,
+        "value": "karbaeva_aidana@mail.ru",
+        "userFullName": "Aidana Karbaeva"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "asdasd",
+      "id": 14
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": "",
+      "linemanager": "",
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "czvbxc b",
+      "id": 15
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": "",
+      "linemanager": "",
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": "",
+      "taskComments": "sfdgfhgjhkjk",
+      "rfc2445": "",
+      "id": 16
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "linemanager": {
+        "index": 3,
+        "value": "marat_ald@mail.ru",
+        "userFullName": "Марат Алиев"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "dsfsd",
+      "id": 17
+    },
+    {
+      "releaseSourceName": "DES-1",
+      "reportingPeriodicity": "monthly",
+      "reporter": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "linemanager": {
+        "index": 1,
+        "value": "dg3838@yandex.ru",
+        "userFullName": "Сергей Жугунисов"
+      },
+      "calcMethodName": "diesel_calc_method",
+      "reportingType": "",
+      "reminder": 2,
+      "taskComments": "",
+      "rfc2445": "",
+      "id": 18
     }
   ]
 }
