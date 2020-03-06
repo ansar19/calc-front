@@ -28,7 +28,7 @@
             <!-- data table -->
             <div class="meta-table">
 
-              <!-- <div>
+              <div>
                 <d-alert
                   dismissible
                   :show="timeUntilDismissed"
@@ -39,7 +39,7 @@
                   <b>Успешно!</b>
                   Напоминание отправляется и займет {{ timeUntilDismissed }} секунд!
                 </d-alert>
-              </div> -->
+              </div>
               <v-client-table class="dataTables_wrapper" :data="tasks" :columns="columns" :options="tableOptions">
                   <!-- Emission Source data slot -->
                 <div slot="child_row" slot-scope="props">
@@ -62,12 +62,12 @@
                 </div>
 
                 <d-button-group slot="actions" slot-scope="props" size="small" class="d-flex justify-content-center">
-                  <d-button class="btn-white" @click="handleActionClick('confirmed', props.row)"
+                  <d-button class="btn-white" @click="sendReminderResponsible('confirmed', props.row)"
                     v-d-tooltip.hover="'Отправить напоминание ответственному'">
                     <i class="material-icons">send</i>
                   </d-button>
 
-                  <d-button class="btn-white" @click="handleActionClick('confirmed', props.row)"
+                  <d-button class="btn-white" @click="sendReminderResponsible('confirmed', props.row)"
                     v-d-tooltip.hover="'Отправить напоминание линейному руководителю'">
                     <i class="material-icons">warning</i>
                   </d-button>
