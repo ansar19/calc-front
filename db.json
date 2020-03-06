@@ -1129,6 +1129,18 @@
         "from": "2020-03-06T00:00:00.000+06:00"
       },
       "id": 3
+    },
+    {
+      "releaseSourceId": 6,
+      "calcMethodId": 2,
+      "calcType": "draft",
+      "gsecTotal": 0.31117333333333336,
+      "tyearTotal": 0.10441934999999998,
+      "period": {
+        "to": "2020-06-06T23:59:59.999+06:00",
+        "from": "2020-03-06T00:00:00.000+06:00"
+      },
+      "id": 4
     }
   ],
   "releaseSourcesGhgCalc": [

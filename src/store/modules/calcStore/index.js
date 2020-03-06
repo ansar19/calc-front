@@ -1,6 +1,8 @@
 /* eslint-disable no-param-reassign */
 
 const initialState = () => ({
+  calcList: [],
+  calcsFromDb: [],
   releaseSources: [],
   releaseSourceId: null,
   calcMethodId: null,
@@ -19,6 +21,12 @@ const actions = {};
 const mutations = {
   setReleaseSources(state, payload) {
     state.releaseSources = payload;
+  },
+  setCalcList(state, payload) {
+    state.calcList = payload;
+  },
+  setCalcsFromDb(state, payload) {
+    state.calcsFromDb = payload;
   },
   setReleaseSourceId(state, payload) {
     state.releaseSourceId = payload;

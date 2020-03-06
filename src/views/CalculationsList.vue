@@ -10,32 +10,18 @@
     <div class="row">
       <div class="col">
         <d-card>
-        <!-- <div class="card card-small overflow-hidden mb-4 meta"> -->
+          <!-- <div class="card card-small overflow-hidden mb-4 meta"> -->
           <d-card-header>
             <div class="block-handle mt-2" align="right">
               <router-link to="calc-add">
-                <d-button size="sm" class="ml-2" text="Добавить">
-                  + расчет
-                </d-button>
+                <d-button size="sm" class="ml-2" text="Добавить">+ расчет</d-button>
               </router-link>
             </div>
           </d-card-header>
           <d-card-body v-if="!loading">
-            <!-- tabs -->
-            <d-tabs>
-              <d-tab title="Лимиты" active>
-                <limit-calc-list :releaseSourceList="releaseSourceList"></limit-calc-list>
-              </d-tab>
-              <d-tab title="Фактические">
-                <actual-calc-list></actual-calc-list>
-              </d-tab>
-              <d-tab title="Черновики">
-                <draft-calc-list></draft-calc-list>
-              </d-tab>
-            </d-tabs>
-            <!-- tabs -->
+            <calc-list-table></calc-list-table>
           </d-card-body>
-        <!-- </div> -->
+          <!-- </div> -->
         </d-card>
       </div>
     </div>
@@ -43,18 +29,14 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
-import LimitCalcList from '@/components/calculations/LimitCalcList.vue';
-import ActualCalcList from '@/components/calculations/ActualCalcList.vue';
-import DraftCalcList from '@/components/calculations/DraftCalcList.vue';
-
 /* eslint-disable no-alert */
+import api from '@/services/api';
+import { mapState, mapMutations } from 'vuex';
+import CalcListTable from '@/components/calculations/CalcListTable.vue';
+
 export default {
   components: {
-    // ClientTable,
-    LimitCalcList,
-    ActualCalcList,
-    DraftCalcList,
+    CalcListTable,
   },
   data() {
     return {
@@ -63,16 +45,35 @@ export default {
     };
   },
   computed: {
-    ...mapState('releaseStore', ['releaseSourceList']),
+    ...mapState('calcStore', ['calcsFromDb', 'calcList', 'releaseSources']),
   },
   methods: {
-    ...mapActions('releaseStore', ['getReleaseSourceList']),
+    ...mapMutations('calcStore', [
+      'setCalcsFromDb',
+      'setCalcList',
+      'setReleaseSources',
+    ]),
   },
   created() {
     this.loading = true;
-    this.getReleaseSourceList().then(() => {
+    api.getResource('releaseSourceCalculations').then((res) => {
+      this.setCalcsFromDb(res);
       this.loading = false;
     });
+    api
+      .getResource('releaseSources')
+      .then((res) => {
+        this.setReleaseSources(res);
+      })
+      .then(() => {
+        const source = [];
+        for (let i = 0; i < this.calcsFromDb.length; i += 1) {
+          const cfd = this.calcsFromDb[i];
+          const rsn = this.releaseSources.find(el => el.id === cfd.releaseSourceId);
+          source.push({ ...cfd, releaseSourceName: rsn.releaseSourceName });
+        }
+        this.setCalcList(source);
+      });
   },
 };
 </script>
