@@ -70,20 +70,6 @@ export default function () {
       },
     },
     {
-      title: 'Парниковые газы пример',
-      htmlBefore: '<i class="material-icons">table_chart</i>',
-      to: {
-        name: 'ghg-calc-example',
-      },
-    },
-    {
-      title: 'Выбросы дизель. Расчет',
-      htmlBefore: '<i class="material-icons">table_chart</i>',
-      to: {
-        name: 'calc-example',
-      },
-    },
-    {
       title: 'Список источников парниковых газов',
       htmlBefore: '<i class="material-icons">table_chart</i>',
       to: {

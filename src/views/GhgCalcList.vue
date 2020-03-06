@@ -10,7 +10,14 @@
     <!-- Default Table -->
     <div v-if="!loading" class="row">
       <div class="col">
-        <div class="card card-small overflow-hidden mb-4 meta">
+        <d-card class="card-small overflow-hidden mb-4 meta">
+          <d-card-header>
+            <div class="block-handle mt-2" align="right">
+              <router-link to="ghg-calc-example">
+                <d-button size="sm" class="ml-2" text="Добавить">+ расчет</d-button>
+              </router-link>
+            </div>
+          </d-card-header>
           <d-card-body>
             <table class="meta-table">
               <thead>
@@ -31,7 +38,7 @@
               </tr>
             </table>
           </d-card-body>
-        </div>
+        </d-card>
       </div>
     </div>
   </div>
