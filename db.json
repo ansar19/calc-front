@@ -1141,6 +1141,54 @@
         "from": "2020-03-06T00:00:00.000+06:00"
       },
       "id": 4
+    },
+    {
+      "releaseSourceId": 6,
+      "calcMethodId": 2,
+      "calcType": "draft",
+      "gsecTotal": 3.0339400000000003,
+      "tyearTotal": 0.00928172,
+      "period": {
+        "to": null,
+        "from": null
+      },
+      "id": 5
+    },
+    {
+      "releaseSourceId": 3,
+      "calcMethodId": 3,
+      "calcType": "draft",
+      "gsecTotal": 402.9602542,
+      "tyearTotal": "144.6480389",
+      "period": {
+        "to": null,
+        "from": null
+      },
+      "id": 6
+    },
+    {
+      "releaseSourceId": 3,
+      "calcMethodId": 3,
+      "calcType": "limit",
+      "gsecTotal": 4233.4185875,
+      "tyearTotal": "893.4480389",
+      "period": {
+        "to": "2020-12-31T23:59:59.999+06:00",
+        "from": "2020-01-01T00:00:00.000+06:00"
+      },
+      "id": 7
+    },
+    {
+      "releaseSourceId": 6,
+      "calcMethodId": 3,
+      "calcType": "actual",
+      "gsecTotal": 402.9602542,
+      "tyearTotal": "144.6480389",
+      "period": {
+        "to": "2020-03-13T23:59:59.999+06:00",
+        "from": "2020-03-06T00:00:00.000+06:00"
+      },
+      "id": 8
     }
   ],
   "releaseSourcesGhgCalc": [

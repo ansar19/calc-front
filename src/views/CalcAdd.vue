@@ -51,7 +51,7 @@
                   v-model="calcMethod"
                 ></v-select>
               </div>
-              <div class="form-group">
+              <div class="form-group" v-if="calcData.calcType !== 'draft'">
                 <div class="custom-controls-stacked">
                   <label class="d-block">Год на который устанавливается лимит:</label>
                   <date-range-picker
