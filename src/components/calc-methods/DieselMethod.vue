@@ -92,10 +92,11 @@ export default {
   },
 
   methods: {
-    ...mapMutations('calcStore', ['setGsecTotal', 'setTyearTotal']),
+    ...mapMutations('calcStore', ['setGsecTotal', 'setTyearTotal', 'setPollutants']),
     calculate() {
       let gsecTotal = 0;
       let tyearTotal = 0;
+      let pollutants;
       try {
         const calcs = this.pwrGenerator.map(el => {
           const gseccoef = (el.gseccoef * this.power) / 3600;
@@ -108,11 +109,13 @@ export default {
             tyearcoef: tyearcoef.toFixed(7),
           };
         });
+        pollutants = [...calcs];
         this.calculated = {...calcs, gsecTotal: gsecTotal.toFixed(7), tyearTotal: tyearTotal.toFixed(7) };
       } finally {
         this.resultView = true;
         this.setGsecTotal(gsecTotal);
         this.setTyearTotal(tyearTotal);
+        this.setPollutants(pollutants);
       }
     },
   },

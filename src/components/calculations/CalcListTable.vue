@@ -30,7 +30,7 @@
                 :options="tableOptions">
                 <template slot="calcType" slot-scope="props">{{ getTypeRus(props.row.calcType) }}</template>
 
-                <!-- <div slot="child_row" slot-scope="props">
+                <div slot="child_row" slot-scope="props">
                   <table class="meta-table">
                     <thead>
                       <tr>
@@ -40,14 +40,14 @@
                         <th>Выбросы, т/год </th>
                       </tr>
                     </thead>
-                    <tr v-for="item in props.row.releasesTable" :key="item.code">
+                    <tr v-for="item in props.row.pollutants" :key="item.code">
                       <td data-label="Код ЗВ:">{{ item.code }}</td>
                       <td data-label="Наименование ЗВ:">{{ item.name }}</td>
                       <td data-label="Выбросы, г/сек:">{{ item.gseccoef  }}</td>
                       <td data-label="Выбросы, т/год:">{{ item.tyearcoef }}</td>
                     </tr>
                   </table>
-                </div> -->
+                </div>
               </v-client-table>
             </div>
           </d-card-body>

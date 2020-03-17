@@ -1095,100 +1095,266 @@
   ],
   "releaseSourceCalculations": [
     {
-      "releaseSourceId": 3,
+      "releaseSourceId": 6,
       "calcMethodId": 2,
       "calcType": "draft",
+      "pollutants": [
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": "0.0000811",
+          "tyearcoef": "0.0000013"
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": "0.0405556",
+          "tyearcoef": "0.0012000"
+        },
+        {
+          "code": "0328",
+          "name": "Углерод черный (Сажа)",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        },
+        {
+          "code": "0330",
+          "name": "Серы диоксид (Ангидрид сернистый)",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        },
+        {
+          "code": "0703",
+          "name": "Бенз/а/пирен (3-4-бензпирен)",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        },
+        {
+          "code": "1325",
+          "name": "Формальдегид",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        },
+        {
+          "code": "2754",
+          "name": "Углеводороды предельные С12-С19 (в пересчете на С)",
+          "gseccoef": "0.0608333",
+          "tyearcoef": "0.0009600"
+        }
+      ],
       "gsecTotal": 0.40563666666666676,
-      "tyearTotal": 0.75181932,
-      "period": {
-        "to": "2021-03-06T23:59:59.999+06:00",
-        "from": "2020-03-06T00:00:00.000+06:00"
-      },
-      "id": 1
-    },
-    {
-      "releaseSourceId": 5,
-      "calcMethodId": 2,
-      "calcType": "limit",
-      "gsecTotal": 0.06668,
-      "tyearTotal": 0.10441934999999998,
-      "period": {
-        "to": "2020-03-13T23:59:59.999+06:00",
-        "from": "2020-03-06T00:00:00.000+06:00"
-      },
-      "id": 2
-    },
-    {
-      "releaseSourceId": 8,
-      "calcMethodId": 2,
-      "calcType": "actual",
-      "gsecTotal": 4.565247102222222,
-      "tyearTotal": 0.12322408000000003,
-      "period": {
-        "to": "2020-04-06T23:59:59.999+06:00",
-        "from": "2020-03-06T00:00:00.000+06:00"
-      },
-      "id": 3
-    },
-    {
-      "releaseSourceId": 6,
-      "calcMethodId": 2,
-      "calcType": "draft",
-      "gsecTotal": 0.31117333333333336,
-      "tyearTotal": 0.10441934999999998,
-      "period": {
-        "to": "2020-06-06T23:59:59.999+06:00",
-        "from": "2020-03-06T00:00:00.000+06:00"
-      },
-      "id": 4
-    },
-    {
-      "releaseSourceId": 6,
-      "calcMethodId": 2,
-      "calcType": "draft",
-      "gsecTotal": 3.0339400000000003,
-      "tyearTotal": 0.00928172,
+      "tyearTotal": 0.006961289999999999,
       "period": {
         "to": null,
         "from": null
       },
-      "id": 5
+      "id": 9
     },
     {
-      "releaseSourceId": 3,
-      "calcMethodId": 3,
+      "releaseSourceId": 1,
+      "calcMethodId": 2,
       "calcType": "draft",
-      "gsecTotal": 402.9602542,
-      "tyearTotal": "144.6480389",
+      "pollutants": [
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": "0.1460000",
+          "tyearcoef": "0.1500000"
+        },
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": "0.1670889",
+          "tyearcoef": "0.1700000"
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": "0.0271722",
+          "tyearcoef": "0.0279500"
+        },
+        {
+          "code": "2754",
+          "name": "Углеводороды пред. С12-С19",
+          "gseccoef": "0.0730000",
+          "tyearcoef": "0.0214500"
+        },
+        {
+          "code": "0328",
+          "name": "Сажа",
+          "gseccoef": "0.0141944",
+          "tyearcoef": "0.0043000"
+        },
+        {
+          "code": "0330",
+          "name": "Серы диоксид",
+          "gseccoef": "0.0223056",
+          "tyearcoef": "0.0275000"
+        },
+        {
+          "code": "1325",
+          "name": "Формальдегид",
+          "gseccoef": "0.0030417",
+          "tyearcoef": "0.0008500"
+        },
+        {
+          "code": "0703",
+          "name": "Бенз(а)пирен",
+          "gseccoef": "0.0000003",
+          "tyearcoef": "0.0000001"
+        }
+      ],
+      "gsecTotal": 0.4528030413888889,
+      "tyearTotal": 0.40205007857142866,
       "period": {
         "to": null,
         "from": null
       },
-      "id": 6
+      "id": 10
+    },
+    {
+      "releaseSourceId": 1,
+      "calcMethodId": 2,
+      "calcType": "actual",
+      "pollutants": [
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": "0.1460000",
+          "tyearcoef": "0.1500000"
+        },
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": "0.1670889",
+          "tyearcoef": "0.1700000"
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": "0.0271722",
+          "tyearcoef": "0.0279500"
+        },
+        {
+          "code": "2754",
+          "name": "Углеводороды пред. С12-С19",
+          "gseccoef": "0.0730000",
+          "tyearcoef": "0.0214500"
+        },
+        {
+          "code": "0328",
+          "name": "Сажа",
+          "gseccoef": "0.0141944",
+          "tyearcoef": "0.0043000"
+        },
+        {
+          "code": "0330",
+          "name": "Серы диоксид",
+          "gseccoef": "0.0223056",
+          "tyearcoef": "0.0275000"
+        },
+        {
+          "code": "1325",
+          "name": "Формальдегид",
+          "gseccoef": "0.0030417",
+          "tyearcoef": "0.0008500"
+        },
+        {
+          "code": "0703",
+          "name": "Бенз(а)пирен",
+          "gseccoef": "0.0000003",
+          "tyearcoef": "0.0000001"
+        }
+      ],
+      "gsecTotal": 0.4528030413888889,
+      "tyearTotal": 0.40205007857142866,
+      "period": {
+        "to": "2021-03-17T23:59:59.999+06:00",
+        "from": "2020-03-17T00:00:00.000+06:00"
+      },
+      "id": 11
+    },
+    {
+      "releaseSourceId": 1,
+      "calcMethodId": 3,
+      "calcType": "actual",
+      "pollutants": [
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": "13.6216667",
+          "tyearcoef": "8.5449600"
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": "2.2135208",
+          "tyearcoef": "1.3885560"
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": "61.9166667",
+          "tyearcoef": "37.1520000"
+        },
+        {
+          "code": "2909",
+          "name": "Пыль неорганическая: до 20% SiO2",
+          "gseccoef": "325.2084000",
+          "tyearcoef": "97.5625229"
+        }
+      ],
+      "gsecTotal": 402.9602542,
+      "tyearTotal": "144.6480389",
+      "period": {
+        "to": "2021-03-17T23:59:59.999+06:00",
+        "from": "2020-03-17T00:00:00.000+06:00"
+      },
+      "id": 12
     },
     {
       "releaseSourceId": 3,
       "calcMethodId": 3,
-      "calcType": "limit",
-      "gsecTotal": 4233.4185875,
-      "tyearTotal": "893.4480389",
-      "period": {
-        "to": "2020-12-31T23:59:59.999+06:00",
-        "from": "2020-01-01T00:00:00.000+06:00"
-      },
-      "id": 7
-    },
-    {
-      "releaseSourceId": 6,
-      "calcMethodId": 3,
       "calcType": "actual",
+      "pollutants": [
+        {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": "13.6216667",
+          "tyearcoef": "8.5449600"
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": "2.2135208",
+          "tyearcoef": "1.3885560"
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": "61.9166667",
+          "tyearcoef": "37.1520000"
+        },
+        {
+          "code": "2909",
+          "name": "Пыль неорганическая: до 20% SiO2",
+          "gseccoef": "325.2084000",
+          "tyearcoef": "97.5625229"
+        }
+      ],
       "gsecTotal": 402.9602542,
       "tyearTotal": "144.6480389",
       "period": {
-        "to": "2020-03-13T23:59:59.999+06:00",
-        "from": "2020-03-06T00:00:00.000+06:00"
+        "to": "2021-03-17T23:59:59.999+06:00",
+        "from": "2020-03-17T00:00:00.000+06:00"
       },
-      "id": 8
+      "id": 13
     }
   ],
   "releaseSourcesGhgCalc": [

@@ -6,6 +6,7 @@ const initialState = () => ({
   releaseSources: [],
   releaseSourceId: null,
   calcMethodId: null,
+  pollutants: [],
   gsecTotal: null,
   tyearTotal: null,
   period: {
@@ -36,6 +37,9 @@ const mutations = {
   },
   setPeriod(state, payload) {
     state.period = payload;
+  },
+  setPollutants(state, payload) {
+    state.pollutants = payload;
   },
   setGsecTotal(state, payload) {
     state.gsecTotal = payload;

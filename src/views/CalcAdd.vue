@@ -165,6 +165,7 @@ export default {
         releaseSourceId: this.releaseSourceId,
         calcMethodId: this.calcMethod,
         calcType: this.calcData.calcType,
+        pollutants: this.pollutants,
         gsecTotal: this.gsecTotal,
         tyearTotal: this.tyearTotal,
         period: this.period,
@@ -178,7 +179,7 @@ export default {
   },
 
   computed: {
-    ...mapState('calcStore', ['releaseSourceId', 'calcMethodId', 'gsecTotal', 'tyearTotal']),
+    ...mapState('calcStore', ['releaseSourceId', 'calcMethodId', 'gsecTotal', 'tyearTotal', 'pollutants']),
   },
 
   created() {

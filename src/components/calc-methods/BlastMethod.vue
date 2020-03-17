@@ -263,11 +263,37 @@ export default {
     ...mapState('calcStore', ['gsecTotal', 'tyearTotal'])
   },
   methods: {
-    ...mapMutations('calcStore', ['setGsecTotal', 'setTyearTotal']),
+    ...mapMutations('calcStore', ['setGsecTotal', 'setTyearTotal', 'setPollutants']),
     calculate() {
       this.seen = true;
     this.setGsecTotal(this.gsecSubTotal());
     this.setTyearTotal(this.tyearSubTotal());
+    this.setPollutants([
+      {
+          "code": "0301",
+          "name": "Азота диоксид",
+          "gseccoef": this.g0301,
+          "tyearcoef": this.m0301
+        },
+        {
+          "code": "0304",
+          "name": "Азота оксид",
+          "gseccoef": this.g0304,
+          "tyearcoef": this.m0304
+        },
+        {
+          "code": "0337",
+          "name": "Углерода оксид",
+          "gseccoef": this.g0337,
+          "tyearcoef": this.m0337
+        },
+        {
+          "code": "2909",
+          "name": "Пыль неорганическая: до 20% SiO2",
+          "gseccoef": this.g2909,
+          "tyearcoef": this.m2909
+        }
+    ]);
     },
     gsecSubTotal() {
       return (
