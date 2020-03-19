@@ -24,11 +24,11 @@
               <tr>
                 <th>Наименование ЗВ или группы ЗВ</th>
                 <th>Выбросы в пределах лимитов</th>
-                <th>Выбросы сверх лимитов</th>
+                <!-- <th>Выбросы сверх лимитов</th> -->
                 <th>Ставка платы в пределах лимитов, ₸</th>
-                <th>Ставка платы сверх лимитов, ₸</th>
+                <!-- <th>Ставка платы сверх лимитов, ₸</th> -->
                 <th>Подитог в пределах лимитов, ₸</th>
-                <th>Подитог сверх лимитов, ₸</th>
+                <!-- <th>Подитог сверх лимитов, ₸</th> -->
                 <th>Подитог, ₸</th>
               </tr>
             </thead>
@@ -40,22 +40,22 @@
                 <td data-label="Выбросы в пределах лимитов, т/период:">
                   <d-input type="number" v-model.number="item.emissionsTonPeriod" size="" />
                 </td>
-                <td data-label="Выбросы сверх лимитов, т/период:">
+                <!-- <td data-label="Выбросы сверх лимитов, т/период:">
                   <d-input type="number" v-model.number="item.emissionsTonPeriod" size="" />
-                </td>
+                </td> -->
                 <td data-label="Ставка платы в пределах лимитов, ₸:">
                   <d-input type="number" v-model.number="item.emissionPaymentRate" size="" />
                 </td>
-                <td data-label="Ставка платы сверх лимитов, ₸:">
+                <!-- <td data-label="Ставка платы сверх лимитов, ₸:">
                   <d-input type="number" v-model.number="item.emissionPaymentRate" size="" />
-                </td>
+                </td> -->
                 <td data-label="Подитог в пределах лимитов, ₸:">
                   <d-input type="number" v-model.number="subtotalRow[index]" readonly disabled size="" />
                 </td>
-                <td data-label="Подитог сверх лимитов, ₸:">
+                <!-- <td data-label="Подитог сверх лимитов, ₸:">
                   <d-input type="number" v-model.number="subtotalRow[index]" readonly disabled size="" />
-                </td>
-                <td data-label="Подитог в пределах лимитов + сверхлимиты, ₸:">
+                </td> -->
+                <td data-label="Подитог в пределах лимитов, ₸:">
                   <d-input type="number" v-model.number="subtotalRow[index]" readonly disabled size="" />
                 </td>
                 <!-- <td data-label="Код ЗВ:"><button @click="addRow(index)">+</button></td> -->
