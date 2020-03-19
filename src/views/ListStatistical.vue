@@ -13,12 +13,12 @@
         <div class="card card-small overflow-hidden mb-4 meta">
           <d-card-header class="border-bottom">
             <div class="block-handle" align="right">
-              <d-button size="sm" class="btn-info btn-sm ml-2" v-d-tooltip.hover="'Выгрузить Excel'">
-                <download-excel :data="items" title="Статус статистических отчетов" :exportFields="json_fields"
+
+                <download-excel class="mb-2 btn btn-sm btn-info ml-2" :data="items" v-d-tooltip.hover="'Выгрузить Excel'" title="Статус статистических отчетов" :exportFields="json_fields"
                   name="statreportsstatus.xls">
                   <font-awesome-icon icon="download" />
                 </download-excel>
-              </d-button>
+
               <d-link to="new-stat-report">
                 <d-button outline size="sm" class="btn-primary btn-sm ml-2">
                   <font-awesome-icon icon="plus" />Добавить отчет 2ТП
