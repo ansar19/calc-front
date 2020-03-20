@@ -27,7 +27,10 @@
                   <font-awesome-icon icon="download" />
                 </download-excel>
               </d-button>
-              <d-dropdown size="sm" class="ml-2" text="Добавить" right>
+                <router-link to="release-source-add" class="ml-2">
+              <d-button size="sm">+ источник</d-button>
+                </router-link>
+              <!-- <d-dropdown size="sm" class="ml-2" text="Добавить" right>
                 <d-dropdown-item size="sm">
                   <router-link to="release-source-add">Добавить источник</router-link>
                 </d-dropdown-item>
@@ -35,7 +38,7 @@
                 <d-dropdown-item size="sm">
                   <router-link to="import-csv">Добавить источники</router-link>
                 </d-dropdown-item>
-              </d-dropdown>
+              </d-dropdown> -->
             </div>
           </d-card-header>
 
