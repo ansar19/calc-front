@@ -85,6 +85,7 @@
             <d-card-body>
               <diesel-method v-if="calcMethod === 2"></diesel-method>
               <blast-method v-if="calcMethod === 3"></blast-method>
+              <pump-method v-if="calcMethod === 4"></pump-method>
             </d-card-body>
           </d-card>
         </div>
@@ -97,12 +98,14 @@
 import api from '@/services/api';
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
 import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
+import PumpMethod from '@/components/calc-methods/PumpMethod.vue';
 import { mapState, mapMutations } from 'vuex';
 
 export default {
   components: {
     DieselMethod,
     BlastMethod,
+    PumpMethod,
   },
   data() {
     return {
@@ -115,6 +118,10 @@ export default {
         {
           id: 3,
           calcMethodName: 'Взрыв',
+        },
+        {
+          id: 4,
+          calcMethodName: 'Насос',
         },
       ],
       calcMethod: null,
