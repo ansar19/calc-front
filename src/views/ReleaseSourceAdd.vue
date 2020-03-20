@@ -61,7 +61,7 @@ export default {
       if (this.saveReleaseValidation) {
         releaseSourceService.postResource('releaseSources', this.releaseSource);
         this.clearAll();
-        this.$router.go(-1);
+        this.$router.push('/release-source-list');
       } else {
         throw new Error('Заполните все данные');
       }
