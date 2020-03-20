@@ -82,7 +82,7 @@
 
           <d-card-footer class="text-right border-top">
             <div class="d-flex">
-              <d-link @click="goBack">Назад</d-link>
+              <router-link tag="a" to="/companies">Назад</router-link>
               <d-button class="ml-auto" theme="warning" @click="goEdit()">Редактировать</d-button>
             </div>
           </d-card-footer>
@@ -148,9 +148,6 @@ export default {
       } catch (error) {
         this.error = error.message;
       }
-    },
-    goBack() {
-      this.$router.go(-1);
     },
     goEdit() {
       this.$router.push({ path: `/edit-company/${this.companyId}` });
