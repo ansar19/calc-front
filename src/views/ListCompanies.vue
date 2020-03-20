@@ -24,7 +24,7 @@
           </d-button>
           <d-link to="new-company">
             <d-button outline size="sm" class="btn-primary btn-sm ml-2">
-              <font-awesome-icon icon="plus" />Добавить компанию
+              <font-awesome-icon icon="plus" /> Добавить компанию
             </d-button>
           </d-link>
         </div>

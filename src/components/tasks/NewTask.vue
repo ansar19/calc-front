@@ -82,7 +82,7 @@
       </d-card-body>
       <d-card-footer class="border-top">
         <div class="d-flex">
-          <d-link @click="goBack">Отменить</d-link>
+          <router-link to="/list-tasks">Отменить</router-link>
           <d-button class="btn btn-success ml-auto" @click.prevent="addTask" type="submit">Сохранить</d-button>
         </div>
       </d-card-footer>

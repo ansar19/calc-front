@@ -656,7 +656,7 @@
           </div>
           <d-card-footer class="border-top">
             <div class="d-flex">
-              <d-link href="#cancel">Отменить</d-link>
+              <router-link to="/list-statistical">Отменить</router-link>
               <d-button type="submit" class="btn btn-success ml-auto">Сохранить</d-button>
             </div>
           </d-card-footer>
