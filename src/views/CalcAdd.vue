@@ -69,7 +69,7 @@
             </d-card-body>
             <d-card-footer class="text-right border-top">
               <div class="d-flex">
-                <d-link @click="goBack">Назад</d-link>
+                <router-link to="/calculations">Назад</router-link>
                 <d-button class="btn btn-success ml-auto" @click.prevent="saveCalc">Сохранить</d-button>
               </div>
             </d-card-footer>
@@ -174,7 +174,7 @@ export default {
     },
 
     goBack() {
-      this.$router.go(-1);
+      this.$router.push('/calculations');
     },
   },
 
