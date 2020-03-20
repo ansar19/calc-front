@@ -54,7 +54,7 @@
                   <td v-for="key in parse_header" v-bind:key="key">{{csv[key]}}</td>
                 </tr>
               </table>
-              <pre>{{parse_csv}}</pre>
+              <!-- <pre>{{parse_csv}}</pre> -->
             </d-card-body>
             <d-card-footer>
               <div class="d-flex">
