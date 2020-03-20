@@ -99,7 +99,7 @@ const CompanyService = {};
 // eslint-disable-next-line consistent-return
 CompanyService.getCompany = async (id) => {
   try {
-    const result = await axios.get(`http://localhost:3000/companies/${id}`);
+    const result = await axios.get(`https://ecoapikz.herokuapp.com/companies/${id}`);
     const companies = {
     //   name: result.data.name,
       companyName: result.data.companyName,

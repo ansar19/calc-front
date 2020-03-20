@@ -200,7 +200,7 @@ export default {
   },
   // Fetches users when the component is created.
   created() {
-    axios.get('http://localhost:3000/tasks/')
+    axios.get('https://ecoapikz.herokuapp.com/tasks/')
       .then((response) => {
       // JSON responses are automatically parsed.
         this.tasks = response.data;

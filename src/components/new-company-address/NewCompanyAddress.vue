@@ -106,7 +106,7 @@
 // import vSelect from 'vue-select';
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000/companyaddresses';
+const baseURL = 'https://ecoapikz.herokuapp.com/companyaddresses';
 
 export default {
   name: 'company-address',

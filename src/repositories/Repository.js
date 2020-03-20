@@ -1,10 +1,10 @@
 /* eslint-disable */
 import axios from 'axios';
 
-var baseDomain = "http://localhost:3000/";
+var baseDomain = "https://ecoapikz.herokuapp.com/";
 
 if(process.env.NODE_ENV === 'production') {
-  baseDomain = 'http://localhost:3000/';
+  baseDomain = 'https://ecoapikz.herokuapp.com/';
 }
 
 const baseURL = `${baseDomain}`;

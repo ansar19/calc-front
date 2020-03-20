@@ -66,7 +66,7 @@ const UserService = {};
 // eslint-disable-next-line consistent-return
 UserService.getUser = async (id) => {
   try {
-    const result = await axios.get(`http://localhost:3000/users/${id}`);
+    const result = await axios.get(`https://ecoapikz.herokuapp.com/users/${id}`);
     const users = {
     //   name: result.data.name,
       firstname: result.data.firstname,

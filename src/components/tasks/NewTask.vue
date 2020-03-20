@@ -95,7 +95,7 @@
 import axios from 'axios';
 import Recurrence from '@/components/tasks/Recurrence.vue';
 
-const baseURL = 'http://localhost:3000/tasks';
+const baseURL = 'https://ecoapikz.herokuapp.com/tasks';
 export default {
   name: 'e-editor',
   components: {

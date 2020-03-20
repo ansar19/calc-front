@@ -96,7 +96,7 @@
 <script>
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000/companyheads';
+const baseURL = 'https://ecoapikz.herokuapp.com/companyheads';
 
 export default {
   name: 'editor',

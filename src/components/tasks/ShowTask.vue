@@ -71,7 +71,7 @@ const TaskService = {};
 // eslint-disable-next-line consistent-return
 TaskService.getTask = async (id) => {
   try {
-    const result = await axios.get(`http://localhost:3000/tasks/${id}`);
+    const result = await axios.get(`https://ecoapikz.herokuapp.com/tasks/${id}`);
     const tasks = {
     //   name: result.data.name,
       releaseSourceName: result.data.releaseSourceName,

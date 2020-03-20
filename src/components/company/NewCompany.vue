@@ -83,7 +83,7 @@ import CompanyGeneral from '@/components/company/CompanyGeneral.vue';
 import CompanyHead from '@/components/company/CompanyHead.vue';
 import CompanyAddress from '@/components/company/CompanyAddress.vue';
 
-const baseURL = 'http://localhost:3000/companies';
+const baseURL = 'https://ecoapikz.herokuapp.com/companies';
 
 export default {
   name: 'editor',

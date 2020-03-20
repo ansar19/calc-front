@@ -262,7 +262,7 @@ export default {
   // Fetches companies when the component is created.
   created() {
     axios
-      .get("http://localhost:3000/companies/")
+      .get("https://ecoapikz.herokuapp.com/companies/")
       .then(response => {
         // JSON responses are automatically parsed.
         this.companies = response.data;
@@ -276,7 +276,7 @@ export default {
   methods: {
     deleteCompany(id) {
       axios
-        .delete("http://localhost:3000/companies/" + id)
+        .delete("https://ecoapikz.herokuapp.com/companies/" + id)
         .then(response => {
           this.companies.splice(id, 1);
           // console.log(response.data);
@@ -286,7 +286,7 @@ export default {
         });
     }
     // updateCompany(id){
-    //   axios.put('http://localhost:3000/companies/' + id, {
+    //   axios.put('https://ecoapikz.herokuapp.com/companies/' + id, {
     //       companyName: 'Some Company Name',
     //       binInn: '111111111111',
     //   }).then(resp => {
@@ -307,7 +307,7 @@ export default {
     //   }
     // },
     // deleteCompany: function(result, index) {
-    //   axios.delete('http://localhost:3000/companies/' + index)
+    //   axios.delete('https://ecoapikz.herokuapp.com/companies/' + index)
     //   .then(response => {
     //     this.result.splice(index, 1)
     //     console.log(this.result);
@@ -324,7 +324,7 @@ export default {
     //   this.$router.push('/companies/' + props.row.id)
     // },
     // async updateCompany(e) {
-    //   await axios.put('http://localhost:3000/companies/${id}', this.companies)
+    //   await axios.put('https://ecoapikz.herokuapp.com/companies/${id}', this.companies)
     //     .then((response) => {
     //       this.$router.go(-1);
     //     })

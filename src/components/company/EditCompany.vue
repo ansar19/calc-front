@@ -86,7 +86,7 @@ import CompanyHead from '@/components/company/CompanyHead.vue';
 import CompanyBankDetails from '@/components/company/CompanyBankDetails.vue';
 import CompanyAddress from '@/components/company/CompanyAddress.vue';
 
-const baseURL = 'http://localhost:3000/companies';
+const baseURL = 'https://ecoapikz.herokuapp.com/companies';
 const CompanyService = {};
 // eslint-disable-next-line consistent-return
 CompanyService.getCompany = async (id) => {
