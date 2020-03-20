@@ -620,10 +620,10 @@ export default {
     },
     onMounted(editor) {
       this.editor = editor;
-    }, // eslint-disable-next-line
-    onCodeChange(editor) {
-      console.log(this.editor.getValue());
     },
+    // onCodeChange(editor) {
+    //   console.log(this.editor.getValue());
+    // },
     goBack() {
       this.$router.go(-1);
     },

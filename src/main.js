@@ -169,7 +169,7 @@ Vue.component('default-layout', Default);
 
 Vue.config.productionTip = false;
 Vue.prototype.$eventHub = new Vue();
-console.log(process.env);
+// console.log(process.env);
 new Vue({
   store,
   router,

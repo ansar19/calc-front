@@ -140,7 +140,6 @@
                   <td>
                     <d-button
                       class="btn-white"
-                      @click.prevent="removePollutant(pol.id)"
                       v-d-tooltip.hover="'Удалить'"
                     >
                     <i class="material-icons">&#xE872;</i>
@@ -314,14 +313,13 @@ export default {
       this.filtersVisible = !this.filtersVisible;
     },
 
-    removePollutant(id) {
-      // eslint-disable-next-line no-alert
-      if (!window.confirm('Данные будут безвозратно удалены. Вы уверены?')) {
-        return;
-      }
-      // this.deletePollutant(id);
-      console.log('delete polutant id:', id);
-    },
+    // removePollutant(id) {
+    // eslint-disable-next-line no-alert
+    // if (!window.confirm('Данные будут безвозратно удалены. Вы уверены?')) {
+
+    // }
+    // this.deletePollutant(id);
+    // },
   },
 };
 </script>
