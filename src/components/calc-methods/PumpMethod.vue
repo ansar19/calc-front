@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-  <h5>Методические указания по определению выбросов загрязняющих
-    веществ в атмосферу из резервуаров РНД 211.2.02.09-2004. Астана, 2005
-    Расчеты по п. 6-8</h5>
+  <h5>{{calcMethodName}}</h5>
   <!--   <pre>{{selectedCoefficients.polCoefficents}}</pre> -->
   <form>
     <div class="form-group">
@@ -87,8 +85,13 @@
         <td data-title="Выбросы, т/период:">{{item.tyearcoef}}</td>
       </tr>
     </table>
-    <button v-if="calcResult && calcResult.length" class="btn btn-outline-primary" @click.prevent="tableToExcel('table', 'Calc Table')">.XLS </button>
+    <button v-if="calcResult && calcResult.length" class="btn mr-2 btn-outline-primary" @click.prevent="tableToExcel('table', 'Calc Table')">.XLS </button>
     <button v-if="calcResult && calcResult.length" class="btn btn-outline-primary" @click.prevent="csvExport(calcResult)">.CSV </button>
+    <div title=".docx">
+      <button class="btn btn-sm btn-outline-primary mt-2" @click.prevent="exportWord">
+        <span class="material-icons">cloud_download</span>
+      </button>
+    </div>
   </div>
 </div>
 </template>
@@ -97,9 +100,13 @@
 import { mapMutations } from 'vuex';
 /* eslint-disable */
 
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
+
 export default {
   data() {
     return {
+      calcMethodName: "Методические указания по определению выбросов загрязняющих веществ в атмосферу из резервуаров РНД 211.2.02.09-2004. Астана, 2005 Расчеты по п. 6-8",
       showResult: false,
       options: [
         {
@@ -451,6 +458,70 @@ export default {
       link.setAttribute('download', 'export.csv');
       link.click();
     },
+    // Click export word
+    exportWord() {
+      let _this = this;
+      // Read and get the binary content of the template file
+      // Note: The
+      // template file is recommended to be placed under the static directory file.
+      // When using vue-cli2, put it in the static directory. When using vue-cli3, put it in the public directory.
+      // Because when I use it, I put it in the same directory of the .vue file, and I can't read the template.
+
+      JSZipUtils.getBinaryContent("./templates/reports/pump.docx", function(
+        error,
+        content
+      ) {
+        // input.docx Is a template. When we export, we will export the corresponding data according to this template
+        // Throw an exception
+        if (error) {
+          throw error;
+        }
+
+        // Create a JSZip instance with the content of the template
+        let zip = new JSZip(content);
+        // Create and load docxtemplater instance object
+        let doc = new window.docxtemplater().loadZip(zip);
+        // Set the value of the template variable
+        doc.setData({
+          ..._this.input,
+          calcMethodName: _this.calcMethodName,
+          specificEmissionKgh: _this.specificEmissionKgh.value,
+          specificEmissionKghName: _this.specificEmissionKgh.label,
+          pumpsTotalAmount: _this.pumpsTotalAmount,
+          sameTimeOperatingPumpsQty: _this.sameTimeOperatingPumpsQty,
+          hourWorked: _this.hourWorked,
+          maxOneTimeEmissionGsec: _this.maxOneTimeEmissionGsec,
+          grossEmissionTyear: _this.grossEmissionTyear,
+          selectedCoefficientName: _this.selectedCoefficients.label,
+          polCoefficents: _this.selectedCoefficients.polCoefficents,
+          calcRez: _this.calcRez // calculation result from store
+        });
+
+        try {
+          // Replace all template variables with the values of template variables
+          doc.render();
+        } catch (error) {
+          // Throw an exception
+          let e = {
+            message: error.message,
+            name: error.name,
+            stack: error.stack,
+            properties: error.properties
+          };
+          console.log(JSON.stringify({ error: e }));
+          throw error;
+        }
+
+        // Generate a zip file representing the docxtemplater object (not a real file, but a representation in memory)
+        let out = doc.getZip().generate({
+          type: "blob",
+          mimeType:
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        });
+        // Save the target file object as a file of the target type and name it
+        saveAs(out, "pump.docx");
+      });
+    }
   },
   computed: {
     maxOneTimeEmissionGsec() {
@@ -486,6 +557,10 @@ export default {
       }));
       return result;
     },
+    // calculation results taken from store for exporting to docx file
+    calcRez() {
+      return this.$store.state.calcStore.pollutants;
+    }
   },
 };
 </script>
