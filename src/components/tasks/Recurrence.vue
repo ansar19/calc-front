@@ -9,7 +9,7 @@
             href="https://www.ietf.org/rfc/rfc2445.txt" target="blank">RFC 2445</a> and <a
             href="https://tools.ietf.org/html/rfc5545#appendix-A" target="blank">RFC 5545</a> </small>
       </div>
-      <button class="btn btn-primary" @click="updateRfcString()">Перерасчитать</button>
+      <button class="btn btn-primary" @click="updateRfcString()">Перерассчитать</button>
     </div>
 
     <div class="form-group">

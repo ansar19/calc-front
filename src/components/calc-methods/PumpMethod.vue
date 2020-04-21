@@ -62,7 +62,7 @@
       </p>
     </div>
     <div v-if="selectedCoefficients.polCoefficents && selectedCoefficients.polCoefficents.length" @click.prevent="calculate" class="control">
-      <button class="btn btn-primary">Расчитать</button>
+      <button class="btn btn-primary">Рассчитать</button>
     </div>
   </form>
 

@@ -71,7 +71,7 @@
           <td data-label="Коээфициент, т/год:">{{ selected.tyearcoef }}</td>
         </tr>
       </table>
-      <d-button class="btn btn-primary" @click.prevent="calculate">Расчитать</d-button>
+      <d-button class="btn btn-primary" @click.prevent="calculate">Рассчитать</d-button>
     </div>
     <div v-if="resultView" class="mb-2">
       <label>Результат расчета</label>
