@@ -98,7 +98,7 @@
         </tr>
       </table>
       <div title=".docx">
-        <button class="btn btn-primary m-2" @click.prevent="exportWord">
+        <button class="btn btn-sm btn-primary mt-2" @click.prevent="exportWord">
           <span class="material-icons">cloud_download</span>
         </button>
       </div>
@@ -221,7 +221,7 @@ export default {
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         });
         // Save the target file object as a file of the target type and name it
-        saveAs(out, "Quotation.docx");
+        saveAs(out, "diesel.docx");
       });
     }
   },
