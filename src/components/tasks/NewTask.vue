@@ -111,7 +111,7 @@ export default {
         calcMethodName: 'Расчет выбросов от ДЭС',
         reminder: '2', // to-do rfc2445 + reminding date update
         rfc2445: '',
-        taskComments: 'Пожалуйста заполните необходиме данные',
+        taskComments: 'Пожалуйста заполните необходимые данные',
       },
       releaseSourceNameOptions: [{
         index: 0,
