@@ -13,25 +13,12 @@
         <div class="card card-small overflow-hidden mb-4 meta">
           <d-card-header class="border-bottom">
             <div class="block-handle" align="right">
-              <d-button
-                size="sm"
-                class="btn-info btn-sm ml-2"
-                v-d-tooltip.hover="'Выгрузить Excel'"
-              >
-                <download-excel
-                  :data="tasks"
-                  title="Статус задач"
-                  :exportFields="json_fields"
-                  name="taskstatus.xls"
-                >
+              <d-button size="sm" class="btn-info btn-sm ml-2" v-d-tooltip.hover="'Выгрузить Excel'">
+                <download-excel :data="taskList" title="Статус задач" :exportFields="json_fields" name="taskstatus.xls">
                   <font-awesome-icon icon="download" />
                 </download-excel>
               </d-button>
-              <d-button
-                size="sm"
-                v-d-tooltip.hover="'Распечатать данные'"
-                class="btn-info btn-sm ml-2"
-              >
+              <d-button size="sm" v-d-tooltip.hover="'Распечатать данные'" class="btn-info btn-sm ml-2">
                 <font-awesome-icon icon="print" />
               </d-button>
             </div>
@@ -40,18 +27,7 @@
           <d-card-body>
             <!-- data table -->
             <div class="meta-table">
-              <div>
-                <d-alert
-                  dismissible
-                  :show="timeUntilDismissed"
-                  theme="success"
-                  @alert-dismissed="timeUntilDismissed = 0"
-                  @alert-dismiss-countdown="handleTimeChange"
-                >
-                  <b>Успешно!</b>
-                  Напоминание отправляется и займет {{ timeUntilDismissed }} секунд!
-                </d-alert>
-              </div>
+
               <!-- <v-client-table class="dataTables_wrapper" :data="tasks" :columns="columns" :options="tableOptions">
                  Emission Source data slot
                 <div slot="child_row" slot-scope="props">
@@ -117,11 +93,11 @@
               <table class="table-options meta-table" style="width:100%">
                 <thead>
                   <tr>
-                    <th style="width: 20%;">Release source</th>
-                    <th style="width: 20%;">Responsible person</th>
-                    <th style="width: 20%;">Line Manager</th>
-                    <th style="width: 30%;">Reminder periodicity</th>
-                    <th style="width: 10%;">Actions</th>
+                    <th style="width: 20%;">{{ label.releaseSource }}</th>
+                    <th style="width: 20%;">{{ label.responsible }}</th>
+                    <th style="width: 20%;">{{ label.lineManager }}</th>
+                    <th style="width: 30%;">{{ label.cron }}</th>
+                    <th style="width: 10%;"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -132,55 +108,51 @@
                     <td :data-label="label.responsible">
                       <span class="word-break">
                         <template>
-                          <v-select
-                            :options="responsiblePeopleList"
-                            label="fullName"
-                            :value="task.responsiblePersonName"
-                            @input="val => setResponsiblePerson(val, task)"
-                          ></v-select>
+                          <v-select :options="responsiblePeopleList" label="fullName"
+                            :value="task.responsiblePersonName" @input="val => setResponsiblePerson(val, task)">
+                          </v-select>
                         </template>
                       </span>
                     </td>
                     <td :data-label="label.lineManager">
                       <span class="word-break">
                         <template>
-                          <v-select
-                            :options="lineManagerList"
-                            label="fullName"
-                            @input="val => setLineManager(val, task)"
-                          ></v-select>
+                          <v-select :options="lineManagerList" label="fullName"
+                            @input="val => setLineManager(val, task)"></v-select>
                         </template>
                       </span>
                     </td>
                     <td :data-label="label.cron">
                       <span class="word-break">
                         <template>
-                          <v-select
-                            :options="cronListOptions"
-                            label="titleRu"
-                            @input="val => setCronExpression(val, task)"
-                          ></v-select>
+                          <v-select :options="cronListOptions" label="titleRu"
+                            @input="val => setCronExpression(val, task)"></v-select>
                         </template>
                       </span>
                     </td>
                     <td>
-                      <button>
-                        <i class="far fa-eye"></i>
-                      </button>
-                      <button>
-                        <i class="far fa-save"></i>
-                      </button>
-                      <button>
-                        <i class="far fa-bell-slash"></i>
-                      </button>
+                      <d-button-group size="small" class="d-flex justify-content-center">
+
+                        <d-button class="btn-white" v-d-tooltip.hover="'Сохранить'">
+                          <i class="material-icons">save</i>
+                        </d-button>
+
+                        <d-button class="btn-white" v-d-tooltip.hover="'Редактировать'">
+                          <i class="material-icons">&#xE254;</i>
+                        </d-button>
+
+                      </d-button-group>
                     </td>
                   </tr>
                 </tbody>
               </table>
-
-              <pre><code>Task list: <br />{{ taskList }}</code></pre>
             </div>
           </d-card-body>
+
+          <div class="card-footer text-muted border-top py-3">
+            <span class="d-inline-block">
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -349,13 +321,10 @@ export default {
       },
       // this part related to excel export
       json_fields: {
-        "Наименование ист. выбросов": "emissionSourceName",
-        "№ ист. выбросов": "emissionSourceNumber",
-        "Наименование ист. выделения": "releaseSourceName",
-        "ФИО Ответственного": "reporter.userFullName",
-        "ФИО Линейного руководителя": "linemanager.userFullName",
-        "Дата послед. обновления": "up_date",
-        Статус: "status",
+        "Наименование ист.": "releaseSource",
+        "ФИО Ответственного": "responsible",
+        "ФИО Линейного руководителя": "lineManager",
+        "Периодичность": "cron"
       },
       json_meta: [
         [
@@ -365,15 +334,12 @@ export default {
           },
         ],
       ],
-      //  related to d-alert
-      duration: 5,
-      timeUntilDismissed: 0,
       // first attept to dynamically change data-label
       label: {
-        releaseSource: "Release source ",
-        responsible: "Responsible ",
-        lineManager: "Line manager ",
-        cron: "Cron "
+        releaseSource: "Источник ",
+        responsible: "Ответственный сотрудник ",
+        lineManager: "Линейный руководитель ",
+        cron: "Напоминание "
         }
     };
   },
