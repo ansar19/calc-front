@@ -102,7 +102,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="(task,id) in taskList" :key="id">
-                    <td :data-label="label.releaseSource">
+                    <td :data-label="label.releaseSource" class="align-middle">
                       <p class="word-break">{{ task.releaseSourceName }}</p>
                     </td>
                     <td :data-label="label.responsible">
@@ -173,25 +173,55 @@ export default {
       responsiblePeopleList: [
         {
           id: "01",
-          fullName: "Mary Sidorova",
-          responsiblePersonEmail: "mary.sidorova@bk.ru",
+          fullName: "Инкар Смагулова",
+          responsiblePersonEmail: "inkar.sm@bk.ru",
         },
         {
           id: "02",
-          fullName: "Lily Tren",
-          responsiblePersonEmail: "lily777@gmail.com",
+          fullName: "Актоты Искакова",
+          responsiblePersonEmail: "whitetoty@gmail.com",
+        },
+        {
+          id: "03",
+          fullName: "Акбопе Амиргалиева",
+          responsiblePersonEmail: "akbopeww@gmail.com",
+        },
+        {
+          id: "04",
+          fullName: "Самал Султанова",
+          responsiblePersonEmail: "samals@gmail.com",
+        },
+        {
+          id: "04",
+          fullName: "Алия Садыкова",
+          responsiblePersonEmail: "aliya-s@gmail.com",
         },
       ],
       lineManagerList: [
         {
           id: "01",
-          fullName: "Ivan Ivanov",
+          fullName: "Иван Иванов",
           lineManagerEmail: "ivan.i@mail.ru",
         },
         {
           id: "02",
-          fullName: "Petr Sidorov",
+          fullName: "Петр Сидоров",
           lineManagerEmail: "petro777@mail.ru",
+        },
+        {
+          id: "03",
+          fullName: "Алия Амиргалиева",
+          responsiblePersonEmail: "aliya-amir@gmail.com",
+        },
+        {
+          id: "04",
+          fullName: "Айзере Кусаинова",
+          responsiblePersonEmail: "aizere@gmail.com",
+        },
+        {
+          id: "04",
+          fullName: "Сезим Омарова",
+          responsiblePersonEmail: "feel-sezim@gmail.com",
         },
       ],
       cronListOptions: [
@@ -222,19 +252,19 @@ export default {
       ],
       taskList: [
         {
-          releaseSourceName: "Disel",
+          releaseSourceName: "CAT 334",
           assignedResponsible: "",
           assignedLineManager: "",
           cronExpression: "",
         },
         {
-          releaseSourceName: "Oven",
+          releaseSourceName: "Печь подогрева нп 67",
           assignedResponsible: "",
           assignedLineManager: "",
           cronExpression: "",
         },
         {
-          releaseSourceName: "Grinding machine",
+          releaseSourceName: "УШМ 45",
           assignedResponsible: "",
           assignedLineManager: "",
           cronExpression: "",
@@ -406,5 +436,6 @@ export default {
 .word-break {
   word-wrap: break-word;
   padding-left: 0.5rem;
+  margin-block-end: 0em;
 }
 </style>
