@@ -15,7 +15,7 @@
     "@hyjiacan/vue-slideout": "^2.4.1",
     "@marketconnect/vue-pivot-table": "^0.2.1",
     "@riophae/vue-treeselect": "0.0.38",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "core-js": "^2.6.11",
