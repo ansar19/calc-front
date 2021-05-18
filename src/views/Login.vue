@@ -26,9 +26,9 @@
               </form>
             </div>
           </div>
-          <div class="auth-form__meta d-flex mt-4">
-            <d-link to="forgot-password">Забыли пароль?</d-link>
-            <d-link class="ml-auto" to="sign-up">Создать новый аккаунт?</d-link>
+          <div class="auth-form__meta mt-4">
+            <router-link class="link" to="forgot-password">Забыли пароль?</router-link>
+            <!-- <d-link class="ml-auto" to="sign-up">Создать новый аккаунт?</d-link> -->
           </div>
         </div>
       </div>

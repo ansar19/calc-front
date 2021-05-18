@@ -7,7 +7,7 @@ import store from '@/store';
 import HeaderNavigation from './views/HeaderNavigation.vue';
 
 // auth
-import SignIn from './views/SignIn.vue';
+import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
 import SignOut from './views/SignOut.vue';
 import ForgotPassword from './views/ForgotPassword.vue';
@@ -149,9 +149,12 @@ const router = new Router({
       redirect: '/main-overview',
     },
     {
-      path: '/sign-in',
-      name: 'sign-in',
-      component: SignIn,
+      path: '/login',
+      name: 'login',
+      meta: {
+        layout: 'full-screen'
+      },
+      component: Login,
     },
     {
       path: '/sign-up',
@@ -238,10 +241,10 @@ const router = new Router({
         // },
         // UserProfile will be rendered inside User's <router-view>
         // when /user/:id/profile is matched
-        // { 
-        //   path: '/show-company/:id', 
-        //   name: 'show-company', 
-        //   component: ShowCompany 
+        // {
+        //   path: '/show-company/:id',
+        //   name: 'show-company',
+        //   component: ShowCompany
         // },
 
         // UserPosts will be rendered inside User's <router-view>
@@ -264,7 +267,7 @@ const router = new Router({
     //   name: 'company',
     //   component: Company,
     // },
-    // { path: '/company/:id', 
+    // { path: '/company/:id',
     //   component: Company,
     //   children: [
     //     // UserHome will be rendered inside User's <router-view>
