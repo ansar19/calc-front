@@ -35,12 +35,13 @@
     </li>-->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <img
+        <!-- <img
           class="user-avatar rounded-circle mr-2"
           src="@/assets/images/avatars/0.jpg"
           alt="User Avatar"
-        >
-        <span class="d-none d-md-inline-block">Екатерина Васильева</span>
+        > -->
+        <i class="material-icons">&#xe853;</i>
+        <span class="d-none d-md-inline-block">{{ user.email }}</span>
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
         <d-dropdown-item>
@@ -51,11 +52,13 @@
           <i class="material-icons">&#xE8B8;</i> Редактировать
         </d-dropdown-item>
         <d-dropdown-divider/>
-        <d-dropdown-item class="text-danger" >
+        <!-- <d-dropdown-item class="text-danger" >
           <a href="#" @click.prevent="signOut"> Выйти</a>
-        </d-dropdown-item>
-        <d-dropdown-item href="/sign-in" class="text-danger" to="sign-in">
-          <i class="material-icons text-danger">&#xE879;</i> Войти
+        </d-dropdown-item> -->
+        <d-dropdown-item class="text-danger">
+          <span @click="logout">
+            <i class="material-icons text-danger">&#xE879;</i>Выйти
+          </span>
         </d-dropdown-item>
       </d-collapse>
     </li>
@@ -68,22 +71,25 @@
 }
 </style>
 <script>
-import authRepository from '@/repositories/authRepository';
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'NavbarNav',
-  created() {
-    this.signedIn();
+  computed: {
+    ...mapState('users', ['user'])
   },
   methods: {
+    ...mapMutations('users', ['sign_out']),
     setError(error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text;
     },
     signedIn() {
-      return localStorage.signedIn;
+      return localStorage.user.email;
     },
-    signOut() {
-      authRepository.signOut();
+    logout() {
+      localStorage.removeItem('token');
+      this.sign_out();
+      this.$router.push('/login');
     },
   },
 };

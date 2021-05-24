@@ -1,50 +1,32 @@
-/* eslint-disable */
-import Vue from 'vue';
-import VueAxios from 'vue-axios';
-import Vuex from 'vuex';
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    csrf: '',
-    signedIn: false,
-    user: null,
-    company: null,
-    companies: [],
+const initialState = () => ({
+  user: {
+    id: '',
+    email: '',
+    role: ''
   },
-  mutations: {
-    sign_out(state) {
-      state.csrf = '';
-      state.user = null;
-      state.signedIn = false;
-      delete localStorage.csrf;
-      delete localStorage.signedIn;
-    },
-    sign_in(state, csrf, user) {
-      state.csrf = csrf;
-      state.user = user;
-      state.signedIn = true;
-      localStorage.csrf = csrf;
-      localStorage.signedIn = true;
-    },
-    set_company(state, company) {
-      state.company = company;
-    },
+})
+
+const getters = {}
+
+const actions = {}
+
+const mutations = {
+  sign_in(state, user) {
+    state.user = user;
   },
-  // action: {
-  //   sign_out({ state }) {
-  //
-  //   },
-  //   sign_in({ state, csrf, user }) {
-  //     state.csrf = csrf;
-  //     state.user = user;
-  //   },
-  //   set_company({ state, company }){
-  //     state.company = company;
-  //     localStorage.company_id = company.id;
-  //   },
-  // },
-});
-window.store = store;
-export default store;
+  sign_out(state) {
+    state.user = initialState.user
+  }
+}
+
+const state = {
+  ...initialState()
+}
+
+export default {
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations,
+};

@@ -1,0 +1,14 @@
+query Countries {
+  countries {
+    id
+    name
+    states {
+      id
+      name
+      cities {
+        id
+        name
+      }
+    }
+  }
+}

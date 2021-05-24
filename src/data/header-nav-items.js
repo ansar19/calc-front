@@ -3,7 +3,7 @@ export default function () {
     title: 'Главная панель',
     items: [{
       title: 'Панель',
-      to: '/main-overview',
+      to: '/dashboard',
       htmlBefore: '<i class="material-icons">&#xE917;</i>',
       htmlAfter: '',
     }],

@@ -1,0 +1,7 @@
+query CompanyTypes {
+  company_types {
+    id
+    name
+    short_name
+  }
+}

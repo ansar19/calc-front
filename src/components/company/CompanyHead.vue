@@ -79,13 +79,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'company-head',
-  props: {
-    companyHead: {
-      type: Object,
-      required: true,
-    },
+  // props: {
+  //   companyHead: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  // },
+  computed: {
+    ...mapState('company', ['company_name', 'iin_bin', 'company_type', 'company_email', 'company_phone', 'company_description'])
   },
 };
 </script>

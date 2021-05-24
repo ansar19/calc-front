@@ -146,87 +146,133 @@ const router = new Router({
     // ...CompanyRoutes,
     {
       path: '/',
-      redirect: '/main-overview',
+      redirect: '/dashboard',
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
       name: 'login',
-      meta: {
-        layout: 'full-screen'
-      },
       component: Login,
+      meta: {
+        layout: 'full-screen',
+        guest: true
+      }
     },
     {
       path: '/sign-up',
       name: 'sign-up',
       component: SignUp,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/sign-out',
       name: 'sign-out',
       component: SignOut,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/forgot-password',
       name: 'forgot-password',
       component: ForgotPassword,
+      meta: {
+        guest: true
+      }
     },
     {
-      path: '/main-overview',
+      path: '/dashboard',
       name: 'main-overview',
       component: MainDashboard,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/user-profile-lite',
       name: 'user-profile-lite',
       component: UserProfileLite,
+      meta: {
+        requiresAuth: true
+      }
     },
     // release source
     {
       path: '/release-source-list',
       name: 'release-source-list',
       component: ReleaseSourceList,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/release-source/:id', // show particular emission source
       name: 'release-source-show',
       component: ReleaseSourceShow,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/release-source-edit/:id',
       name: 'release-source-edit',
       component: ReleaseSourceEdit,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/release-source-add',
       name: 'release-source-add',
       component: ReleaseSourceAdd,
+      meta: {
+        requiresAuth: true
+      }
     },
     // emission source
     {
       path: '/emission-source-coordinates',
       name: 'emission-source-coordinates',
       component: Coordinates,
+      meta: {
+        requiresAuth: true
+      }
     },
 
     {
       path: '/new-company-address',
       name: 'new-company-address',
       component: NewCompanyAddress,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-company-head',
       name: 'new-company-head',
       component: NewCompanyHead,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-company',
-      component: NewCompany
+      component: NewCompany,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/companies',
       name: 'companies',
       component: ListCompanies,
+      meta: {
+        requiresAuth: true
+      },
       children: [
         // UserHome will be rendered inside User's <router-view>
         // when /user/:id is matched
@@ -256,11 +302,17 @@ const router = new Router({
       path: '/show-company/:id', // show particular company
       name: 'show-company',
       component: ShowCompany,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/edit-company/:id', // show particular company
       name: 'edit-company',
       component: EditCompany,
+      meta: {
+        requiresAuth: true
+      }
     },
     // {
     //   path: '/company',
@@ -287,41 +339,65 @@ const router = new Router({
       path: '/calculations',
       name: 'calculations',
       component: CalculationsList,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/calc-add',
       name: 'calc-add',
       component: CalcAdd,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-emissions',
       name: 'list-emissions',
       component: ListEmissions,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-emissions-pollutants',
       name: 'list-emissions-pollutants',
       component: ListEmissionsPollutants,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/pollutant-release-register',
       name: 'pollutant-release-register',
       component: PollutantReleaseRegister,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-tax',
       name: 'list-tax',
       component: ListTax,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-tax-declaration',
       name: 'new-tax-declaration',
       component: NewTaxDeclaration,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-statistical',
       name: 'list-statistical',
       component: ListStatistical,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-stat-report',
@@ -332,66 +408,105 @@ const router = new Router({
       path: '/new-limit',
       name: 'new-limit',
       component: NewLimit,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-limit',
       name: 'list-limit',
       component: ListLimit,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/pivot-report',
       name: 'pivot-report',
       component: PivotReport,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/emission-payments',
       name: 'emission-payments',
       component: EmissionPayments,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-limit-calc',
       name: 'new-limit-calc',
       component: NewLimitCalc,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-draft-calc',
       name: 'new-draft-calc',
       component: NewDraftCalc,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/calc-example',
       name: 'calc-example',
       component: CalcExample,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/ghg-calc-example',
       name: 'ghg-calc-example',
       component: GhgCalcExample,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/ghg-calc-list',
       name: 'ghg-calc-list',
       component: GhgCalcList,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/task',
       name: 'task',
       component: Task,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/tasks/:id',
       name: 'tasks',
       component: ShowTask,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/list-tasks',
       name: 'list-tasks',
       component: ListTasks,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/bank-detail',
       name: 'bank-detail',
       component: CompanyBankDetails,
+      meta: {
+        requiresAuth: true
+      }
     },
 
     // Users
@@ -400,32 +515,50 @@ const router = new Router({
       path: '/users',
       name: 'users-list',
       component: UsersList,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/user/add',
       name: 'user-add',
       component: UserAdd,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/user/:id/edit',
       name: 'user-edit',
       component: UserEdit,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/users/:id',
       name: 'user-show',
       component: UserShow,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/users-import',
       name: 'users-import',
       component: ImportUsersCsv,
+      meta: {
+        requiresAuth: true
+      }
     },
 
     {
       path: '/new-filter',
       name: 'new-filter',
       component: NewFilter,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/errors',
@@ -435,10 +568,11 @@ const router = new Router({
     {
       path: '/header-navigation',
       name: 'header-navigation',
+      component: HeaderNavigation,
       meta: {
         layout: 'header-navigation',
-      },
-      component: HeaderNavigation,
+        requiresAuth: true
+      }
     },
     {
       path: '*',
@@ -448,44 +582,101 @@ const router = new Router({
       path: '/new-calc-method',
       name: 'new-calc-method',
       component: NewCalcMethod,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-tree',
       name: 'new-tree',
       component: NewTree,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/new-pollutant-group',
       name: 'new-pollutant-group',
       component: NewPollutantGroup,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/offer',
       name: 'offer',
       component: Offer,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/import-csv',
       name: 'import-csv',
       component: ImportCsv,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/map-kz',
       name: 'map-kz',
       component: MapKz,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/xlscsv-parser',
       name: 'xlscsv-parser',
       component: XlsCsvparser,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/service-plan',
       name: 'service-plan',
       component: ServicePlan,
+      meta: {
+        requiresAuth: true
+      }
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (localStorage.getItem('token') == null) {
+      next({
+        path: '/login',
+        params: { nextUrl: to.fullPath }
+      })
+    } else {
+      let user = JSON.parse(localStorage.getItem('user'))
+      if(to.matched.some(record => record.meta.is_admin)) {
+        if(user.role == 'admin'){
+          next()
+        }
+        else{
+          next({ name: 'dashboard'})
+        }
+      }else {
+        next()
+      }
+    }
+  } else if(to.matched.some(record => record.meta.guest)) {
+    if(localStorage.getItem('token') == null){
+      next()
+    }
+    else{
+      next({ name: 'dashboard'})
+    }
+  }else {
+    next()
+  }
+})
+
 // router.beforeEach((to, from, next) => {
 //   console.log({
 //     to,

@@ -162,6 +162,8 @@ Vue.config.warnHandler = function (msg, vm, trace) {
 // Layouts
 import Default from '@/layouts/Default.vue';
 
+import { createProvider } from './vue-apollo'
+
 
 ShardsVue.install(Vue);
 
@@ -173,5 +175,6 @@ Vue.prototype.$eventHub = new Vue();
 new Vue({
   store,
   router,
-  render: h => h(App),
+  apolloProvider: createProvider(),
+  render: h => h(App)
 }).$mount('#app');

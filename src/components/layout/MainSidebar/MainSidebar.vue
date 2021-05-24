@@ -11,11 +11,11 @@
             <img
               id="main-logo"
               class="d-inline-block align-top mr-1"
-              style="max-width: 45px;"
-              src="@/assets/images/ecomarine-rus-1357x889.png"
+              src="@/assets/images/ecomarine-logo.svg"
               alt="EcoMarine Emission Management"
+              height="20"
             >
-            <span v-if="!hideLogoText" class="d-none d-md-inline ml-1">ЭкоМарин</span>
+            <!-- <span v-if="!hideLogoText" class="d-none d-md-inline ml-1">ЭкоМарин</span> -->
           </div>
         </a>
         <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none" @click="handleToggleSidebar()">

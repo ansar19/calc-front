@@ -1,3 +1,131 @@
+<script>
+import Vue from "vue";
+import { ClientTable } from "vue-tables-2";
+import "@/assets/scss/vue-tables.scss";
+import COMPANIES from "../graphql/CompanyList.gql";
+
+Vue.use(ClientTable);
+
+export default {
+  apollo: {
+    companies: {
+      query:  COMPANIES
+    }
+  },
+
+  components: {
+    ClientTable
+  },
+  data() {
+    return {
+      // fields: FieldsDef(this.$i18n),
+      componentTitle: "Список компаний",
+      companies: [],
+      pageerrors: [],
+      locale: "ru",
+      dateRange: {
+        from: null,
+        to: null
+      },
+
+      columns: [
+        "company_name",
+        "iin_bin",
+        "company_type.short_name",
+        "company_email",
+        "company_phone",
+        "actions"
+      ],
+
+      // this part related to excel export
+      json_fields: {
+        "Название компании": "companyName",
+        "Тип юридического лица": {
+          field: "companyType.label",
+          callback: value => `Тип: ${value}`
+        },
+        "БИН / ИНН": "binInn",
+        "Телефон компании": "companyPhone",
+        "Email компании": "companyEmail",
+        "Имя руководителя": "companyHead.companyHeadFirstname",
+        "Фамилия руководителя": "companyHead.companyHeadSurename",
+        "Отчество руководителя": "companyHead.companyHeadPatronyme",
+        "Должность руководителя": "companyHead.companyHeadPosition",
+        "Email руководителя": "companyHead.companyHeadEmail",
+        "Телефон руководителя": "companyHead.companyHeadPhone",
+        "Страна фактический адрес": "companyAddress.actual.country",
+        "Адрес фактический": "companyAddress.actual.address",
+        "Почтовый индекс фактический": "companyAddress.actual.zip",
+        "Комментарии к фактическому адресу":
+          "companyAddress.actual.addressComments",
+        "Страна юридический адрес": "companyAddress.legal.country",
+        "Адрес юридический": "companyAddress.legal.address",
+        "Почтовый индекс юридический": "companyAddress.legal.zip"
+      },
+      json_meta: [
+        [
+          {
+            key: "charset",
+            value: "utf-8"
+          }
+        ]
+      ],
+
+      companyTableOptions: {
+        headings: {
+          company_name: "Название компании",
+          iin_bin: "БИН / ИНН",
+          "company_type.short_name": "Тип юр лица",
+          company_email: "Email компании",
+          company_phone: "Телефон компании",
+          actions: "Действия"
+        },
+        perPage: 10,
+        recordsPerPage: [10, 25, 50, 100],
+        skin: "transaction-history table dataTable",
+        filterable: [
+          "company_name",
+          "iin_bin",
+          "company_type.short_name",
+          "company_email",
+          "company_phone"
+        ],
+        sortable: [
+          "company_name",
+          "iin_bin",
+          "company_type.short_name",
+          "company_email",
+          "company_phone"
+        ],
+        sortIcon: {
+          base: "fas float-right mt-1 text-muted",
+          up: "fa-caret-up",
+          down: "fa-caret-down"
+        },
+        texts: {
+          filterPlaceholder: "Введите текст для поиска",
+          limit: "Записей",
+          filter: "Поиск",
+          noResults: "Нет подходящих записей",
+          loading: "Идет загрузка...",
+          page: "Стр.:",
+          filterBy: "Фильтровать по {column}",
+          count:
+            "Отображение с {from} по {to} из {count} записей|{count} записей | Запись"
+        },
+        pagination: {
+          edge: true,
+          nav: "scroll"
+        }
+      }
+    };
+  },
+
+  methods: {
+  }
+};
+</script>
+
 <template>
   <d-container fluid class="main-content-container px-4 pb-4">
     <!-- Page Header -->
@@ -50,22 +178,22 @@
                 </thead>
                 <tr>
                   <td data-label="Адрес фактический:">
-                    {{props.row.companyAddress.actual.country}}, {{props.row.companyAddress.actual.oblast.name}}, {{props.row.companyAddress.actual.settlement}}, {{props.row.companyAddress.actual.address}},
-                    {{props.row.companyAddress.actual.zip}}, {{props.row.companyAddress.actual.addressComments}}
+                    {{props.row.company_actual_address.city.state.country.name}}, {{props.row.company_actual_address.city.state.name}}, {{props.row.company_actual_address.city.name}}, {{props.row.company_actual_address.address}},
+                    {{props.row.company_actual_address.zip}}
                   </td>
                   <td data-label="Адрес юридический:">
-                    {{props.row.companyAddress.legal.country}}, {{props.row.companyAddress.legal.oblast.name}}, {{props.row.companyAddress.legal.settlement}}, {{props.row.companyAddress.legal.address}},
-                    {{props.row.companyAddress.legal.zip}}
+                    {{props.row.company_legal_address.city.state.country.name}}, {{props.row.company_legal_address.city.state.name}}, {{props.row.company_legal_address.city.name}}, {{props.row.company_legal_address.address}},
+                    {{props.row.company_legal_address.zip}}
                   </td>
-                  <td data-label="Банковские детали:">
-                    <ul v-for="(bankAccount, i) in props.row.companyAccounts" :key="i">
+                  <!-- <td data-label="Банковские детали:">
+                    <ul v-for="bankAccount in props.row.bank_accounts" :key="bankAccount.id">
                       <li>
-                        {{bankAccount.iban}} {{bankAccount.currency}}
-                        {{bankAccount.bank.label}}
+                        {{bankAccount.iban}} {{bankAccount.currency.name}}
+                        {{bankAccount.bank.name}}
                       </li>
                     </ul>
-                  </td>
-                  <td data-label="Данные первого руководителя:">
+                  </td> -->
+                  <!-- <td data-label="Данные первого руководителя:">
                     {{props.row.companyHead.companyHeadSurename}} {{props.row.companyHead.companyHeadFirstname}}
                     {{props.row.companyHead.companyHeadPatronyme}}
                     <br />
@@ -74,7 +202,7 @@
                     {{props.row.companyHead.companyHeadPhone}}
                     <br />
                     {{props.row.companyHead.companyHeadEmail}}
-                  </td>
+                  </td> -->
                 </tr>
               </table>
             </div>
@@ -126,220 +254,3 @@
     </d-card>
   </d-container>
 </template>
-
-<script>
-/* eslint-disable */
-import Vue from "vue";
-import { ClientTable } from "vue-tables-2";
-import "@/assets/scss/vue-tables.scss";
-import axios from "axios";
-
-Vue.use(ClientTable);
-
-export default {
-  components: {
-    ClientTable
-  },
-  data() {
-    return {
-      // fields: FieldsDef(this.$i18n),
-      componentTitle: "Список компании",
-      companies: [],
-      pageerrors: [],
-      locale: "ru",
-      dateRange: {
-        from: null,
-        to: null
-      },
-
-      columns: [
-        "companyName",
-        "binInn",
-        "companyType",
-        "companyEmail",
-        "companyPhone",
-        "actions"
-      ],
-
-      // this part related to excel export
-      json_fields: {
-        "Название компании": "companyName",
-        "Тип юридического лица": {
-          field: "companyType.label",
-          callback: value => `Тип: ${value}`
-        },
-        "БИН / ИНН": "binInn",
-        "Телефон компании": "companyPhone",
-        "Email компании": "companyEmail",
-        "Имя руководителя": "companyHead.companyHeadFirstname",
-        "Фамилия руководителя": "companyHead.companyHeadSurename",
-        "Отчество руководителя": "companyHead.companyHeadPatronyme",
-        "Должность руководителя": "companyHead.companyHeadPosition",
-        "Email руководителя": "companyHead.companyHeadEmail",
-        "Телефон руководителя": "companyHead.companyHeadPhone",
-        "Страна фактический адрес": "companyAddress.actual.country",
-        "Адрес фактический": "companyAddress.actual.address",
-        "Почтовый индекс фактический": "companyAddress.actual.zip",
-        "Комментарии к фактическому адресу":
-          "companyAddress.actual.addressComments",
-        "Страна юридический адрес": "companyAddress.legal.country",
-        "Адрес юридический": "companyAddress.legal.address",
-        "Почтовый индекс юридический": "companyAddress.legal.zip"
-      },
-      json_meta: [
-        [
-          {
-            key: "charset",
-            value: "utf-8"
-          }
-        ]
-      ],
-
-      /**
-       * Table Data
-       */
-      // tableData: transactionHistoryData,
-
-      /**
-       * Vue Tables Configuration Options
-       * @see https://github.com/matfish2/vue-tables-2
-       */
-      startDownload() {
-        alert("загрузить?");
-      },
-      finishDownload() {
-        alert("скрываеть загрузку");
-      },
-      companyTableOptions: {
-        headings: {
-          companyName: "Название компании",
-          binInn: "БИН / ИНН",
-          companyType: "Тип юр лица",
-          companyEmail: "Email компании",
-          companyPhone: "Телефон компании",
-          actions: "Действия"
-        },
-        perPage: 10,
-        recordsPerPage: [10, 25, 50, 100],
-        skin: "transaction-history table dataTable",
-        filterable: [
-          "companyName",
-          "binInn",
-          "companyType",
-          "companyEmail",
-          "companyPhone"
-        ],
-        sortable: [
-          "companyName",
-          "binInn",
-          "companyType",
-          "companyEmail",
-          "companyPhone"
-        ],
-        sortIcon: {
-          base: "fas float-right mt-1 text-muted",
-          up: "fa-caret-up",
-          down: "fa-caret-down"
-        },
-        texts: {
-          filterPlaceholder: "Введите текст для поиска",
-          limit: "Записей",
-          filter: "Поиск",
-          noResults: "Нет подходящих записей",
-          loading: "Идет загрузка...",
-          page: "Стр.:",
-          filterBy: "Фильтровать по {column}",
-          count:
-            "Отображение с {from} по {to} из {count} записей|{count} записей | Запись"
-        },
-        pagination: {
-          edge: true,
-          nav: "scroll"
-        }
-      }
-    };
-  },
-  // Fetches companies when the component is created.
-  created() {
-    axios
-      .get("https://ecoapikz.herokuapp.com/companies/")
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.companies = response.data;
-      })
-      .catch(e => {
-        this.pageerrors.push(e);
-      });
-  },
-
-  watch: {},
-  methods: {
-    deleteCompany(id) {
-      axios
-        .delete("https://ecoapikz.herokuapp.com/companies/" + id)
-        .then(response => {
-          this.companies.splice(id, 1);
-          // console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-    // updateCompany(id){
-    //   axios.put('https://ecoapikz.herokuapp.com/companies/' + id, {
-    //       companyName: 'Some Company Name',
-    //       binInn: '111111111111',
-    //   }).then(resp => {
-    //       console.log(resp.data);
-    //   }).catch(error => {
-    //       console.log(error);
-    //   });
-    // },
-
-    // async fetch () {
-    //   CompaniesRepository.get()
-    //     .then(response => this.companies = response.data)
-    //     .catch(error => console.log(error));
-    // },
-    // handleActionClick(type, company) {
-    //   if (type === 'confirmed') {
-    //     this.$store.commit('set_company', company);
-    //   }
-    // },
-    // deleteCompany: function(result, index) {
-    //   axios.delete('https://ecoapikz.herokuapp.com/companies/' + index)
-    //   .then(response => {
-    //     this.result.splice(index, 1)
-    //     console.log(this.result);
-    //   });
-    // },
-    // deleteCompany(index) {
-    //   index = index - 1
-    //   CompaniesRepository.destroy(this.companies[index].id)
-    //     .then(response => this.companies.splice(index, 1))
-    //     .catch(error => console.log(error));
-    // },
-    // showCompany(index) {
-    //   index = index - 1
-    //   this.$router.push('/companies/' + props.row.id)
-    // },
-    // async updateCompany(e) {
-    //   await axios.put('https://ecoapikz.herokuapp.com/companies/${id}', this.companies)
-    //     .then((response) => {
-    //       this.$router.go(-1);
-    //     })
-    //     .catch((err) => {
-    //       alert(err.error);
-    //     });
-    // },
-    // getStatusClass(status) {
-    //   const map = {
-    //     Pending: 'warning',
-    //     Complete: 'success',
-    //     Cancelled: 'danger',
-    //   };
-    //   return `text-${map[status]}`;
-    // },
-  }
-};
-</script>

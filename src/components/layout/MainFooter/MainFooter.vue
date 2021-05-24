@@ -42,7 +42,7 @@ export default {
      */
     copyright: {
       type: String,
-      default: 'Copyright © 2018 EcoMarine.kz',
+      default: `Copyright © ${new Date().getFullYear()} EcoMarine.kz`,
     },
     /**
      * Whether the footer should be wrapped in a container, or not.

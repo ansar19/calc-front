@@ -1,0 +1,8 @@
+mutation refreshToken ($email: String!) {
+  refresh_token (email: $email) {
+    token
+    id
+    email
+    role
+  }
+}

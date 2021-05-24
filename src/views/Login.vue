@@ -1,62 +1,129 @@
-<template>
-  <main class="main-content col mt-4">
-    <div class="main-content-container container-fluid px-4 my-auto h-100">
-      <div class="row no-gutters h-100">
-        <div class="col-lg-3 col-md-5 auth-form mx-auto my-auto">
-          <div class="card">
-            <div class="card-body">
-              <img class="auth-form__logo d-table mx-auto mb-3" style="max-width: 45px;"
-                src="@/assets/images/ecomarine-rus-1357x889.png" alt="EcoMarine - Sign In">
-              <h5 class="auth-form__title text-center mb-4">Доступ к приложению</h5>
-              <form @submit.prevent="signin">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" v-model="email" v-validate="'required|email'" id="Email"
-                    name="userEmail" data-vv-as="Email" :class="{ 'is-invalid': submitted && errors.has('userEmail') }"
-                    aria-describedby="emailHelp" placeholder="Enter email">
-                  <div v-if="submitted && errors.has('userEmail')" class="invalid-feedback">
-                    {{ errorBags.first('userEmail') }}</div>
-                </div>
-                <div class="form-group">
-                  <label for="password">Пароль</label>
-                  <input type="password" v-model="password" id="password"
-                    name="password" class="form-control" />
-                </div>
-                <button type="submit" class="btn btn-pill btn-accent d-table mx-auto">Войти</button>
-              </form>
-            </div>
-          </div>
-          <div class="auth-form__meta mt-4">
-            <router-link class="link" to="forgot-password">Забыли пароль?</router-link>
-            <!-- <d-link class="ml-auto" to="sign-up">Создать новый аккаунт?</d-link> -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-</template>
-
-
 <script>
-import authRepository from '@/repositories/authRepository';
-
+import { mapMutations } from 'vuex';
+import LOGIN from "../graphql/Login.gql";
 export default {
-  name: 'SignIn',
+  name: "Login",
   data() {
     return {
-      email: '',
-      password: '',
-      error: '',
-      submitted: false,
+      email: "",
+      password: "",
+      error: false,
     };
   },
   methods: {
-    signin() {
-      console.log('siginin');
-      if (authRepository.signIn({ email: this.email, password: this.password })) {
-        this.$router.replace('/companies');
-      }
+    ...mapMutations('users', ['sign_in']),
+    async login() {
+      await this.$apollo.mutate({
+        mutation: LOGIN,
+        variables: {
+          email: this.email,
+          password: this.password,
+        },
+      })
+      .then(res => {
+        const { token, id, email, role } = res.data.login
+        localStorage.setItem('token', token);
+        this.sign_in({ id, email, role});
+        this.error = false;
+      })
+      .catch(err => {
+        this.error = true;
+      })
+      .then(() => {
+        this.$router.push('/dashboard')
+        Object.assign(this.$data, {
+          email: "",
+          password: "",
+          error: false
+        })
+      });
     },
   },
 };
 </script>
+<template>
+  <form class="form-signin" @submit.prevent="login">
+    <img
+      class="my-5"
+      src="@/assets/images/ecomarine-logo.svg"
+      alt=""
+      height="22"
+    />
+    <h1 class="h4 mb-3 font-weight-normal">Вход</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input
+      v-model="email"
+      type="email"
+      id="inputEmail"
+      class="form-control"
+      placeholder="Email"
+      required
+      autofocus
+    />
+    <label for="inputPassword" class="sr-only">Пароль</label>
+    <input
+      v-model="password"
+      type="password"
+      id="inputPassword"
+      class="form-control mb-3"
+      placeholder="Пароль"
+      required
+    />
+    <p style="color: red;" v-if="error">Некорректный email или пароль</p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+      Войти
+    </button>
+  </form>
+</template>
+
+<style scoped>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
