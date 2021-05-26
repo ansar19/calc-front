@@ -37,7 +37,7 @@
             label="name"
             v-model="c_company_type"
             :options="company_types"
-            :reduce="company_type => company_type.id"
+            :reduce="(company_type) => company_type.id"
             required
           />
         </div>
@@ -103,20 +103,6 @@ export default {
       query: COMPANY_TYPES,
     },
   },
-  // props: {
-  //   company: {
-  //     type: Object,
-  //     required: true,
-  //   },
-  // },
-  data() {
-    return {};
-  },
-  // watch: {
-  //   company() {
-  //     this.$emit('input', this.company);
-  //   },
-  // },
   computed: {
     ...mapState("company", [
       "company_name",
@@ -180,7 +166,6 @@ export default {
         this.SET_COMPANY_DESCRIPTION(val);
       },
     },
-
   },
   methods: {
     ...mapMutations("company", [
