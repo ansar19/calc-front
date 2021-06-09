@@ -1,6 +1,8 @@
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations } from "vuex";
 import LOGIN from "../graphql/Login.gql";
+import USER from "../graphql/UserByPk.gql";
+
 export default {
   name: "Login",
   data() {
@@ -11,32 +13,33 @@ export default {
     };
   },
   methods: {
-    ...mapMutations('users', ['sign_in']),
+    ...mapMutations("users", ["sign_in"]),
     async login() {
-      await this.$apollo.mutate({
-        mutation: LOGIN,
-        variables: {
-          email: this.email,
-          password: this.password,
-        },
-      })
-      .then(res => {
-        const { token, id, email, role } = res.data.login
-        localStorage.setItem('token', token);
-        this.sign_in({ id, email, role});
-        this.error = false;
-      })
-      .catch(err => {
-        this.error = true;
-      })
-      .then(() => {
-        this.$router.push('/dashboard')
-        Object.assign(this.$data, {
-          email: "",
-          password: "",
-          error: false
+      const user = await this.$apollo
+        .mutate({
+          mutation: LOGIN,
+          variables: {
+            email: this.email,
+            password: this.password,
+          },
         })
-      });
+        .catch((err) => {
+          console.log(err);
+          this.error = true;
+        });
+      const { token, id } = user.data.login;
+      localStorage.setItem("token", token);
+      const employee = await this.$apollo
+        .query({
+          query: USER,
+          variables: { id: id },
+        })
+        .catch((err) => {
+          console.log(err);
+          this.error = true;
+        });
+      this.sign_in(employee.data.users_by_pk);
+      this.$router.push('/dashboard');
     },
   },
 };
@@ -69,7 +72,7 @@ export default {
       placeholder="Пароль"
       required
     />
-    <p style="color: red;" v-if="error">Некорректный email или пароль</p>
+    <p style="color: red" v-if="error">Некорректный email или пароль</p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Войти
     </button>

@@ -22,7 +22,7 @@
                   <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                       <label class="form-label">Email</label>
-                      <input class="form-control" placeholder="email@domain.com">
+                      <input v-model="data" class="form-control" placeholder="email@domain.com">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-6">

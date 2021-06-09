@@ -8,14 +8,16 @@
       >
         <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
           <div class="d-table m-auto">
+            <span v-if="!hideLogoText" class="d-none d-md-inline ml-1">ЭкоМарин</span>
+            <span v-if="working_company" class="d-none d-md-inline ml-1">{{ working_company.company_type.short_name }} {{ working_company.company_name }}</span>
             <img
+              v-else
               id="main-logo"
               class="d-inline-block align-top mr-1"
               src="@/assets/images/ecomarine-logo.svg"
               alt="EcoMarine Emission Management"
               height="20"
             >
-            <!-- <span v-if="!hideLogoText" class="d-none d-md-inline ml-1">ЭкоМарин</span> -->
           </div>
         </a>
         <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none" @click="handleToggleSidebar()">
@@ -77,6 +79,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'main-sidebar',
   props: {
@@ -85,7 +89,7 @@ export default {
      */
     hideLogoText: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     /**
      * The menu items.
@@ -99,6 +103,9 @@ export default {
     return {
       sidebarVisible: false,
     };
+  },
+  computed: {
+    ...mapState('company', ['working_company']),
   },
   created() {
     this.$eventHub.$on('toggle-sidebar', this.handleToggleSidebar);

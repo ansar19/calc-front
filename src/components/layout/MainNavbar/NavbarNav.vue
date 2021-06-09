@@ -35,15 +35,20 @@
     </li>-->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <!-- <img
+        <img
+          width="40"
           class="user-avatar rounded-circle mr-2"
-          src="@/assets/images/avatars/0.jpg"
+          src="@/assets/images/avatars/avatar.svg"
           alt="User Avatar"
-        > -->
-        <i class="material-icons">&#xe853;</i>
-        <span class="d-none d-md-inline-block">{{ user.email }}</span>
+        >
+        <span v-if="user.employee" class="d-none d-md-inline-block">{{ user.employee.first_name }} {{ user.employee.last_name }}</span>
+        <span v-else class="d-none d-md-inline-block">{{ user.email }}</span>
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
+        <d-dropdown-item>
+          <i class="material-icons">&#xe853;</i>
+          <span class="d-none d-md-inline-block">{{ user.role.name }}</span><br>
+        </d-dropdown-item>
         <d-dropdown-item>
           <i class="material-icons">&#xE7FD;</i>
           <router-link to="user-profile-lite">Профиль</router-link>
@@ -72,6 +77,7 @@
 </style>
 <script>
 import { mapMutations, mapState } from 'vuex';
+import { onLogout } from "../../../vue-apollo";
 
 export default {
   name: 'NavbarNav',
@@ -86,8 +92,8 @@ export default {
     signedIn() {
       return localStorage.user.email;
     },
-    logout() {
-      localStorage.removeItem('token');
+    async logout() {
+      await onLogout();
       this.sign_out();
       this.$router.push('/login');
     },

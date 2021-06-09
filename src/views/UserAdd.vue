@@ -4,8 +4,8 @@
     <d-row no-gutters class="page-header py-4">
       <!-- Page Title -->
       <d-col col sm="4" class="text-center text-sm-left mb-4 mb-sm-0">
-         <span class="text-uppercase page-subtitle">Компания</span>
-        <h3 class="page-title">Карточка компании</h3>
+         <span class="text-uppercase page-subtitle">Сотрудники</span>
+        <h3 class="page-title">Добавить сотрудника</h3>
       </d-col>
     </d-row>
     <!-- Edit user -->

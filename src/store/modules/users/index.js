@@ -1,14 +1,11 @@
 const initialState = () => ({
-  user: {
-    id: '',
-    email: '',
-    role: ''
-  },
+  user: {}
 })
 
 const getters = {}
 
-const actions = {}
+const actions = {
+}
 
 const mutations = {
   sign_in(state, user) {
@@ -16,6 +13,9 @@ const mutations = {
   },
   sign_out(state) {
     state.user = initialState.user
+  },
+  add_employee(state, payload) {
+    Object.assign(state.employee, payload)
   }
 }
 

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client'
+import Router from "./router";
 
 // Install the vue plugin
 Vue.use(VueApollo)
@@ -71,6 +72,10 @@ export function createProvider (options = {}) {
     errorHandler (error) {
       // eslint-disable-next-line no-console
       console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message)
+      if (error.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
+        onLogout();
+        Router.push('/login')
+      }
     },
   })
 
@@ -82,25 +87,26 @@ export async function onLogin (apolloClient, token) {
   if (typeof localStorage !== 'undefined' && token) {
     localStorage.setItem(AUTH_TOKEN, token)
   }
-  if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
-  try {
-    await apolloClient.resetStore()
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.log('%cError on cache reset (login)', 'color: orange;', e.message)
-  }
+  // if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
+  // try {
+  //   await apolloClient.resetStore()
+  // } catch (e) {
+  //   // eslint-disable-next-line no-console
+  //   console.log('%cError on cache reset (login)', 'color: orange;', e.message)
+  // }
 }
 
 // Manually call this when user log out
 export async function onLogout (apolloClient) {
   if (typeof localStorage !== 'undefined') {
     localStorage.removeItem(AUTH_TOKEN)
+    localStorage.removeItem('vuex')
   }
-  if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
-  try {
-    await apolloClient.resetStore()
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.log('%cError on cache reset (logout)', 'color: orange;', e.message)
-  }
+  // if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
+  // try {
+  //   await apolloClient.resetStore()
+  // } catch (e) {
+  //   // eslint-disable-next-line no-console
+  //   console.log('%cError on cache reset (logout)', 'color: orange;', e.message)
+  // }
 }

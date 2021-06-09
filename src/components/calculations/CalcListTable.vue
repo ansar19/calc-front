@@ -71,7 +71,7 @@ export default {
     return {
       releaseSources: [],
       pageerrors: [],
-      columns: ['releaseSourceName', 'calcType', 'tyearTotal', 'gsecTotal', 'period.from', 'period.to'],
+      columns: ['releaseSourceName', 'calcType', 'tyearTotal', 'gsecTotal', 'period.from', 'period.to', 'solid0', 'solid1'],
       // this part related to excel export - uncomment
       json_fields: {
         'Наименование ист.выделения': 'releaseSourceName',
@@ -92,6 +92,8 @@ export default {
           tyearTotal: 'Выбросы т/год',
           'period.from': 'Период c',
           'period.to': 'Период по',
+          solid0: "Жидкие и газообразные",
+          solid1: "Твердые"
         },
         perPage: 10,
         recordsPerPage: [10, 25, 50, 100],

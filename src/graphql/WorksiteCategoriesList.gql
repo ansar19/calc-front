@@ -1,0 +1,6 @@
+query Categories {
+  worksite_categories {
+    id
+    name
+  }
+}
