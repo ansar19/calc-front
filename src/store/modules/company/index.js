@@ -6,7 +6,7 @@ const initialState = () => ({
   company_email: '',
   company_phone: '',
   company_description: '',
-  working_company: {},
+  working_company: ''
 });
 
 const getters = {
@@ -19,7 +19,7 @@ const actions = {
 
 const mutations = {
   SET_WORKING_COMPANY(state, payload) {
-    Object.assign(state.working_company, payload)
+    state.working_company = payload
   },
   SET_COMPANY_id(state, id) {
     state.id = id
