@@ -4,7 +4,7 @@
     <div class="page-header row no-gutters py-4">
       <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
         <span class="text-uppercase page-subtitle">Источник выделения </span>
-        <h3 class="page-title">{{ releaseSourceCard.releaseSourceName }}</h3>
+        <h3 class="page-title">{{ releaseSourceCard.name }}</h3>
       </div>
     </div>
 
@@ -21,54 +21,69 @@
             style="width:100%"
           >
             <tr>
+              <th>Наименование источника выделения:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.name }}</td>
+            </tr>
+            <tr>
+              <th>Номер источника выделения:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.number }}</td>
+            </tr>
+            <tr>
+              <th>Инвентарный номер источника выделения:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.inventory_number }}</td>
+            </tr>
+            <tr>
+              <th>Яыляется источником парниковых газов:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.organized ? 'Да' : 'Нет' }}</td>
+            </tr>
+            <tr>
               <th>Наименование промплощадки:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.workSiteName }}</td>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.facility_location.facility.worksite.name }}</td>
             </tr>
             <tr>
               <th>Категория промплощадки:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.natureUserCategory }}</td>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.facility_location.facility.worksite.category.name  }}</td>
             </tr>
             <tr>
               <th>Цех / объект:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.facilityName }}</td>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.facility_location.facility.name  }}</td>
             </tr>
             <tr>
               <th>Участок:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.facilityLocationName }}</td>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.facility_location.name  }}</td>
             </tr>
             <tr>
-              <th>№ ист.эмиссии:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.emissionSourceNumber }}</td>
+              <th>Наименование источника выбросов:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.name  }}</td>
             </tr>
             <tr>
-              <th>Наименование ист. выбросов:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.emissionSourceName }}</td>
+              <th>Номер источника эмиссии:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.number }}</td>
             </tr>
             <tr>
-              <th>Тип ист.эмиссии:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.emissionSourceOrganized ? 'организованный' : 'неорганизованный' }}</td>
+              <th>Инвентарный номер источника эмиссии:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.inventory_number }}</td>
             </tr>
             <tr>
-              <th>Наименование ист.выделения:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.releaseSourceName }}</td>
+              <th>Тип источника эмиссии:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.organized ? 'Организованный' : 'Неорганизованный' }}</td>
             </tr>
             <tr>
-              <th>Номер ист.выделения:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.releaseSourceNumber }}</td>
+              <th>Описание источника эмиссии:</th>
+              <td class="font-weight-normal">{{ releaseSourceCard.emission_source.description }}</td>
             </tr>
-            <!-- <tr>
-              <th>Описание источника:</th>
-              <td class="font-weight-normal">{{ releaseSourceCard.emissionSource.description }}</td>
-            </tr> -->
           </table>
         </d-card-body>
       </div>
       <d-card-footer class="text-right border-top">
         <div class="d-flex">
           <router-link to="/release-source-list">Назад</router-link>
-          <router-link class="ml-auto"  :to="{ name: 'release-source-edit', params: { id: releaseSourceCard.id }}">
-            <d-button theme="warning">Редактировать</d-button>
-          </router-link>
+          <div class="ml-auto">
+            <router-link class="mr-2" :to="{ name: 'release-source-edit', params: { id: releaseSourceCard.id }}">
+              <d-button theme="light">Редактировать</d-button>
+            </router-link>
+            <d-button theme="danger" @click="deleteReleaseSource">Удалить</d-button>
+          </div>
         </div>
       </d-card-footer>
     </d-card>
@@ -76,7 +91,7 @@
 </template>
 
 <script>
-import api from '@/services/api';
+import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql';
 
 export default {
   data() {
@@ -93,25 +108,19 @@ export default {
   methods: {
     async getSource() {
       this.loaded = false;
-      const releaseSource = await api.getResource(`releaseSources/${this.$route.params.id}`);
-      const worksite = await api.getResource(`worksites/${releaseSource.worksiteId}`);
-      const facility = await api.getResource(`facilities/${releaseSource.facilityId}`);
-      const facilityLocation = await api.getResource(`facilityLocations/${releaseSource.facilityLocationId}`);
-      const emissionSource = await api.getResource(`emissionSources/${releaseSource.emissionSourceId}`);
-      this.releaseSourceCard = {
-        id: releaseSource.id,
-        workSiteName: worksite.workSiteName,
-        natureUserCategory: worksite.natureUserCategory,
-        facilityName: facility.facilityName,
-        facilityLocationName: facilityLocation.facilityLocationName,
-        emissionSourceNumber: emissionSource.emissionSourceNumber,
-        emissionSourceName: emissionSource.emissionSourceName,
-        emissionSourceOrganized: emissionSource.emissionSourceOrganized,
-        releaseSourceName: releaseSource.releaseSourceName,
-        releaseSourceNumber: releaseSource.releaseSourceNumber,
-      };
+      const { data } = await this.$apollo.query({
+        query: RELEASE_SOURCE_BY_PK,
+        variables: {
+          id: this.$route.params.id
+        }
+      })
+      this.releaseSourceCard = Object.assign({}, data.release_sources_by_pk)
       this.loaded = true;
     },
+    deleteReleaseSource() {
+      console.log('delete', this.releaseSourceCard.id);
+      this.$router.go(-1);
+    }
   },
 };
 </script>

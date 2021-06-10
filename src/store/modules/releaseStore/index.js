@@ -1,7 +1,12 @@
 /* eslint-disable no-param-reassign */
 import releaseSourceService from '@/services/releaseSourceService';
+import { apolloClient } from '@/vue-apollo'
+import WORKSITES_LIST from '@/graphql/WorksitesList.gql'
+import RS_LIST from '@/graphql/ReleaseSourcesListByWorksiteId.gql'
+import store from '../..';
 
 const initialState = () => ({
+  fetchedReleaseSources: null,
   releaseSourceList: [],
   releaseSource: {},
   worksite: {},
@@ -46,6 +51,11 @@ const getters = {
 };
 
 const actions = {
+
+  async fetchReleaseSources ({ commit, rootState }) {
+    const { data } = await apolloClient.query({query: RS_LIST, variables: {company_id: rootState.company.working_company.id }})
+    commit('fetchReleaseSources', data.release_sources)
+  },
 
   async getReleaseSourceList({ state, commit }) {
     try {
@@ -230,6 +240,9 @@ const actions = {
 };
 
 const mutations = {
+  fetchReleaseSources(state, payload) {
+    state.fetchedReleaseSources = payload
+  },
   setReleseSource(state, payload) {
     state.releaseSource = payload;
   },

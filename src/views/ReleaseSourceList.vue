@@ -44,7 +44,7 @@
               <!-- List Manager -->
               <v-client-table
                 class="dataTables_wrapper"
-                :data="releaseSourceList"
+                :data="worksites"
                 :columns="columns"
                 :options="tableOptions"
               >
@@ -108,7 +108,6 @@ export default {
     return {
       loading: true,
       sources: [],
-      worksites: null,
       facilities: null,
       facilityLocations: null,
       emissionSources: null,
@@ -189,16 +188,14 @@ export default {
     };
   },
   computed: {
-    ...mapState('releaseStore', ['releaseSourceList']),
+    ...mapState('releaseStore', ['releaseSourceList', 'fetchedWorksites']),
   },
   created() {
-    this.loading = true;
-    this.getReleaseSourceList().then(() => {
-      this.loading = false;
-    });
+    this.fetchReleaseSources()
+    this.loading = false;
   },
   methods: {
-    ...mapActions('releaseStore', ['getReleaseSourceList']),
+    ...mapActions('releaseStore', ['getReleaseSourceList', 'fetchReleaseSources']),
     ...mapMutations('releaseStore', ['setReleaseSourceList']),
 
     deleteItem(id) {

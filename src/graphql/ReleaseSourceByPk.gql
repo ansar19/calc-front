@@ -1,0 +1,34 @@
+query ReleaseSourceByPk($id: uuid!) {
+  release_sources_by_pk(id: $id) {
+    id
+    name
+    number
+    inventory_number
+    ghg_source
+    emission_source {
+      id
+      name
+      number
+      inventory_number
+      organized
+      product
+      description
+      facility_location {
+        id
+        name
+        facility {
+          id
+          name
+          worksite {
+            id
+            name
+            category {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

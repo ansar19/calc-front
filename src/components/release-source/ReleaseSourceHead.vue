@@ -29,7 +29,7 @@
             class="mb-3"
             placeholder="Наименование ПП"
             type="text"
-            :value="worksite.workSiteName"
+            :value="worksite.name"
             @change="setWorksiteName"
             required
           />
@@ -66,7 +66,7 @@
             class="mb-3"
             placeholder="Выбрать категорию ПП"
             label="name"
-            :v-model="w_nature_user_category"
+            v-model="w_nature_user_category"
             :reduce="(cat) => cat.id"
             :options="worksite_categories"
             :disabled="!editor.worksiteVisible"
@@ -230,12 +230,12 @@ export default {
         facility: {},
         facilityLocation: {},
       },
-      natureUserCategoryOptions: [
-        { text: "Первая", value: 1 },
-        { text: "Вторая", value: 2 },
-        { text: "Третья", value: 3 },
-        { text: "Четвертая", value: 4 },
-      ],
+      // natureUserCategoryOptions: [
+      //   { text: "Первая", value: 1 },
+      //   { text: "Вторая", value: 2 },
+      //   { text: "Третья", value: 3 },
+      //   { text: "Четвертая", value: 4 },
+      // ],
     };
   },
   computed: {
@@ -247,6 +247,8 @@ export default {
       "facility",
       "facilityLocation",
     ]),
+
+    ...mapState("company", ["working_company"]),
 
     ...mapGetters("releaseStore", [
       "getAvaibleFacilities",
@@ -301,7 +303,7 @@ export default {
     },
 
     saveWorksite() {
-      this.postWorksite();
+      this.postWorksite(this.working_company);
       this.editor.worksiteVisible = false;
     },
 

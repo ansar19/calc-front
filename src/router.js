@@ -31,7 +31,7 @@ import Coordinates from './views/Coordinates.vue';
 import NewFilter from './views/NewFilter.vue';
 
 // release source
-import ReleaseSourceList from './views/ReleaseSourceList.vue';
+import ReleaseSourceList from './views/ListReleaseSource.vue';
 import ReleaseSourceShow from './views/ReleaseSourceShow.vue';
 import ReleaseSourceEdit from './views/ReleaseSourceEdit.vue';
 import ReleaseSourceAdd from './views/ReleaseSourceAdd.vue'

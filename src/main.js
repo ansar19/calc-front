@@ -31,6 +31,14 @@ Vue.use(wysiwyg);
 Vue.use(Vuelidate);
 Vue.component('tinymce', tinymce);
 
+import VueGoodTablePlugin from 'vue-good-table';
+
+// import the styles
+import 'vue-good-table/dist/vue-good-table.css'
+
+Vue.use(VueGoodTablePlugin);
+
+
 
 
 // import createPersistedState from 'vuex-persistedstate';
@@ -162,7 +170,7 @@ Vue.config.warnHandler = function (msg, vm, trace) {
 // Layouts
 import Default from '@/layouts/Default.vue';
 
-import { createProvider } from './vue-apollo'
+import apolloProvider from './vue-apollo'
 
 
 ShardsVue.install(Vue);
@@ -175,6 +183,6 @@ Vue.prototype.$eventHub = new Vue();
 new Vue({
   store,
   router,
-  apolloProvider: createProvider(),
+  apolloProvider,
   render: h => h(App)
 }).$mount('#app');

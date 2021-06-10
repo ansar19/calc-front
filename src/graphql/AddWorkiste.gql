@@ -1,0 +1,29 @@
+# mutation AddWorksite($company_id: uuid!, $category_id: uuid!, $name: String!) {
+#   insert_worksites_one(object: {
+#     company_id: $company_id,
+#     category_id: $category_id,
+#     name: $name
+#   }) {
+#     id
+#     name
+#     category_id
+#   }
+# }
+
+mutation UpsertWorksite($with_id: Boolean!, $id: uuid, $company_id: uuid, $category_id: uuid, $name: String!) {
+  insert_worksites_one(object: {
+    id: @include(if: $with_id)
+    company_id: $company_id,
+    category_id: $category_id,
+    name: $name
+  },
+  on_conflict: {
+    constraint: worksites_pkey,
+    update_columns: [company_id, category_id, name]
+  }
+  ) {
+    id
+    name
+    category_id
+  }
+}
