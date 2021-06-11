@@ -29,7 +29,7 @@
               @on-row-click="onRowClick"
             >
               <div slot="table-actions">
-                <d-dropdown size="sm" class="ml-2" text="Добавить" right>
+                <d-dropdown theme="light" size="sm" class="ml-2" text="Добавить" right>
                   <d-dropdown-item size="sm">
                     <router-link to="release-source-add"
                       >Добавить источник</router-link

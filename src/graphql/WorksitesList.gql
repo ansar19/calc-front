@@ -2,29 +2,9 @@ query Worksites($company_id: uuid!) {
   worksites(where: {company_id: { _eq: $company_id }}) {
     id
     name
-    facilities {
+    category {
       id
       name
-      facility_locations {
-        id
-        name
-        emission_sources {
-          id
-          inventory_number
-          name
-          number
-          organized
-          product
-          has_filter
-          release_sources {
-            id
-            name
-            number
-            inventory_number
-            ghg_source
-          }
-        }
-      }
     }
   }
 }

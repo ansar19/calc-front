@@ -3,7 +3,7 @@ import releaseSourceService from '@/services/releaseSourceService';
 import { apolloClient } from '@/vue-apollo'
 import WORKSITES_LIST from '@/graphql/WorksitesList.gql'
 import RS_LIST from '@/graphql/ReleaseSourcesListByWorksiteId.gql'
-import store from '../..';
+import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
 
 const initialState = () => ({
   fetchedReleaseSources: null,
@@ -14,6 +14,7 @@ const initialState = () => ({
   facilityLocation: {},
   emissionSource: {},
   pollutantFilter: {},
+  natureUserCategory: {},
   releaseSources: [],
   worksites: [],
   facilities: [],
@@ -55,6 +56,34 @@ const actions = {
   async fetchReleaseSources ({ commit, rootState }) {
     const { data } = await apolloClient.query({query: RS_LIST, variables: {company_id: rootState.company.working_company.id }})
     commit('fetchReleaseSources', data.release_sources)
+  },
+
+  async getEmissionSourcesList({ commit }, facility_loc_id) {
+    const { data } = await apolloClient.query({query: ES_LIST, variables: {facility_loc_id: facility_loc_id }})
+    commit('setReleaseSources', data.emission_sources)
+  },
+
+  async fetchReleaseSourceByPk ({ commit }, id) {
+    const { data } = await apolloClient.query({query: RELEASE_SOURCE_BY_PK, variables: {id: id }})
+    // const { release_sources_by_pk } = data
+    const { emission_source, ...releaseSource } = data.release_sources_by_pk
+    const { facility_location, ...emissionSource } = emission_source
+    const { facility, ...facilityLocation } = facility_location
+    const { worksite, ...fac } = facility
+    const { category, ...wrk } = worksite
+    // const { category}  = data.release_sources_by_pk.emission_source.facility_location.facility.worksite
+    // console.log(category);
+    commit('setReleseSource', releaseSource)
+    commit('setEmissionSource', emissionSource)
+    commit('setFacilityLocation', facilityLocation)
+    commit('setFacility', fac)
+    commit('setWorksite', wrk)
+    commit('setNatureUserCategory', category)
+  },
+
+  async fetchWorksites ({ commit, rootState }) {
+    const { data } = await apolloClient.query({query: WORKSITES_LIST, variables: {company_id: rootState.company.working_company.id }})
+    commit('setWorksites', data.worksites)
   },
 
   async getReleaseSourceList({ state, commit }) {
@@ -285,16 +314,16 @@ const mutations = {
 
   // release-source
   setReleaseName(state, payload) {
-    state.releaseSource.releaseSourceName = payload;
+    state.releaseSource.name = payload;
   },
   setReleaseNumber(state, payload) {
-    state.releaseSource.releaseSourceNumber = payload;
+    state.releaseSource.number = payload;
   },
   setReleaseAssetNumber(state, payload) {
-    state.releaseSource.assetNumber = payload;
+    state.releaseSource.inventory_number = payload;
   },
   setReleaseGhgSource(state, payload) {
-    state.releaseSource.ghgSource = payload;
+    state.releaseSource.ghg_source = payload;
   },
   setReleaseWorksiteId(state, id) {
     state.releaseSource.worksiteId = id;
@@ -314,7 +343,7 @@ const mutations = {
     state.worksite.workSiteName = payload;
   },
   setNatureUserCategory(state, payload) {
-    state.worksite.natureUserCategory = payload;
+    state.natureUserCategory = payload;
   },
 
   // facility

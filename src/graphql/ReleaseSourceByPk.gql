@@ -13,6 +13,11 @@ query ReleaseSourceByPk($id: uuid!) {
       organized
       product
       description
+      filters {
+        id
+        name
+        description
+      }
       facility_location {
         id
         name

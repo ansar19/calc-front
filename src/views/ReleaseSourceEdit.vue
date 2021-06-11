@@ -6,9 +6,9 @@
       <d-card-body>
         <release-source
         ></release-source>
-        <release-source-head v-if="releaseSource"></release-source-head>
-        <hr />
         <release-source-emission v-if="releaseSource"></release-source-emission>
+        <hr />
+        <release-source-head v-if="releaseSource"></release-source-head>
       </d-card-body>
       <d-card-footer class="border-top">
         <div v-if="errorMsg"><d-alert theme="danger" show="errorMsg" dismissible>{{errorMsg}}</d-alert></div>
@@ -58,7 +58,7 @@ export default {
   methods: {
     ...mapMutations('releaseStore', ['setReleseSource', 'setWorksites', 'setFacilities', 'setFacilityLocations', 'setEmissionSources', 'setPollutantFilters', 'setFilteredPollutants']),
 
-    ...mapActions('releaseStore', ['getWorksite', 'getFacility', 'getFacilityLocation', 'getEmissionSource', 'putReleaseSource', 'clearAll']),
+    ...mapActions('releaseStore', ['fetchReleaseSourceByPk', 'getWorksite', 'getFacility', 'getFacilityLocation', 'getEmissionSource', 'putReleaseSource', 'clearAll']),
 
     saveReleaseSource(e) {
       e.preventDefault();
@@ -73,23 +73,9 @@ export default {
 
   created() {
     if (this.$route.params.id) {
-      releaseSourceService
-        .getResource(`releaseSources/${this.$route.params.id}`)
-        .then((res) => {
-          this.setReleseSource(res);
-          this.getWorksite(res.worksiteId);
-          this.getFacility(res.facilityId);
-          this.getFacilityLocation(res.facilityLocationId);
-          this.getEmissionSource(res.emissionSourceId);
-          this.loaded = true;
-        });
+      this.fetchReleaseSourceByPk(this.$route.params.id)
+      this.loaded = true
     }
-    releaseSourceService.getResource('worksites').then(res => this.setWorksites(res));
-    releaseSourceService.getResource('facilities').then(res => this.setFacilities(res));
-    releaseSourceService.getResource('facilityLocations').then(res => this.setFacilityLocations(res));
-    releaseSourceService.getResource('emissionSources').then(res => this.setEmissionSources(res));
-    releaseSourceService.getResource('pollutantFilters').then(res => this.setPollutantFilters(res));
-    releaseSourceService.getResource('filteredPollutants').then(res => this.setFilteredPollutants(res));
   },
 
   beforeDestroy() {
@@ -97,4 +83,3 @@ export default {
   },
 };
 </script>
-

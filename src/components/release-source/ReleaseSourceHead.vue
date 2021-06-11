@@ -7,11 +7,10 @@
         <template v-if="!editor.worksiteVisible">
           <v-select
             class="mb-2"
-            label="workSiteName"
+            label="name"
             placeholder="Выбрать ПП"
             :options="worksites"
-            :value="worksite"
-            @input="setWorksiteAction"
+            v-model="c_worksite"
             required
           ></v-select>
           <div>
@@ -66,7 +65,7 @@
             class="mb-3"
             placeholder="Выбрать категорию ПП"
             label="name"
-            v-model="w_nature_user_category"
+            v-model="c_nature_user_category"
             :reduce="(cat) => cat.id"
             :options="worksite_categories"
             :disabled="!editor.worksiteVisible"
@@ -86,8 +85,7 @@
             label="facilityName"
             placeholder="Выбрать объект"
             :options="getAvaibleFacilities"
-            :value="facility"
-            @input="setFacilityAction"
+            v-model="c_facility"
           ></v-select>
           <div>
             <button
@@ -149,8 +147,7 @@
             label="facilityLocationName"
             placeholder="Выбрать участок"
             :options="getAvaibleFacilityLocations"
-            :value="facilityLocation"
-            @input="setFacilityLocationAction"
+            v-model="c_facility_location"
           ></v-select>
           <div>
             <button
@@ -240,6 +237,9 @@ export default {
   },
   computed: {
     ...mapState("releaseStore", [
+      "releaseSource",
+      "worksite",
+      "natureUserCategory",
       "worksites",
       "facilities",
       "facilityLocations",
@@ -255,26 +255,44 @@ export default {
       "getAvaibleFacilityLocations",
     ]),
 
-    w_nature_user_category: {
+    c_worksite: {
       get() {
-        return this.name;
+        return this.worksite.name;
+      },
+      set(val) {
+        this.setWorksite(val);
+      },
+    },
+
+    c_nature_user_category: {
+      get() {
+        return this.natureUserCategory.name;
       },
       set(val) {
         this.setNatureUserCategory(val);
       },
     },
-
-    // natureUserCategoryText() {
-    //   let category = '';
-    //   if (this.worksite.id) {
-    //     category = this.natureUserCategoryOptions.find(el => el.value === this.worksite.natureUserCategory).text;
-    //   }
-    //   return category;
-    // },
+    c_facility: {
+      get() {
+        return this.facility.name;
+      },
+      set(val) {
+        this.setFacility(val);
+      },
+    },
+    c_facility_location: {
+      get() {
+        return this.facilityLocation.name;
+      },
+      set(val) {
+        this.setFacilityLocation(val);
+      },
+    },
   },
 
   methods: {
     ...mapActions("releaseStore", [
+      "fetchWorksites",
       "setWorksiteAction",
       "setFacilityAction",
       "setFacilityLocationAction",
@@ -302,10 +320,14 @@ export default {
       );
     },
 
-    saveWorksite() {
-      this.postWorksite(this.working_company);
-      this.editor.worksiteVisible = false;
-    },
+    // saveWorksite() {
+    //   apollo: {
+    //     insert_worksites_one: {
+    //       mutation: ADD_WORKSITE,
+    //       variables: { this.worksite }
+    //     }
+    //   }
+    // },
 
     saveFacility() {
       this.postFacility();
@@ -331,6 +353,9 @@ export default {
       else if (source === "facility") this.setFacility(this.editor.facility);
       else this.setFacilityLocation(this.editor.facilityLocation);
     },
+  },
+  created() {
+    this.fetchWorksites();
   },
 };
 </script>

@@ -9,7 +9,7 @@
           placeholder="Выбрать источник эмиссии"
           @input="setEmissionAction"
           :options="getAvaibleEmissions"
-          :value="emissionSource"
+          :value="emissionSource.name"
           required
         />
         <d-form-invalid-feedback>
@@ -29,25 +29,25 @@
     </d-col>
     <d-col cols="12" md="6" lg="6">
       <label>Номер источника выбросов</label>
-      <d-input type="text" :value="emissionSource.emissionSourceNumber" readonly />
+      <d-input type="text" :value="emissionSource.number" readonly />
     </d-col>
   </d-row>
   <template v-if="emissionSource">
   <d-row class="mb-3">
     <d-col cols="12" md="6" lg="6">
-      <label>Инвентарный номер источника</label>
+      <label>Инвентарный номер источника выбросов</label>
       <d-input
         type="text"
-        :value="emissionSource.emissionSourceInventoryNumber"
+        :value="emissionSource.inventory_number"
         readonly
       />
     </d-col>
     <d-col cols="12" md="6" lg="6">
-      <label>Тип источника</label>
+      <label>Тип источника выбросов</label>
       <d-input
         type="text"
         readonly
-        :value="emissionSource.emissionSourceOrganized
+        :value="emissionSource.organized
                   ? `Организованный`
                   : `Неорганизованный`"
       />
@@ -57,7 +57,7 @@
   <d-row class="mb-3">
     <d-col cols="12" md="6" lg="6">
       <label>Выпускаемая продукция</label>
-      <d-input type="text" :value="emissionSource.emissionSourceProductName" readonly />
+      <d-input type="text" :value="emissionSource.product" readonly />
     </d-col>
     <!-- <d-col  cols="12" md="6" lg="6">
       <label>Методика расчета</label>
@@ -68,13 +68,13 @@
   <label>Комментарии к источнику</label>
   <textarea
     class="form-control mb-3"
-    v-model="emissionSource.emissionSourceComments"
+    v-model="emissionSource.description"
     placeholder="Коментарии отстутствуют"
     readonly
   ></textarea>
 
   <h6>Пылегазоочистное оборудование (ПГО)</h6>
-    <template v-if="emissionSource.pollutantFilter">
+    <template v-if="emissionSource.filters.length">
     <button
       type="button"
       class="btn btn-primary mb-3"
@@ -273,7 +273,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('releaseStore', ['setEmissionAction', 'deletePollutant']),
+    ...mapActions('releaseStore', ['getEmissionSourcesList', 'setEmissionAction', 'deletePollutant']),
     ...mapMutations('releaseStore', ['setPollutantFilter', 'setEditFilteredPollutants', 'setFilteredPollutant']),
 
     getFilteredPollutants(id) {

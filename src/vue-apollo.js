@@ -10,15 +10,20 @@ import { ApolloLink } from 'apollo-link'
 // Name of the localStorage item
 const AUTH_TOKEN = 'token'
 
+const token = localStorage.getItem(AUTH_TOKEN) || null
+
 const httpLink = new HttpLink({
   uri: process.env.VUE_APP_GRAPHQL_HTTP || 'https://hasura.ecomarine.kz/v1/graphql'
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(( { headers = {} }) => ({
-    headers: {
+    headers: token ? {
       ...headers,
-      authorization: 'Bearer ' + localStorage.getItem(AUTH_TOKEN) || null,
+      authorization: `Bearer ${token}`
+    } :
+    {
+      ...headers,
     }
   }));
   return forward(operation)
@@ -32,7 +37,15 @@ export const apolloClient = new ApolloClient({
 })
 
 const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
+  defaultClient: apolloClient,
+  errorHandler (error) {
+    // eslint-disable-next-line no-console
+    console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message)
+    if (error.message === 'GraphQL error: Could not verify JWT: JWTExpired') {
+      onLogout();
+      Router.push('/login')
+    }
+  },
 })
 
 // Install the vue plugin
