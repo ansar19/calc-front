@@ -76,7 +76,7 @@
 }
 </style>
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 import { onLogout } from "../../../vue-apollo";
 
 export default {
@@ -85,18 +85,17 @@ export default {
     ...mapState('users', ['user'])
   },
   methods: {
+    ...mapActions('users', ['fetchUser']),
     ...mapMutations('users', ['sign_out']),
-    setError(error, text) {
-      this.error = (error.response && error.response.data && error.response.data.error) || text;
-    },
-    signedIn() {
-      return localStorage.user.email;
-    },
+
     async logout() {
       await onLogout();
       this.sign_out();
       this.$router.push('/login');
     },
   },
+  created() {
+    this.fetchUser()
+  }
 };
 </script>

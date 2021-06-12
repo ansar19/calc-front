@@ -7,10 +7,7 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink } from 'apollo-link'
 
-// Name of the localStorage item
-const AUTH_TOKEN = 'token'
-
-const token = localStorage.getItem(AUTH_TOKEN) || null
+const authToken = localStorage.getItem('token') || null
 
 const httpLink = new HttpLink({
   uri: process.env.VUE_APP_GRAPHQL_HTTP || 'https://hasura.ecomarine.kz/v1/graphql'
@@ -18,9 +15,9 @@ const httpLink = new HttpLink({
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(( { headers = {} }) => ({
-    headers: token ? {
+    headers: authToken ? {
       ...headers,
-      authorization: `Bearer ${token}`
+      authorization: `Bearer ${authToken}`
     } :
     {
       ...headers,
@@ -122,22 +119,20 @@ export default apolloProvider
 // Manually call this when user log in
 export async function onLogin (token) {
   if (typeof localStorage !== 'undefined' && token) {
-    localStorage.setItem(AUTH_TOKEN, token)
+    localStorage.setItem('token', token)
   }
-  // if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
-  // try {
-  //   await apolloClient.resetStore()
-  // } catch (e) {
-  //   // eslint-disable-next-line no-console
-  //   console.log('%cError on cache reset (login)', 'color: orange;', e.message)
-  // }
+  try {
+    await apolloClient.resetStore()
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log('%cError on cache reset (login)', 'color: orange;', e.message)
+  }
 }
 
 // Manually call this when user log out
 export async function onLogout (apolloClient) {
   if (typeof localStorage !== 'undefined') {
-    localStorage.removeItem(AUTH_TOKEN)
-    localStorage.removeItem('vuex')
+    localStorage.removeItem('token')
   }
   // if (apolloClient.wsClient) restartWebsockets(apolloClient.wsClient)
   // try {

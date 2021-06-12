@@ -3,6 +3,7 @@ query UserByPk($id: Int!) {
     id
     email
     role {
+      id
       name
     }
     employee {

@@ -1,7 +1,7 @@
 <script>
 import { mapMutations } from "vuex";
 import LOGIN from "../graphql/Login.gql";
-import USER from "../graphql/UserByPk.gql";
+import { onLogin } from "@/vue-apollo"
 
 export default {
   name: "Login",
@@ -15,31 +15,17 @@ export default {
   methods: {
     ...mapMutations("users", ["sign_in"]),
     async login() {
-      const user = await this.$apollo
-        .mutate({
-          mutation: LOGIN,
-          variables: {
-            email: this.email,
-            password: this.password,
-          },
-        })
-        .catch((err) => {
-          console.log(err);
-          this.error = true;
-        });
-      const { token, id } = user.data.login;
-      localStorage.setItem("token", token);
-      const employee = await this.$apollo
-        .query({
-          query: USER,
-          variables: { id: id },
-        })
-        .catch((err) => {
-          console.log(err);
-          this.error = true;
-        });
-      this.sign_in(employee.data.users_by_pk);
-      this.$router.push('/dashboard');
+      const { data } = await this.$apollo.mutate({
+        mutation: LOGIN,
+        variables: {
+          email: this.email,
+          password: this.password,
+        },
+      });
+      const { token, ...user } = data.login
+      await this.sign_in(user);
+      onLogin(token);
+      this.$router.push("/dashboard")
     },
   },
 };
