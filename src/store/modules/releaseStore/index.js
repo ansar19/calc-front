@@ -4,19 +4,22 @@ import { apolloClient } from '@/vue-apollo'
 import WORKSITES_LIST from '@/graphql/WorksitesList.gql'
 import RS_LIST from '@/graphql/ReleaseSourcesListByWorksiteId.gql'
 import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
+import UPDATE_WORKSITE from '@/graphql/UpdateWorksite.gql'
+import INSERT_WORKSITE from '@/graphql/InsertWorksite.gql'
+
 
 const initialState = () => ({
   fetchedReleaseSources: null,
+  worksite: {},
+  worksites: [],
   releaseSourceList: [],
   releaseSource: {},
-  worksite: {},
   facility: {},
   facilityLocation: {},
   emissionSource: {},
   pollutantFilter: {},
   natureUserCategory: {},
   releaseSources: [],
-  worksites: [],
   facilities: [],
   facilityLocations: [],
   emissionSources: [],
@@ -46,12 +49,17 @@ const getters = {
     }
     return filters;
   },
-  // getFilteredPollutants(state, id) {
-  //   return state.filteredPollutants.filter(el => el.pollutantFilterId === id);
-  // },
 };
 
 const actions = {
+  async upsertWorksite({dispatch, commit, state, rootState}, name) {
+    const worksite = { name, category_id: state.worksite.category.id, company_id: rootState.company.working_company.id }
+    if (state.worksite.id) worksite.id = state.worksite.id
+    const { data } = await apolloClient.mutate({ mutation: state.worksite.id ? UPDATE_WORKSITE : INSERT_WORKSITE, variables: { ...worksite }})
+    commit('setWorksite', data[Object.keys(data)[0]])
+    // console.log(data[Object.keys(data)[0]]);
+    dispatch('fetchWorksites')
+  },
 
   async fetchReleaseSources ({ commit, rootState }) {
     const { data } = await apolloClient.query({query: RS_LIST, variables: {company_id: rootState.company.working_company.id }})
@@ -65,24 +73,19 @@ const actions = {
 
   async fetchReleaseSourceByPk ({ commit }, id) {
     const { data } = await apolloClient.query({query: RELEASE_SOURCE_BY_PK, variables: {id: id }})
-    // const { release_sources_by_pk } = data
     const { emission_source, ...releaseSource } = data.release_sources_by_pk
     const { facility_location, ...emissionSource } = emission_source
     const { facility, ...facilityLocation } = facility_location
     const { worksite, ...fac } = facility
-    const { category, ...wrk } = worksite
-    // const { category}  = data.release_sources_by_pk.emission_source.facility_location.facility.worksite
-    // console.log(category);
     commit('setReleseSource', releaseSource)
     commit('setEmissionSource', emissionSource)
     commit('setFacilityLocation', facilityLocation)
     commit('setFacility', fac)
-    commit('setWorksite', wrk)
-    commit('setNatureUserCategory', category)
+    commit('setWorksite', worksite)
   },
 
   async fetchWorksites ({ commit, rootState }) {
-    const { data } = await apolloClient.query({query: WORKSITES_LIST, variables: {company_id: rootState.company.working_company.id }})
+    const { data } = await apolloClient.query({query: WORKSITES_LIST, fetchPolicy: 'network-only', variables: {company_id: rootState.company.working_company.id }})
     commit('setWorksites', data.worksites)
   },
 
@@ -151,22 +154,7 @@ const actions = {
   putReleaseSource({ state }) {
     releaseSourceService.patchResource('releaseSources', state.releaseSource);
   },
-  postWorksite({ state, commit }) {
-    if (!state.releaseSource.worksiteId) {
-      releaseSourceService
-        .postResource('worksites', { ...state.worksite, companyId: 1 })
-        .then((res) => {
-          commit('setWorksite', res);
-          commit('setReleaseWorksiteId', res.id);
-        });
-    } else {
-      releaseSourceService
-        .putResource('worksites', { ...state.worksite, companyId: 1 })
-        .then((res) => {
-          commit('setWorksite', res);
-        });
-    }
-  },
+
   postFacility({ state, commit }) {
     if (!state.releaseSource.facilityId) {
       releaseSourceService
@@ -276,8 +264,19 @@ const mutations = {
     state.releaseSource = payload;
   },
   setWorksite(state, payload) {
-    state.worksite = payload;
+    if (payload === null) {
+      const category = Object.assign({}, state.worksite.category)
+      state.worksite.name = ''
+      state.worksite.category = category
+    } else {
+      state.worksite = payload;
+    }
   },
+  setNatureUserCategory(state, payload) {
+    state.worksite.category_id = payload.id
+    state.worksite.category = payload
+  },
+
   setFacility(state, payload) {
     state.facility = payload;
   },
@@ -336,14 +335,6 @@ const mutations = {
   },
   setReleaseEmissionSourceId(state, id) {
     state.releaseSource.emissionSourceId = id;
-  },
-
-  // worksite
-  setWorksiteName(state, payload) {
-    state.worksite.workSiteName = payload;
-  },
-  setNatureUserCategory(state, payload) {
-    state.natureUserCategory = payload;
   },
 
   // facility

@@ -1,14 +1,17 @@
-mutation UpdateWorksite($id: uuid!, $company_id: uuid!, category_id: uuid!, name: String!) {
+mutation UpdateWorksite($id: uuid!, $category_id: uuid!, $company_id: uuid! $name: String!) {
   update_worksites_by_pk(
     pk_columns: { id: $id},
     _set: {
     	name: $name,
-      company_id: $company_id
+      company_id: $company_id,
       category_id: $category_id
   	}
   ) {
     id
     name
-    category_id
+    category {
+      id
+      name
+    }
   }
 }

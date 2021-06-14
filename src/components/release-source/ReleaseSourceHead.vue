@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- WORKSITE START -->
-    <d-row class="mb-3">
+    <worksite ></worksite>
+    <!-- <d-row class="mb-3">
       <d-col cols="12" md="8" lg="8">
         <label>Промплощадка (ПП)</label>
         <template v-if="!editor.worksiteVisible">
@@ -66,13 +67,12 @@
             placeholder="Выбрать категорию ПП"
             label="name"
             v-model="c_nature_user_category"
-            :reduce="(cat) => cat.id"
             :options="worksite_categories"
             :disabled="!editor.worksiteVisible"
           />
         </div>
       </d-col>
-    </d-row>
+    </d-row> -->
     <!-- WORKSITE END -->
 
     <d-row>
@@ -207,71 +207,34 @@
 
 <script>
 import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
-import WORKSITE_CATEGORIES from "../../graphql/WorksiteCategoriesList.gql";
+import Worksite from './EditWorksite.vue'
 
 export default {
-  apollo: {
-    worksite_categories: {
-      query: WORKSITE_CATEGORIES,
-    },
-  },
+  components: { Worksite },
   data() {
     return {
       validation: this.headValidation,
-      worksite_categories: [],
       editor: {
-        worksiteVisible: false,
         facilityVisible: false,
         facilityLocationVisible: false,
-        worksite: {},
         facility: {},
         facilityLocation: {},
       },
-      // natureUserCategoryOptions: [
-      //   { text: "Первая", value: 1 },
-      //   { text: "Вторая", value: 2 },
-      //   { text: "Третья", value: 3 },
-      //   { text: "Четвертая", value: 4 },
-      // ],
     };
   },
   computed: {
     ...mapState("releaseStore", [
       "releaseSource",
-      "worksite",
-      "natureUserCategory",
-      "worksites",
       "facilities",
       "facilityLocations",
       "worksite",
       "facility",
       "facilityLocation",
     ]),
-
-    ...mapState("company", ["working_company"]),
-
     ...mapGetters("releaseStore", [
       "getAvaibleFacilities",
       "getAvaibleFacilityLocations",
     ]),
-
-    c_worksite: {
-      get() {
-        return this.worksite.name;
-      },
-      set(val) {
-        this.setWorksite(val);
-      },
-    },
-
-    c_nature_user_category: {
-      get() {
-        return this.natureUserCategory.name;
-      },
-      set(val) {
-        this.setNatureUserCategory(val);
-      },
-    },
     c_facility: {
       get() {
         return this.facility.name;
@@ -293,20 +256,15 @@ export default {
   methods: {
     ...mapActions("releaseStore", [
       "fetchWorksites",
-      "setWorksiteAction",
-      "setFacilityAction",
       "setFacilityLocationAction",
-      "postWorksite",
       "postFacility",
       "postFacilityLocation",
     ]),
 
     ...mapMutations("releaseStore", [
-      "setWorksite",
       "setFacility",
       "setFacilityLocation",
       "setNatureUserCategory",
-      "setWorksiteName",
       "setFacilityName",
       "setFacilityLocationName",
     ]),
@@ -319,15 +277,6 @@ export default {
         this[source]
       );
     },
-
-    // saveWorksite() {
-    //   apollo: {
-    //     insert_worksites_one: {
-    //       mutation: ADD_WORKSITE,
-    //       variables: { this.worksite }
-    //     }
-    //   }
-    // },
 
     saveFacility() {
       this.postFacility();
@@ -349,13 +298,9 @@ export default {
 
     cancel(source, vis) {
       this.editor[vis] = false;
-      if (source === "worksite") this.setWorksite(this.editor.worksite);
-      else if (source === "facility") this.setFacility(this.editor.facility);
+      if (source === "facility") this.setFacility(this.editor.facility);
       else this.setFacilityLocation(this.editor.facilityLocation);
     },
-  },
-  created() {
-    this.fetchWorksites();
   },
 };
 </script>

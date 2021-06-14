@@ -44,7 +44,7 @@
               <!-- List Manager -->
               <v-client-table
                 class="dataTables_wrapper"
-                :data="worksites"
+                :data="fetchedWorksites"
                 :columns="columns"
                 :options="tableOptions"
               >
