@@ -1,7 +1,6 @@
 <script>
 import { mapMutations } from "vuex";
 import LOGIN from "../graphql/Login.gql";
-import { onLogin } from "@/vue-apollo"
 
 export default {
   name: "Login",
@@ -23,8 +22,8 @@ export default {
         },
       });
       const { token, ...user } = data.login
+      localStorage.setItem("token", token)
       await this.sign_in(user);
-      onLogin(token);
       this.$router.push("/dashboard")
     },
   },

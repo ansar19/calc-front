@@ -5,6 +5,7 @@ query ReleaseSourceByPk($id: uuid!) {
     number
     inventory_number
     ghg_source
+    emission_src_id
     emission_source {
       id
       name

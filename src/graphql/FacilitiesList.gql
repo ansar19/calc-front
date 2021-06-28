@@ -1,0 +1,6 @@
+query Facilities {
+  facilities {
+    id
+    name
+  }
+}

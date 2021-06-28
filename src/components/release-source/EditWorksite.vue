@@ -116,7 +116,6 @@ export default {
     selectWorksite(val) {
       const worksite = val || {
         name: "",
-        category_id: this.worksite.category.id,
         category: this.worksite.category,
       };
       this.setWorksite(worksite);

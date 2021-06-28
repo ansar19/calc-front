@@ -52,27 +52,27 @@ const getters = {
 };
 
 const actions = {
-  async upsertWorksite({dispatch, commit, state, rootState}, name) {
+  async upsertWorksite({ dispatch, commit, state, rootState }, name) {
     const worksite = { name, category_id: state.worksite.category.id, company_id: rootState.company.working_company.id }
     if (state.worksite.id) worksite.id = state.worksite.id
-    const { data } = await apolloClient.mutate({ mutation: state.worksite.id ? UPDATE_WORKSITE : INSERT_WORKSITE, variables: { ...worksite }})
+    const { data } = await apolloClient.mutate({ mutation: state.worksite.id ? UPDATE_WORKSITE : INSERT_WORKSITE, variables: { ...worksite }, })
     commit('setWorksite', data[Object.keys(data)[0]])
     // console.log(data[Object.keys(data)[0]]);
     dispatch('fetchWorksites')
   },
 
-  async fetchReleaseSources ({ commit, rootState }) {
-    const { data } = await apolloClient.query({query: RS_LIST, variables: {company_id: rootState.company.working_company.id }})
+  async fetchReleaseSources({ commit, rootState }) {
+    const { data } = await apolloClient.query({ query: RS_LIST, variables: { company_id: rootState.company.working_company.id } })
     commit('fetchReleaseSources', data.release_sources)
   },
 
   async getEmissionSourcesList({ commit }, facility_loc_id) {
-    const { data } = await apolloClient.query({query: ES_LIST, variables: {facility_loc_id: facility_loc_id }})
+    const { data } = await apolloClient.query({ query: ES_LIST, variables: { facility_loc_id: facility_loc_id } })
     commit('setReleaseSources', data.emission_sources)
   },
 
-  async fetchReleaseSourceByPk ({ commit }, id) {
-    const { data } = await apolloClient.query({query: RELEASE_SOURCE_BY_PK, variables: {id: id }})
+  async fetchReleaseSourceByPk({ commit }, id) {
+    const { data } = await apolloClient.query({ query: RELEASE_SOURCE_BY_PK, variables: { id: id } })
     const { emission_source, ...releaseSource } = data.release_sources_by_pk
     const { facility_location, ...emissionSource } = emission_source
     const { facility, ...facilityLocation } = facility_location
@@ -84,8 +84,8 @@ const actions = {
     commit('setWorksite', worksite)
   },
 
-  async fetchWorksites ({ commit, rootState }) {
-    const { data } = await apolloClient.query({query: WORKSITES_LIST, fetchPolicy: 'network-only', variables: {company_id: rootState.company.working_company.id }})
+  async fetchWorksites({ commit, rootState }) {
+    const { data } = await apolloClient.query({ query: WORKSITES_LIST, variables: { company_id: rootState.company.working_company.id } })
     commit('setWorksites', data.worksites)
   },
 
