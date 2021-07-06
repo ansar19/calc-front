@@ -89,11 +89,6 @@ export default {
       emission_sources: [],
     };
   },
-  methods: {
-    changeEmisison(val) {
-      console.log(val);
-    },
-  },
   computed: {
     emissionSource: {
       get() {

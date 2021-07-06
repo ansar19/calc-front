@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import { routes } from './routes'
-import jwtDecode from 'jwt-decode'
+import { isAuthenticated } from '../services/auth'
 
 Vue.use(Router);
 
@@ -21,18 +21,9 @@ const router = new Router({
 });
 
 
-
-const isAuthenticated = () => {
-  const token = localStorage.getItem("token")
-  if (token) {
-    const { exp } = jwtDecode(token)
-    return exp * 1000 > Date.now()
-  }
-  return false
-}
-
 router.beforeEach((to, from, next) => {
-  const auth = isAuthenticated()
+  const auth = isAuthenticated();
+  console.log(auth);
   if (to.name !== 'Login' && !auth) next({ name: 'Login' })
   else next()
 })

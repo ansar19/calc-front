@@ -1,6 +1,7 @@
 <script>
 import { mapMutations } from "vuex";
 import LOGIN from "../graphql/Login.gql";
+import { login } from "@/services/auth"
 
 export default {
   name: "Login",
@@ -13,24 +14,38 @@ export default {
   },
   methods: {
     ...mapMutations("users", ["sign_in"]),
-    async login() {
-      const { data } = await this.$apollo.mutate({
-        mutation: LOGIN,
-        variables: {
-          email: this.email,
-          password: this.password,
-        },
-      });
-      const { token, ...user } = data.login
-      localStorage.setItem("token", token)
-      await this.sign_in(user);
-      this.$router.push("/dashboard")
-    },
+    enter() {
+      login(this.email, this.password).then(() => {
+        const token = localStorage.getItem("token")
+        if(token) this.$router.push("/dashboard")
+      })
+    }
+    // login() {
+    //   this.$apollo
+    //     .mutate({
+    //       mutation: LOGIN,
+    //       variables: {
+    //         email: this.email,
+    //         password: this.password,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       const { token, ...user } = res.data.login;
+    //       localStorage.setItem("token", token);
+    //       localStorage.setItem("user", JSON.stringify(user));
+    //     })
+    //     .then(() => {
+    //       this.$router.push("/dashboard");
+    //     })
+    //     .catch((e) => {
+    //       console.error(e);
+    //     })
+    // },
   },
 };
 </script>
 <template>
-  <form class="form-signin" @submit.prevent="login">
+  <form class="form-signin" @submit.prevent="enter">
     <img
       class="my-5"
       src="@/assets/images/ecomarine-logo.svg"

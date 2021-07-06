@@ -129,11 +129,20 @@ export const routes = [
       }
     },
     {
+      path: '/dashboard',
+      name: 'main-overview',
+      component: MainDashboard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login,
       meta: {
         layout: 'full-screen',
+        requiresAuth: false,
         guest: true
       }
     },
@@ -159,14 +168,6 @@ export const routes = [
       component: ForgotPassword,
       meta: {
         guest: true
-      }
-    },
-    {
-      path: '/dashboard',
-      name: 'main-overview',
-      component: MainDashboard,
-      meta: {
-        requiresAuth: true
       }
     },
     {

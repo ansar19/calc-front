@@ -33,40 +33,49 @@
         <d-dropdown-item class="notification__all text-center">View all Notifications</d-dropdown-item>
       </d-collapse>
     </li>-->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <img
-          width="40"
-          class="user-avatar rounded-circle mr-2"
-          src="@/assets/images/avatars/avatar.svg"
-          alt="User Avatar"
+    <template v-if="user">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle text-nowrap px-3"
+          v-d-toggle.user-actions
         >
-        <span v-if="user.employee" class="d-none d-md-inline-block">{{ user.employee.first_name }} {{ user.employee.last_name }}</span>
-        <span v-else class="d-none d-md-inline-block">{{ user.email }}</span>
-      </a>
-      <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
-        <d-dropdown-item>
-          <i class="material-icons">&#xe853;</i>
-          <span class="d-none d-md-inline-block">{{ user.role.name }}</span><br>
-        </d-dropdown-item>
-        <d-dropdown-item>
-          <i class="material-icons">&#xE7FD;</i>
-          <router-link to="user-profile-lite">Профиль</router-link>
-        </d-dropdown-item>
-        <d-dropdown-item>
-          <i class="material-icons">&#xE8B8;</i> Редактировать
-        </d-dropdown-item>
-        <d-dropdown-divider/>
-        <!-- <d-dropdown-item class="text-danger" >
+          <img
+            width="40"
+            class="user-avatar rounded-circle mr-2"
+            src="@/assets/images/avatars/avatar.svg"
+            alt="User Avatar"
+          />
+          <!-- <span v-if="user.employee" class="d-none d-md-inline-block">{{ user.employee.first_name }} {{ user.employee.last_name }}</span> -->
+          <span class="d-none d-md-inline-block">{{ user.email }}</span>
+        </a>
+        <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
+          <d-dropdown-item>
+            <i class="material-icons">&#xe853;</i>
+            <span class="d-none d-md-inline-block">{{ user.role }}</span
+            ><br />
+          </d-dropdown-item>
+          <d-dropdown-item>
+            <i class="material-icons">&#xE7FD;</i>
+            <router-link to="user-profile-lite">Профиль</router-link>
+          </d-dropdown-item>
+          <d-dropdown-item>
+            <i class="material-icons">&#xE8B8;</i> Редактировать
+          </d-dropdown-item>
+          <d-dropdown-divider />
+          <!-- <d-dropdown-item class="text-danger" >
           <a href="#" @click.prevent="signOut"> Выйти</a>
         </d-dropdown-item> -->
-        <d-dropdown-item class="text-danger">
-          <span @click="logout">
-            <i class="material-icons text-danger">&#xE879;</i>Выйти
-          </span>
-        </d-dropdown-item>
-      </d-collapse>
-    </li>
+          <d-dropdown-item class="text-danger">
+            <span @click="exit">
+              <i class="material-icons text-danger">&#xE879;</i>Выйти
+            </span>
+          </d-dropdown-item>
+        </d-collapse>
+      </li>
+    </template>
+    <template v-else>
+      no user
+    </template>
   </d-navbar-nav>
 </template>
 
@@ -76,26 +85,21 @@
 }
 </style>
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex';
-import { onLogout } from "../../../vue-apollo";
+import { logout } from "@/services/auth";
 
 export default {
-  name: 'NavbarNav',
-  computed: {
-    ...mapState('users', ['user'])
+  name: "NavbarNav",
+  data: {
+    user: {},
   },
   methods: {
-    ...mapActions('users', ['fetchUser']),
-    ...mapMutations('users', ['sign_out']),
-
-    async logout() {
-      await onLogout();
-      this.sign_out();
-      this.$router.push('/login');
+    async exit() {
+      await logout();
+      this.$router.push("/login");
     },
   },
   created() {
-    this.fetchUser()
-  }
+    this.user = JSON.parse(localStorage.getItem("user"));
+  },
 };
 </script>
