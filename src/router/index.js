@@ -23,7 +23,6 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   const auth = isAuthenticated();
-  console.log(auth);
   if (to.name !== 'Login' && !auth) next({ name: 'Login' })
   else next()
 })

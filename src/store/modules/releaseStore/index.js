@@ -2,7 +2,7 @@
 import releaseSourceService from '@/services/releaseSourceService';
 import { apolloClient } from '@/vue-apollo'
 import WORKSITES_LIST from '@/graphql/WorksitesList.gql'
-import RS_LIST from '@/graphql/ReleaseSourcesListByWorksiteId.gql'
+import RS_LIST from '@/graphql/ReleaseSourcesListByCompanyId.gql'
 import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
 import UPDATE_WORKSITE from '@/graphql/UpdateWorksite.gql'
 import INSERT_WORKSITE from '@/graphql/InsertWorksite.gql'
