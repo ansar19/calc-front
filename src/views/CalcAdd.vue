@@ -95,7 +95,6 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import api from '@/services/api';
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
 import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
@@ -107,11 +106,6 @@ export default {
     DieselMethod,
     BlastMethod,
     PumpMethod,
-  },
-  apollo: {
-    release_sources: gql`query{
-
-    }`
   },
   data() {
     return {
