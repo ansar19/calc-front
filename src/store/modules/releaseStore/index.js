@@ -8,6 +8,7 @@ import UPDATE_WORKSITE from '@/graphql/UpdateWorksite.gql'
 import INSERT_WORKSITE from '@/graphql/InsertWorksite.gql'
 
 
+
 const initialState = () => ({
   fetchedReleaseSources: null,
   worksite: {},

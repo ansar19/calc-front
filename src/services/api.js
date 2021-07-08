@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { apolloClient } from '@/vue-apollo'
+import RS_LIST from '@/graphql/ReleaseSourcesListByCompanyId.gql'
 import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
 import UPDATE_RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceUpdate.gql'
 
@@ -12,6 +13,11 @@ const api = axios.create({
   },
   timeout: 10000,
 });
+
+export async function fetchReleaseSources(id) {
+  const { data } = await apolloClient.query({ query: RS_LIST, variables: { company_id: id } })
+  return data.release_sources
+}
 
 export async function fetchReleaseSourceByPk(id) {
   const { data } = await apolloClient.query({ query: RELEASE_SOURCE_BY_PK, variables: { id: id } })

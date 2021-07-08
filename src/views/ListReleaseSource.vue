@@ -8,13 +8,13 @@
       </div>
     </div>
     <!-- Default Table -->
-    <div v-if="!loading" class="row">
+    <div v-if="release_sources && release_sources.length" class="row">
       <div class="col">
         <div class="card card-small overflow-hidden mb-4 meta">
           <d-card-body>
             <vue-good-table
               :columns="columns"
-              :rows="fetchedReleaseSources"
+              :rows="release_sources"
               compactMode
               :pagination-options="{
                 enabled: true,
@@ -48,14 +48,36 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      Нет данных
+    </div>
   </div>
 </template>
 
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { useGlobalState } from "@/useStore"
+import { fetchReleaseSources } from "@/services/api"
+import { asyncComputed } from '@vueuse/core'
+import router from "@/router"
+
 export default {
-  name: "my-component",
+  setup() {
+    const state = useGlobalState()
+    const release_sources = asyncComputed(
+      async() => await fetchReleaseSources(state.value.companyId),
+      null
+    )
+
+    function onRowClick(params) {
+      router.push({
+        name: "release-source-show",
+        params: { id: params.row.id },
+      });
+    }
+    return { release_sources, onRowClick }
+  },
+  name: "release-source-list",
   data() {
     return {
       columns: [
@@ -89,21 +111,6 @@ export default {
         },
       ],
     };
-  },
-  computed: {
-    ...mapState("releaseStore", ["fetchedReleaseSources"]),
-  },
-  created() {
-    this.fetchReleaseSources();
-  },
-  methods: {
-    ...mapActions("releaseStore", ["fetchReleaseSources"]),
-    onRowClick(params) {
-      this.$router.push({
-        name: "release-source-show",
-        params: { id: params.row.id },
-      });
-    },
   },
 };
 </script>

@@ -3,7 +3,6 @@ import Vue from "vue";
 import { ClientTable } from "vue-tables-2";
 import "@/assets/scss/vue-tables.scss";
 import COMPANIES from "../graphql/CompanyList.gql";
-import { mapMutations } from 'vuex';
 import { useGlobalState } from '@/useStore'
 
 Vue.use(ClientTable);
@@ -131,13 +130,6 @@ export default {
       }
     };
   },
-
-  methods: {
-    ...mapMutations('company', ['SET_WORKING_COMPANY']),
-    enterCompany(payload) {
-      this.SET_WORKING_COMPANY(payload)
-    }
-  }
 };
 </script>
 
