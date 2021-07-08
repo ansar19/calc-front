@@ -4,10 +4,20 @@ import { ClientTable } from "vue-tables-2";
 import "@/assets/scss/vue-tables.scss";
 import COMPANIES from "../graphql/CompanyList.gql";
 import { mapMutations } from 'vuex';
+import { useGlobalState } from '@/useStore'
 
 Vue.use(ClientTable);
 
 export default {
+  setup() {
+    const state = useGlobalState()
+    function setCompany(id, name) {
+      state.value.companyId = id
+      state.value.companyName = name
+    }
+    return { setCompany }
+  },
+
   apollo: {
     companies: {
       query:  COMPANIES
@@ -220,7 +230,7 @@ export default {
             >
               <d-button
                 class="btn-white"
-                @click="enterCompany(props.row)"
+                @click="setCompany(props.row.id, props.row.company_name)"
                 v-d-tooltip.hover="'Войти в компанию'"
               >
                 <i class="material-icons">&#xE5CA;</i>

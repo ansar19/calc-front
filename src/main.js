@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue';
+import VueCompositionAPI from '@vue/composition-api'
 
 import FrappeChart from 'vue2-frappe';
 import FrapChart from 'vue2-frappe';
@@ -172,6 +173,7 @@ import Default from '@/layouts/Default.vue';
 
 import apolloProvider from './vue-apollo'
 
+Vue.use(VueCompositionAPI)
 
 ShardsVue.install(Vue);
 
