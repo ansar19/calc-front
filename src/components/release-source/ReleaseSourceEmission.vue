@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="emissionSource">
     <d-row>
       <d-col cols="12" md="6" lg="6">
         <div class="form-group">
@@ -83,7 +83,11 @@ export default {
       query: EMISSION_SOURCES_LIST,
     },
   },
-  props: ["releaseSource", "setEmissionSource"],
+  // props: ["releaseSource", "setEmissionSource"],
+  props: {
+    releaseSource: Object,
+    setEmissionSource: Function,
+  },
   data() {
     return {
       emission_sources: [],

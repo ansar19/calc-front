@@ -52,6 +52,7 @@ import ReleaseSourceComponent from "@/components/release-source/ReleaseSource.vu
 import {
   fetchReleaseSourceByPk,
   updateReleaseSourceByPk,
+  addReleaseSource,
 } from "@/services/api";
 
 export default {
@@ -67,8 +68,34 @@ export default {
       loaded: true,
       errorMsg: "",
       saveSuccess: "",
-      releaseSource: {},
       filters: [],
+      releaseSource: {
+        name: "",
+        number: "",
+        inventory_number: "",
+        ghg_source: false,
+        emission_src_id: "",
+        emission_source: {
+          name: "",
+          number: "",
+          inventory_number: "",
+          organized: false,
+          product: "",
+          description: "",
+          facility_location: {
+            name: "",
+            facility: {
+              name: "",
+              worksite: {
+                name: "",
+                category: {
+                  name: "",
+                },
+              },
+            },
+          },
+        },
+      },
     };
   },
 
@@ -90,9 +117,12 @@ export default {
     async saveReleaseSource() {
       if (this.saveReleaseValidation) {
         const { emission_source, ...release_source } = this.releaseSource;
-        const rs = await updateReleaseSourceByPk(release_source);
+        const rs = this.releaseSource.id
+          ? await updateReleaseSourceByPk(release_source)
+          : await addReleaseSource(release_source);
         this.releaseSource = { ...rs };
         this.saveSuccess = "Сохранено";
+        this.$router.push({ name: 'release-source-edit', params: { id: rs.id } })
       } else {
         throw new Error("Заполните все данные");
       }

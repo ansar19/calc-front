@@ -206,7 +206,7 @@ export const routes = [
     {
       path: '/release-source-add',
       name: 'release-source-add',
-      component: ReleaseSourceAdd,
+      component: ReleaseSource,
       meta: {
         requiresAuth: true
       }
