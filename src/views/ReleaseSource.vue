@@ -20,11 +20,12 @@
               errorMsg
             }}</d-alert>
           </div>
-          <div v-if="saveSuccess">
+            <alert :message="saveSuccess" ref="alert"/>
+          <!-- <div v-if="saveSuccess">
             <d-alert theme="success" show="saveSuccess">{{
               saveSuccess
-            }}</d-alert>
-          </div>
+            }}</d-alert> -->
+          <!-- </div> -->
           <div class="d-flex">
             <router-link tag="a" to="/release-source-list"
               >Отменить</router-link
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import Alert from "@/components/layout/Alert/Alert.vue"
 import Wrapper from "@/components/release-source/ReleaseSourceWrapper.vue";
 import ReleaseSourceHead from "@/components/release-source/ReleaseSourceHead.vue";
 import ReleaseSourceEmission from "@/components/release-source/ReleaseSourceEmission.vue";
@@ -57,6 +59,7 @@ import {
 
 export default {
   components: {
+    Alert,
     Wrapper,
     ReleaseSourceHead,
     ReleaseSourceEmission,
@@ -121,8 +124,11 @@ export default {
           ? await updateReleaseSourceByPk(release_source)
           : await addReleaseSource(release_source);
         this.releaseSource = { ...rs };
-        this.saveSuccess = "Сохранено";
-        this.$router.push({ name: 'release-source-edit', params: { id: rs.id } })
+        this.saveSuccess = rs ? "Сохранено" : "Ошибка";
+        this.$refs.alert.showAlert()
+        if(this.$route.name === 'release-source-add') {
+          this.$router.push({ name: 'release-source-edit', params: { id: rs.id } })
+        }
       } else {
         throw new Error("Заполните все данные");
       }
