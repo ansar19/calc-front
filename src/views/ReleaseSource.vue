@@ -28,7 +28,7 @@
           <!-- </div> -->
           <div class="d-flex">
             <router-link tag="a" to="/release-source-list"
-              >Отменить</router-link
+              >Вернуться к списку</router-link
             >
             <button
               id="saveRelease"

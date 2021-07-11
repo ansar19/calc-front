@@ -47,7 +47,7 @@ export default function () {
   }, {
     title: 'Источники',
     items: [{
-      title: 'Список источников',
+      title: 'Список источников выделения',
       htmlBefore: '<i class="material-icons">view_module</i>',
       to: {
         name: 'release-source-list',
