@@ -284,19 +284,19 @@ export default {
       this.setTyearTotal(this.tyearSubTotal());
       this.setPollutants([
         {
-          code: "0301",
+          code: "301",
           name: "Азота диоксид",
           gseccoef: this.g0301,
           tyearcoef: this.m0301
         },
         {
-          code: "0304",
+          code: "304",
           name: "Азота оксид",
           gseccoef: this.g0304,
           tyearcoef: this.m0304
         },
         {
-          code: "0337",
+          code: "337",
           name: "Углерода оксид",
           gseccoef: this.g0337,
           tyearcoef: this.m0337

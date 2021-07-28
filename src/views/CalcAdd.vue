@@ -35,10 +35,10 @@
               <div class="form-group">
                 <label class="form-label">Источник выделения:</label>
                 <v-select
-                  label="releaseSourceName"
+                  label="name"
                   :reduce="rel => rel.id"
                   :value="releaseSourceId"
-                  :options="releaseSources"
+                  :options="release_sources"
                   @input="setReleaseSourceId"
                 ></v-select>
               </div>
@@ -51,12 +51,12 @@
                   v-model="calcMethod"
                 ></v-select>
               </div>
-              <div class="form-group" v-if="calcData.calcType !== 'draft'">
+              <div class="form-group">
                 <div class="custom-controls-stacked">
                   <label class="d-block">Год на который устанавливается лимит:</label>
                   <date-range-picker
-                    :from="from"
-                    :to="to"
+                    :from="period.from"
+                    :to="period.to"
                     :panel="panel"
                     :panels="panels"
                     :theme="theme"
@@ -95,13 +95,24 @@
 </template>
 
 <script>
-import api from '@/services/api';
+import RELEASE_SOURCES_LIST_CALC from '@/graphql/ReleaseSourcesCalcList.gql'
+import ADD_AIR_CALC from '@/graphql/AddAirCalc.gql'
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
 import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
 import PumpMethod from '@/components/calc-methods/PumpMethod.vue';
 import { mapState, mapMutations } from 'vuex';
 
+const companyId = JSON.parse(localStorage.getItem("vue-use-local-storage")).companyId
+
 export default {
+  apollo: {
+    release_sources: {
+      query : RELEASE_SOURCES_LIST_CALC,
+      variables: {
+        company_id: companyId
+      }
+    }
+  },
   components: {
     DieselMethod,
     BlastMethod,
@@ -134,16 +145,14 @@ export default {
         from: null,
       },
       // vue-mj-daterangepicker related
-      to: '',
-      from: '2019-12-23T10:26:00.996Z',
       panel: 'range',
       panels: ['range', 'year'],
       presets: [
+        'next365days',
         'custom',
         'next7days',
         'next30days',
         'next90days',
-        'next365days',
       ],
       // vue-mj-daterangepicker theme
       theme: {
@@ -169,16 +178,25 @@ export default {
     },
 
     saveCalc() {
-      api.postResource('releaseSourceCalculations', {
-        releaseSourceId: this.releaseSourceId,
-        calcMethodId: this.calcMethod,
-        calcType: this.calcData.calcType,
-        pollutants: this.pollutants,
-        gsecTotal: this.gsecTotal,
-        tyearTotal: this.tyearTotal,
-        period: this.period,
+      const polls = this.pollutants.map(({code, gseccoef, tyearcoef}) => ({code, gseccoef, tyearcoef}))
+      console.log(polls);
+      this.$apollo.mutate({
+        mutation: ADD_AIR_CALC,
+        variables: {
+          release_source_id: this.releaseSourceId,
+          calc_method: this.calcMethod,
+          type: this.calcData.calcType,
+          start_date: this.period.from,
+          end_date: this.period.to,
+          calc_pollutants: polls
+        }
       })
-        .then(() => this.goBack());
+      .then((data) => {
+      // Result
+      console.log(data)
+      }).catch((error) => {
+        console.error(error)
+      })
     },
 
     goBack() {
@@ -188,12 +206,6 @@ export default {
 
   computed: {
     ...mapState('calcStore', ['releaseSourceId', 'calcMethodId', 'gsecTotal', 'tyearTotal', 'pollutants']),
-  },
-
-  created() {
-    api.getResource('releaseSources').then((res) => {
-      this.releaseSources = res;
-    });
   },
 };
 </script>
