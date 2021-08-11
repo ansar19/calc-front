@@ -115,19 +115,19 @@ export default {
           polCoefficents: [
             {
               polName: 'Смесь углеводородов предельных С1-С5',
-              polCode: '0415',
+              polCode: '415',
               coef: 72.46,
             },
             {
               polName: 'Смесь углеводородов предельных С6-С10',
-              polCode: '0416',
+              polCode: '416',
               coef: 26.8,
             },
-            { polName: 'Бензол', polCode: '0602', coef: 0.35 },
-            { polName: 'Метилбензол (толуол)', polCode: '0621', coef: 0.22 },
+            { polName: 'Бензол', polCode: '602', coef: 0.35 },
+            { polName: 'Метилбензол (толуол)', polCode: '621', coef: 0.22 },
             {
               polName: 'Диметилбензол (смесь о- м- п- изомеров)',
-              polCode: '0616',
+              polCode: '616',
               coef: 0.11,
             },
           ],
@@ -138,24 +138,24 @@ export default {
           polCoefficents: [
             {
               polName: 'Смесь углеводородов предельных С1-С5',
-              polCode: '0415',
+              polCode: '415',
               coef: 72.46,
             },
             {
               polName: 'Смесь углеводородов предельных С6-С10',
-              polCode: '0416',
+              polCode: '416',
               coef: 26.8,
             },
-            { polName: 'Бензол', polCode: '0602', coef: '0.35' },
-            { polName: 'Метилбензол (толуол)', polCode: '0621', coef: '0.22' },
+            { polName: 'Бензол', polCode: '602', coef: '0.35' },
+            { polName: 'Метилбензол (толуол)', polCode: '621', coef: '0.22' },
             {
               polName: 'Диметилбензол (смесь о- м- п- изомеров)',
-              polCode: '0616',
+              polCode: '616',
               coef: 0.11,
             },
             {
               polName: 'Сероводород',
-              polCode: '0333',
+              polCode: '333',
               coef: 0.06,
             },
           ],
@@ -166,27 +166,27 @@ export default {
           polCoefficents: [
             {
               polName: 'Смесь углеводородов предельных С1-С5',
-              polCode: '0415',
+              polCode: '415',
               coef: 67.67,
             },
             {
               polName: 'Смесь углеводородов предельных С6-С10',
-              polCode: '0416',
+              polCode: '416',
               coef: 25.01,
             },
             {
               polName: 'Углеводороды Непредельные (по амиленам)',
-              polCode: '0501',
+              polCode: '501',
               coef: 2.5,
             },
-            { polName: 'Бензол', polCode: '0602', coef: 2.3 },
-            { polName: 'Метилбензол (толуол)', polCode: '0621', coef: 2.17 },
+            { polName: 'Бензол', polCode: '602', coef: 2.3 },
+            { polName: 'Метилбензол (толуол)', polCode: '621', coef: 2.17 },
             {
               polName: 'Диметилбензол (смесь о- м- п- изомеров)',
-              polCode: '0616',
+              polCode: '616',
               coef: 0.29,
             },
-            { polName: 'Этилбензол', polCode: '0620', coef: 0.06 },
+            { polName: 'Этилбензол', polCode: '620', coef: 0.06 },
           ],
         },
         {
@@ -195,27 +195,27 @@ export default {
           polCoefficents: [
             {
               polName: 'Смесь углеводородов предельных С1-С5',
-              polCode: '0415',
+              polCode: '415',
               coef: 75.47,
             },
             {
               polName: 'Смесь углеводородов предельных С6-С10',
-              polCode: '0416',
+              polCode: '416',
               coef: 18.38,
             },
             {
               polName: 'Углеводороды Непредельные (по амиленам)',
-              polCode: '0501',
+              polCode: '501',
               coef: 2.5,
             },
-            { polName: 'Бензол', polCode: '0602', coef: 2 },
-            { polName: 'Метилбензол (толуол)', polCode: '0621', coef: 1.45 },
+            { polName: 'Бензол', polCode: '602', coef: 2 },
+            { polName: 'Метилбензол (толуол)', polCode: '621', coef: 1.45 },
             {
               polName: 'Диметилбензол (смесь о- м- п- изомеров)',
-              polCode: '0616',
+              polCode: '616',
               coef: 0.15,
             },
-            { polName: 'Этилбензол', polCode: '0620', coef: 0.05 },
+            { polName: 'Этилбензол', polCode: '620', coef: 0.05 },
           ],
         },
         {
@@ -224,19 +224,19 @@ export default {
           polCoefficents: [
             {
               polName: 'Смесь углеводородов предельных С1-С5 (1531*, 1539*)',
-              polCode: '0415',
+              polCode: '415',
               coef: 11.88,
             },
             {
               polName: 'Смесь углеводородов предельных С6-С10 (1532*, 1540*)',
-              polCode: '0416',
+              polCode: '416',
               coef: 81.86,
             },
-            { polName: 'Бензол', polCode: '0602', coef: 2.15 },
-            { polName: 'Метилбензол (толуол)', polCode: '0621', coef: 3.2 },
+            { polName: 'Бензол', polCode: '602', coef: 2.15 },
+            { polName: 'Метилбензол (толуол)', polCode: '621', coef: 3.2 },
             {
               polName: 'Диметилбензол (смесь о- м- п- изомеров)',
-              polCode: '0616',
+              polCode: '616',
               coef: 0.91,
             },
           ],
