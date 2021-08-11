@@ -16,33 +16,33 @@ export default function () {
       htmlBefore: '<i class="material-icons">note_add</i>',
       htmlAfter: '',
     },
-    // ,
-    // {
-    //   title: 'Добавить компанию',
-    //   htmlBefore: '<i class="material-icons">note_add</i>',
-    //   to: {
-    //     name: 'new-company',
-    //   },
-    // },
-    // , {
-    //   title: 'Первый руководитель',
-    //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
-    //   to: {
-    //     name: 'new-company-head',
-    //   },
-    // }, {
-    //   title: 'Банковские детали',
-    //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
-    //   to: {
-    //     name: 'new-bank-details',
-    //   },
-    // }, {
-    //   title: 'Адреса компании',
-    //   htmlBefore: '<i class="material-icons">error</i>',
-    //   to: {
-    //     name: 'new-company-address',
-    //   },
-    // }
+      // ,
+      // {
+      //   title: 'Добавить компанию',
+      //   htmlBefore: '<i class="material-icons">note_add</i>',
+      //   to: {
+      //     name: 'new-company',
+      //   },
+      // },
+      // , {
+      //   title: 'Первый руководитель',
+      //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
+      //   to: {
+      //     name: 'new-company-head',
+      //   },
+      // }, {
+      //   title: 'Банковские детали',
+      //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
+      //   to: {
+      //     name: 'new-bank-details',
+      //   },
+      // }, {
+      //   title: 'Адреса компании',
+      //   htmlBefore: '<i class="material-icons">error</i>',
+      //   to: {
+      //     name: 'new-company-address',
+      //   },
+      // }
     ],
   }, {
     title: 'Источники',
@@ -156,5 +156,22 @@ export default function () {
   //   },
   //   ],
   // },
+  {
+    title: 'Настройки',
+    items: [
+      {
+        title: 'Загрязняющие вещества',
+        to: '/pollutants',
+        htmlBefore: '<i class="material-icons">&#xE8D1;</i>',
+        htmlAfter: '',
+      },
+      {
+        title: 'Группы загрязняющих веществ',
+        to: '/pollutant-groups',
+        htmlBefore: '<i class="material-icons">&#xE8D1;</i>',
+        htmlAfter: '',
+      },
+    ]
+  }
   ];
 }

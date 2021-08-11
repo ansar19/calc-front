@@ -95,6 +95,8 @@ import NewCalcMethod from '@/views/NewCalcMethod.vue';
 import NewTree from '@/views/NewTree.vue';
 
 import NewPollutantGroup from '@/views/NewPollutantGroup.vue';
+import PollutantsView from '@/views/PollutantsView.vue';
+import PollutantGroupsView from '@/views/PollutantGroupsView.vue';
 
 
 // import UserShow from '@/components/user/Show.vue';
@@ -616,6 +618,23 @@ export const routes = [
       path: '/service-plan',
       name: 'service-plan',
       component: ServicePlan,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    // Settings
+    {
+      path: '/pollutants',
+      name: 'pollutants',
+      component: PollutantsView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/pollutant-groups',
+      name: 'pollutant-groups',
+      component: PollutantGroupsView,
       meta: {
         requiresAuth: true
       }
