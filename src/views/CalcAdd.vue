@@ -95,6 +95,7 @@
 </template>
 
 <script>
+import { fetchReleaseSourcesByCompanyId } from '@/services/api'
 import RELEASE_SOURCES_LIST_CALC from '@/graphql/ReleaseSourcesCalcList.gql'
 import ADD_AIR_CALC from '@/graphql/AddAirCalc.gql'
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
@@ -102,17 +103,17 @@ import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
 import PumpMethod from '@/components/calc-methods/PumpMethod.vue';
 import { mapState, mapMutations } from 'vuex';
 
-const companyId = JSON.parse(localStorage.getItem("vue-use-local-storage")).companyId
+// const companyId = JSON.parse(localStorage.getItem("vue-use-local-storage")).companyId
 
 export default {
-  apollo: {
-    release_sources: {
-      query : RELEASE_SOURCES_LIST_CALC,
-      variables: {
-        company_id: companyId
-      }
-    }
-  },
+  // apollo: {
+  //   release_sources: {
+  //     query : RELEASE_SOURCES_LIST_CALC,
+  //     variables: {
+  //       company_id: this.companyId
+  //     }
+  //   }
+  // },
   components: {
     DieselMethod,
     BlastMethod,
@@ -120,6 +121,7 @@ export default {
   },
   data() {
     return {
+      companyId: '',
       release_sources: [],
       releaseSources: [],
       calcMethods: [
@@ -206,6 +208,12 @@ export default {
 
   computed: {
     ...mapState('calcStore', ['releaseSourceId', 'calcMethodId', 'gsecTotal', 'tyearTotal', 'pollutants']),
+  },
+  async created() {
+    const companyId = JSON.parse(localStorage.getItem("vue-use-local-storage")).companyId
+    if (companyId) {
+      this.release_sources = await fetchReleaseSourcesByCompanyId(companyId)
+    }
   },
 };
 </script>
