@@ -33,6 +33,13 @@ export const apolloClient = new ApolloClient({
 
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
+  defaultOptions: {
+    // apollo options applied to all queries in components
+    $query: {
+      loadingKey: 'loading',
+      fetchPolicy: 'cache-and-network',
+    },
+  },
   errorHandler (error) {
     // eslint-disable-next-line no-console
     console.log('%cError', 'background: red; color: white; padding: 2px 4px; border-radius: 3px; font-weight: bold;', error.message)
