@@ -157,7 +157,7 @@ export default function () {
   //   ],
   // },
   {
-    title: 'Настройки',
+    title: 'Спарвочник',
     items: [
       {
         title: 'Загрязняющие вещества',
