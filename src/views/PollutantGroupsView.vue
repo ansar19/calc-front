@@ -16,7 +16,6 @@
           <d-card-header class="border-bottom"> </d-card-header>
           <d-card-body>
             <vue-good-table
-              @on-row-click="editPol"
               :columns="columns"
               :rows="flatten"
               :fixed-header="true"
@@ -25,7 +24,7 @@
                 enabled: true,
               }"
               :pagination-options="{
-                enabled: true,
+                enabled: false,
                 mode: 'pages',
                 perPageDropdown: [10, 50, 100],
                 rowsPerPageLabel: 'Строк',
@@ -40,6 +39,7 @@
       </div>
     </div>
     <spinner v-else />
+
   </div>
 </template>
 
@@ -73,11 +73,9 @@ export default {
   data() {
     return {
       loading: 0,
-      editModal: false,
       air_pollutant_groups: [],
       columns: [
         { label: "Наименование", field: "label" },
-        // { label: "Группа", field: this.groupField },
         {
           label: "Класс опасности",
           field: "hazard_class",
@@ -124,37 +122,14 @@ export default {
   computed: {
     flatten() {
       const pol_g = this.air_pollutant_groups.map((el) => {
-        el.children = el.pollutants_grouped.length ? el.pollutants_grouped.map((ch) => Object.values(ch)[0]) : []
-        delete el.pollutants_grouped
-        return el
-      })
+        el.children =
+          el.pollutants_grouped && el.pollutants_grouped.length
+            ? el.pollutants_grouped.map((ch) => Object.values(ch)[0])
+            : [];
+        delete el.pollutants_grouped;
+        return el;
+      });
       return pol_g;
-    },
-  },
-  methods: {
-    editPol(params) {
-      this.editModal = true;
-
-      console.log(params.row.id);
-    },
-    polField(props) {
-      console.log(props.row);
-      return props.row.name;
-    },
-    groupField(row) {
-      return row.pollutant_group.label;
-    },
-    hazardField(row) {
-      return row.pollutant.hazard_class;
-    },
-    solidField(row) {
-      return row.pollutant.solid;
-    },
-    vocField(row) {
-      return row.pollutant.voc;
-    },
-    hydrocarbonField(row) {
-      return row.pollutant.hydrocarbon;
     },
   },
 };
