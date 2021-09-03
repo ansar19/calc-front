@@ -62,12 +62,11 @@
               />
               <label>Выбрать группы ЗВ</label>
               <v-select
-                multiple
                 :options="air_pollutant_groups"
                 name="label"
                 :id="id"
                 :placeholder="placeholder"
-                v-model="editGroups"
+                v-model="editPol.group"
                 label="label"
               >
               </v-select>
@@ -115,11 +114,9 @@ export default {
             solid
             voc
             hydrocarbon
-            pollutant_group {
-              pollutant_group {
-                id
-                label
-              }
+            group {
+              id
+              label
             }
           }
         }
@@ -131,7 +128,7 @@ export default {
       loading: 0,
       air_pollutant_groups: [],
       air_pollutants: [],
-      editGroups: [],
+      editGroup: "",
       slideOut: {
         visible: false,
       },
@@ -188,18 +185,37 @@ export default {
   methods: {
     savePol() {
       this.slideOut.visible = false;
-      console.log("savePol", this.editPol.id, this.editGroups);
+      this.$apollo.mutate({
+        mutation: gql`
+          mutation insert_polls_group($pollutant_id: uuid!, $pollutant_group_id: uuid!) {
+            insert_air_pollutants_groups(
+              objects: {
+                pollutant_id: $pollutant_id
+                pollutant_group_id: $pollutant_group_id
+              }
+              on_conflict: {
+                constraint: air_pollutants_groups_pkey
+                update_columns: pollutant_group_id
+              }
+            ) {
+              returning {
+                pollutant_id
+                pollutant_group_id
+              }
+            }
+          }
+        `,
+        variables: {
+          pollutant_id: this.editPol.id,
+          pollutant_group_id: this.editPol.group.id
+        },
+      });
     },
 
     async editPolFn(params) {
       this.slideOut.visible = true;
       const { data } = await this.fetchPolById(params.row.id);
       this.editPol = Object.assign({}, data.air_pollutants_by_pk);
-      this.editGroups =
-        data.air_pollutants_by_pk.group &&
-        data.air_pollutants_by_pk.group.length
-          ? data.air_pollutants_by_pk.group.map((el) => Object.values(el)[0])
-          : [];
     },
 
     fetchPolById(id) {
@@ -209,11 +225,9 @@ export default {
             air_pollutants_by_pk(id: $id) {
               id
               label
-              group: pollutant_group {
-                pollutant_group {
-                  id
-                  label
-                }
+              group {
+                id
+                label
               }
             }
           }

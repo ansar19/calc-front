@@ -17,7 +17,7 @@
           <d-card-body>
             <vue-good-table
               :columns="columns"
-              :rows="flatten"
+              :rows="air_pollutant_groups"
               :fixed-header="true"
               compactMode
               :group-options="{
@@ -39,7 +39,6 @@
       </div>
     </div>
     <spinner v-else />
-
   </div>
 </template>
 
@@ -56,15 +55,13 @@ export default {
         air_pollutant_groups {
           id
           label
-          pollutants_grouped {
-            pollutant {
-              id
-              label
-              hazard_class
-              solid
-              voc
-              hydrocarbon
-            }
+          children: pollutants {
+            id
+            label
+            hazard_class
+            solid
+            voc
+            hydrocarbon
           }
         }
       }
