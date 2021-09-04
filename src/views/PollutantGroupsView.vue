@@ -22,17 +22,14 @@
               compactMode
               :group-options="{
                 enabled: true,
-              }"
-              :pagination-options="{
-                enabled: false,
-                mode: 'pages',
-                perPageDropdown: [10, 50, 100],
-                rowsPerPageLabel: 'Строк',
-                nextLabel: 'Вперед',
-                prevLabel: 'Назад',
-                allLabel: 'Все',
+                collapsable: true
               }"
             >
+              <template slot="table-header-row" slot-scope="props">
+                <span class="table-group-header">
+                  {{ props.formattedRow[props.column.field] }}
+                </span>
+              </template>
             </vue-good-table>
           </d-card-body>
         </div>
@@ -116,18 +113,10 @@ export default {
       ],
     };
   },
-  computed: {
-    flatten() {
-      const pol_g = this.air_pollutant_groups.map((el) => {
-        el.children =
-          el.pollutants_grouped && el.pollutants_grouped.length
-            ? el.pollutants_grouped.map((ch) => Object.values(ch)[0])
-            : [];
-        delete el.pollutants_grouped;
-        return el;
-      });
-      return pol_g;
-    },
-  },
 };
 </script>
+<style scoped>
+  .table-group-header {
+    text-transform: uppercase;
+  }
+</style>
