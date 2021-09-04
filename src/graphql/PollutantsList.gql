@@ -1,0 +1,15 @@
+query {
+  air_pollutants {
+    id
+    label
+    code
+    hazard_class
+    solid
+    voc
+    hydrocarbon
+    group {
+      id
+      label
+    }
+  }
+}

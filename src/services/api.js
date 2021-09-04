@@ -5,6 +5,10 @@ import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
 import UPDATE_RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceUpdate.gql'
 import ADD_RELEASE_SOURCE_BY_PK from '@/graphql/AddReleaseSource.gql'
 import RELEASE_SOURCES_LIST_CALC from '@/graphql/ReleaseSourcesCalcList.gql'
+import POLLS_LIST from '@/graphql/PollutantsList.gql'
+import POLL_GROUPS_LIST from '@/graphql/PollGroupsList.gql'
+import POLL_BY_ID from '@/graphql/PollutantById.gql'
+import ADD_POL_TO_GROUP from '@/graphql/AddPolToGroup.gql'
 
 const api = axios.create({
   baseURL: 'https://ecoapikz.herokuapp.com/',
@@ -15,6 +19,37 @@ const api = axios.create({
   },
   timeout: 10000,
 });
+
+export async function fetchPollutants() {
+  return await apolloClient.query({ query: POLLS_LIST })
+}
+
+export async function fetchPollsGroups() {
+  const { data } = await apolloClient.query({ query: POLL_GROUPS_LIST })
+  return data.air_pollutant_groups
+}
+
+export async function fetchPolById(id) {
+  const { data } = await apolloClient.query({
+    query: POLL_BY_ID,
+    variables: {
+      id: id,
+    },
+  });
+  return data.air_pollutants_by_pk
+}
+
+export async function addPolToGrouo(pollutant_id, pollutant_group_id) {
+  const { data, loading } = await apolloClient.mutate({
+    mutation: ADD_POL_TO_GROUP,
+    variables: {
+      pollutant_id: pollutant_id,
+      pollutant_group_id: pollutant_group_id
+    },
+  });
+
+  return { data, loading }
+}
 
 export async function fetchReleaseSources(id) {
   const { data } = await apolloClient.query({ query: RS_LIST, variables: { company_id: id } })

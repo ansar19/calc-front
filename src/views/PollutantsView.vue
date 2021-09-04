@@ -85,6 +85,12 @@
 </template>
 
 <script>
+import {
+  fetchPollutants,
+  fetchPollsGroups,
+  fetchPolById,
+  addPolToGrouo,
+} from "@/services/api";
 import gql from "graphql-tag";
 import Spinner from "@/components/Base/Spinner.vue";
 import SlideOut from "@hyjiacan/vue-slideout";
@@ -93,39 +99,9 @@ import "@hyjiacan/vue-slideout/lib/slideout.css";
 export default {
   name: "Pollutants",
   components: { Spinner, SlideOut },
-  apollo: {
-    air_pollutant_groups: gql`
-      query {
-        air_pollutant_groups {
-          id
-          label
-          name
-        }
-      }
-    `,
-    air_pollutants: {
-      query: gql`
-        query {
-          air_pollutants {
-            id
-            label
-            code
-            hazard_class
-            solid
-            voc
-            hydrocarbon
-            group {
-              id
-              label
-            }
-          }
-        }
-      `,
-    },
-  },
   data() {
     return {
-      loading: 0,
+      loading: true,
       air_pollutant_groups: [],
       air_pollutants: [],
       editGroup: "",
@@ -182,60 +158,32 @@ export default {
       ],
     };
   },
+  created() {
+    this.fetchPolls();
+    this.fetchGroups();
+  },
   methods: {
-    savePol() {
-      this.slideOut.visible = false;
-      this.$apollo.mutate({
-        mutation: gql`
-          mutation insert_polls_group($pollutant_id: uuid!, $pollutant_group_id: uuid!) {
-            insert_air_pollutants_groups(
-              objects: {
-                pollutant_id: $pollutant_id
-                pollutant_group_id: $pollutant_group_id
-              }
-              on_conflict: {
-                constraint: air_pollutants_groups_pkey
-                update_columns: pollutant_group_id
-              }
-            ) {
-              returning {
-                pollutant_id
-                pollutant_group_id
-              }
-            }
-          }
-        `,
-        variables: {
-          pollutant_id: this.editPol.id,
-          pollutant_group_id: this.editPol.group.id
-        },
+    async fetchPolls() {
+      this.loading = true;
+      const { data, loading } = await fetchPollutants();
+      this.air_pollutants = data.air_pollutants;
+      this.loading = loading;
+    },
+    async fetchGroups() {
+      this.air_pollutant_groups = await fetchPollsGroups();
+    },
+    async savePol() {
+      this.loading = true;
+      addPolToGrouo(this.editPol.id, this.editPol.group.id).then((res) => {
+        this.fetchPolls();
+        this.slideOut.visible = false;
       });
     },
 
     async editPolFn(params) {
       this.slideOut.visible = true;
-      const { data } = await this.fetchPolById(params.row.id);
-      this.editPol = Object.assign({}, data.air_pollutants_by_pk);
-    },
-
-    fetchPolById(id) {
-      return this.$apollo.query({
-        query: gql`
-          query PolByPk($id: uuid!) {
-            air_pollutants_by_pk(id: $id) {
-              id
-              label
-              group {
-                id
-                label
-              }
-            }
-          }
-        `,
-        variables: {
-          id: id,
-        },
-      });
+      const data = await fetchPolById(params.row.id);
+      this.editPol = Object.assign({}, data);
     },
   },
 };

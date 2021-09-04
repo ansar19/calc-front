@@ -1,0 +1,10 @@
+query PolByPk($id: uuid!) {
+  air_pollutants_by_pk(id: $id) {
+    id
+    label
+    group {
+      id
+      label
+    }
+  }
+}
