@@ -89,9 +89,8 @@ import {
   fetchPollutants,
   fetchPollsGroups,
   fetchPolById,
-  addPolToGrouo,
+  addPolToGroup,
 } from "@/services/api";
-import gql from "graphql-tag";
 import Spinner from "@/components/Base/Spinner.vue";
 import SlideOut from "@hyjiacan/vue-slideout";
 import "@hyjiacan/vue-slideout/lib/slideout.css";
@@ -115,6 +114,7 @@ export default {
       columns: [
         { label: "Наименование", field: "label" },
         { label: "Код", field: "code" },
+        { label: "Группа", field: this.getPolGroup },
         {
           label: "Класс опасности",
           field: "hazard_class",
@@ -174,7 +174,7 @@ export default {
     },
     async savePol() {
       this.loading = true;
-      addPolToGrouo(this.editPol.id, this.editPol.group.id).then((res) => {
+      addPolToGroup(this.editPol.id, this.editPol.group.id).then((res) => {
         this.fetchPolls();
         this.slideOut.visible = false;
       });
@@ -184,6 +184,10 @@ export default {
       this.slideOut.visible = true;
       const data = await fetchPolById(params.row.id);
       this.editPol = Object.assign({}, data);
+    },
+
+    getPolGroup(rowObj) {
+      return rowObj.group ? rowObj.group.label : "-";
     },
   },
 };

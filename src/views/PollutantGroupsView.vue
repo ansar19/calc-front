@@ -22,11 +22,19 @@
               compactMode
               :group-options="{
                 enabled: true,
-                collapsable: true
+                collapsable: true,
               }"
             >
               <template slot="table-header-row" slot-scope="props">
                 <span class="table-group-header">
+                  {{ props.formattedRow[props.column.field] }}
+                </span>
+              </template>
+              <template slot="table-header-row" slot-scope="props">
+                <span v-if="props.column.field == 'action'">
+                  <button class="btn btn-primary" @click="editGroup">Редактроватьь</button>
+                </span>
+                <span v-else>
                   {{ props.formattedRow[props.column.field] }}
                 </span>
               </template>
@@ -110,13 +118,23 @@ export default {
             trigger: "enter", //only trigger on enter not on keyup
           },
         },
+        {
+          label: "",
+          field: "action",
+        },
       ],
     };
   },
+  methods: {
+    editGroup(id) {
+      console.log('action');
+      console.log(id);
+    }
+  }
 };
 </script>
 <style scoped>
-  .table-group-header {
-    text-transform: uppercase;
-  }
+.table-group-header {
+  text-transform: uppercase;
+}
 </style>

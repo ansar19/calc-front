@@ -39,15 +39,51 @@ export async function fetchPolById(id) {
   return data.air_pollutants_by_pk
 }
 
-export async function addPolToGrouo(pollutant_id, pollutant_group_id) {
+export async function addPolToGroup(pollutant_id, pollutant_group_id) {
   const { data, loading } = await apolloClient.mutate({
     mutation: ADD_POL_TO_GROUP,
     variables: {
       pollutant_id: pollutant_id,
       pollutant_group_id: pollutant_group_id
     },
-  });
 
+    update: (cache, { data: { insert_air_pollutants_groups } }) => {
+      const [newPolGroup] = insert_air_pollutants_groups.returning;
+      const data = cache.readQuery({ query: POLLS_LIST });
+      const poll = cache.readQuery({ query: POLL_BY_ID, variables: { id: newPolGroup.pollutant_id } })
+      console.log('data', data);
+      console.log('poll', poll);
+      // async function getPol(id) {
+      //   return await fetchPolById(id)
+      // }
+      // const uPoll = getPol(newPolGroup.pollutant_id)
+      // console.log('uPoll', uPoll);
+      // data.air_pollutants.unshift(uPoll);
+      // data.air_pollutants.pop();
+      // cache.writeQuery({ query: POLLS_LIST, data})
+    },
+    // optimisticResponse: {
+    //   __typename: "Mutation",
+    //   insert_users: {
+    //     __typename: "air_pollutants_mutation_response",
+    //     returning: [
+    //       {
+    //         __typename: "users",
+    //         id: -1,
+    //         name,
+    //         twitter,
+    //         rocket
+    //       }
+    //     ]
+    //   }
+    // }
+  })
+    .then(data => {
+      console.log("User added: ", data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
   return { data, loading }
 }
 
