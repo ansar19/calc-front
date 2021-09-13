@@ -1,6 +1,6 @@
 <script>
 import { mapMutations } from "vuex";
-import LOGIN from "../graphql/Login.gql";
+import LOGIN from "../graphql/mutations/Login";
 import { login } from "@/services/auth"
 
 export default {

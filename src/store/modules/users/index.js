@@ -1,5 +1,5 @@
 import { apolloClient } from "../../../vue-apollo"
-import USER from "@/graphql/UserByPk.gql";
+import USER from "@/graphql/queries/UserByPk";
 
 const initialState = () => ({
   user: {},

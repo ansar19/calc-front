@@ -14,7 +14,7 @@ import JsonExcel from 'vue-json-excel';
 
 import _ from 'lodash';
 import wysiwyg from 'vue-wysiwyg';
-import tinymce from 'vue-tinymce-editor';
+// import tinymce from 'vue-tinymce-editor';
 import Vuelidate from 'vuelidate';
 
 
@@ -30,7 +30,7 @@ Vue.use(DateRangePicker)
 
 Vue.use(wysiwyg);
 Vue.use(Vuelidate);
-Vue.component('tinymce', tinymce);
+// Vue.component('tinymce', tinymce);
 
 import VueGoodTablePlugin from 'vue-good-table';
 
@@ -60,12 +60,15 @@ import 'vue-wysiwyg/dist/vueWysiwyg.css';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import "leaflet.icon.glyph";
+import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import iconUrl from "leaflet/dist/images/marker-icon.png";
+import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 // this part resolve an issue where the markers would not appear
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  iconRetinaUrl: iconRetinaUrl,
+  iconUrl: iconUrl,
+  shadowUrl: shadowUrl
 });
 
 // Fontawesome

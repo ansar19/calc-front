@@ -46,7 +46,7 @@
 <script>
 const defaultUserData = {
   /* coverImg: require('@/assets/images/content-management/2.jpeg'), */
-  avatarImg: require('@/assets/images/avatars/0.jpg'),
+  // avatarImg: require('@/assets/images/avatars/0.jpg'),
   name: 'Екатерина Васильева',
   position: 'Старший эколог',
   bio: 'Закончила КазГУ им. Аль-Фараби, географ - эколог',

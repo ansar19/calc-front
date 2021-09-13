@@ -154,12 +154,11 @@
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import ROLES from "../../graphql/RolesList.gql";
-import DEPARTMENTS from "../../graphql/DepartmentsList.gql";
-import POSITIONS from "../../graphql/PositionsList.gql";
-import ADD_EMPLOYEE from "../../graphql/AddEmployee.gql";
-import ADD_EMPLOYEE_USER from "../../graphql/AddEmployee.gql";
-import ADD_USER from "../../graphql/AddUser.gql";
+import ROLES from "../../graphql/queries/RolesList";
+import DEPARTMENTS from "../../graphql/queries/DepartmentsList";
+import POSITIONS from "../../graphql/queries/PositionsList";
+import ADD_EMPLOYEE from "../../graphql/mutations/AddEmployee";
+import ADD_USER from "../../graphql/mutations/AddUser";
 
 const usersInitial = () => ({
   first_name: "",
@@ -271,7 +270,7 @@ export default {
       };
       this.$apollo
         .mutate({
-          mutation: this.users.cmsAccess ? ADD_EMPLOYEE : ADD_EMPLOYEE_USER,
+          mutation: ADD_EMPLOYEE,
           variables: this.users.cmsAccess ? withUser : withoutUser,
         })
         .then((res) => {

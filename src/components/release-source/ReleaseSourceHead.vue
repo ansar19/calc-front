@@ -204,10 +204,10 @@
 </template>
 
 <script>
-import WORKSITES from '@/graphql/WorksitesList.gql'
-import WORKSITE_CATEGORIES from '@/graphql/WorksiteCategoriesList.gql'
-import FACILITIES from '@/graphql/FacilitiesList.gql'
-import FACILITY_LOCATIONS from '@/graphql/FacilityLocationsList.gql'
+import WORKSITES from '@/graphql/queries/WorksitesList'
+import WORKSITE_CATEGORIES from '@/graphql/queries/WorksiteCategoriesList'
+import FACILITIES from '@/graphql/queries/FacilitiesList'
+import FACILITY_LOCATIONS from '@/graphql/queries/FacilityLocationsList'
 import { mapState } from 'vuex'
 
 export default {

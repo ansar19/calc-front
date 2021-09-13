@@ -1,4 +1,4 @@
-mutation ReleaseSourceUpdate($id: uuid!, $name: String!, $number: String!, $inventory_number: String!, $ghg_source: Boolean!, $emission_src_id: uuid! ) {
+mutation ReleaseSourceUpdate ($id: uuid!, $name: String!, $number: String!, $inventory_number: String!, $ghg_source: Boolean!, $emission_src_id: uuid! ) {
   update_release_sources_by_pk(pk_columns: {id: $id},
     _set: {
       name: $name,

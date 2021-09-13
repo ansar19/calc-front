@@ -1,5 +1,5 @@
 import { apolloClient } from '@/vue-apollo'
-import LOGIN from '@/graphql/Login.gql'
+import LOGIN from '@/graphql/mutations/Login'
 import jwtDecode from 'jwt-decode'
 
 async function fetchGraphQL(operationsDoc, operationName, variables) {

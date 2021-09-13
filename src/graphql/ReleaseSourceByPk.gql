@@ -1,4 +1,4 @@
-query ReleaseSourceByPk($id: uuid!) {
+query ReleaseSourceByPk ($id: uuid!) {
   release_sources_by_pk(id: $id) {
     id
     name

@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import CURRENCIES from '../../graphql/CurrencyList.gql'
-import BANKS from '../../graphql/BankList.gql'
+import CURRENCIES from '../../graphql/queries/CurrencyList'
+import BANKS from '../../graphql/queries/BankList'
 
 export default {
   name: "company-bank-details",

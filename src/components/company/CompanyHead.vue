@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import EMPLOYEES from "../../graphql/EmployeesList.gql";
+import EMPLOYEES from "../../graphql/queries/EmployeesList";
 
 export default {
   name: "company-head",

@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "vite": "node ./bin/vite"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -21,7 +22,7 @@
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",
     "core-js": "^2.6.12",
-    "docxtemplater": "^3.24.0",
+    "docxtemplater": "^3.25.0",
     "file-saver": "^2.0.5",
     "jszip": "^2.6.1",
     "jszip-utils": "^0.1.0",
@@ -72,8 +73,11 @@
     "babel-loader": "^8.2.2",
     "graphql-tag": "^2.12.5",
     "node-sass": "^4.14.1",
+    "sass": "^1.32.13",
     "sass-loader": "^7.3.1",
+    "unplugin-vue2-script-setup": "^0.6.1",
     "vue-cli-plugin-apollo": "~0.22.2",
+    "vue-cli-plugin-vite": "~1.4.8",
     "vue-template-compiler": "^2.6.14",
     "webpack-bundle-analyzer": "^3.9.0"
   },

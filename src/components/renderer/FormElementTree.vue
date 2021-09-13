@@ -40,7 +40,7 @@
 /* eslint-disable quotes */
 import Treeselect from '@riophae/vue-treeselect';
 // eslint-disable-next-line import/extensions
-import vueJsonEditor from 'vue-json-editor';
+// import vueJsonEditor from 'vue-json-editor';
 import FormElementBase from '@/components/renderer/FormElementBase.vue';
 // import the styles
 import '@riophae/vue-treeselect/dist/vue-treeselect.css';
@@ -54,7 +54,7 @@ export default {
     };
   },
   components: {
-    vueJsonEditor,
+    // vueJsonEditor,
     Treeselect,
   },
   methods: {

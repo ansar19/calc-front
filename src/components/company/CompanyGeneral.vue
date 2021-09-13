@@ -94,7 +94,7 @@
 
 <script>
 import { mapMutations, mapState } from "vuex";
-import COMPANY_TYPES from "../../graphql/CompanyTypes.gql";
+import COMPANY_TYPES from "../../graphql/queries/CompanyTypes";
 
 export default {
   name: "company-general",

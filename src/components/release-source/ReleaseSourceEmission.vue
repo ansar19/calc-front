@@ -75,7 +75,7 @@
 // import PollutantAdd from '@/components/release-source/ReleasePollutantAdd.vue';
 // import SlideOut from '@hyjiacan/vue-slideout';
 // import '@hyjiacan/vue-slideout/lib/slideout.css';
-import EMISSION_SOURCES_LIST from "@/graphql/EmissionSourcesList.gql";
+import EMISSION_SOURCES_LIST from "@/graphql/queries/EmissionSourcesList";
 
 export default {
   apollo: {

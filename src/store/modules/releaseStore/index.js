@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import releaseSourceService from '@/services/releaseSourceService';
 import { apolloClient } from '@/vue-apollo'
-import WORKSITES_LIST from '@/graphql/WorksitesList.gql'
-import RS_LIST from '@/graphql/ReleaseSourcesListByCompanyId.gql'
-import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
-import UPDATE_WORKSITE from '@/graphql/UpdateWorksite.gql'
-import INSERT_WORKSITE from '@/graphql/InsertWorksite.gql'
+import WORKSITES_LIST from '@/graphql/queries/WorksitesList'
+import RS_LIST from '@/graphql/queries/ReleaseSourcesListByCompanyId'
+import RELEASE_SOURCE_BY_PK from '@/graphql/queries/ReleaseSourceByPk'
+import UPDATE_WORKSITE from '@/graphql/mutations/UpdateWorksite'
+import INSERT_WORKSITE from '@/graphql/mutations/InsertWorksite'
 
 
 

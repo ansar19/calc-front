@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql';
+import RELEASE_SOURCE_BY_PK from '@/graphql/queries/ReleaseSourceByPk';
 
 export default {
   data() {

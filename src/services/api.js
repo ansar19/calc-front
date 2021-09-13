@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { apolloClient } from '@/vue-apollo'
-import RS_LIST from '@/graphql/ReleaseSourcesListByCompanyId.gql'
-import RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceByPk.gql'
-import UPDATE_RELEASE_SOURCE_BY_PK from '@/graphql/ReleaseSourceUpdate.gql'
-import ADD_RELEASE_SOURCE_BY_PK from '@/graphql/AddReleaseSource.gql'
-import RELEASE_SOURCES_LIST_CALC from '@/graphql/ReleaseSourcesCalcList.gql'
-import POLLS_LIST from '@/graphql/PollutantsList.gql'
-import POLL_GROUPS_LIST from '@/graphql/PollGroupsList.gql'
-import POLL_BY_ID from '@/graphql/PollutantById.gql'
-import ADD_POL_TO_GROUP from '@/graphql/AddPolToGroup.gql'
+import RS_LIST from '@/graphql/queries/ReleaseSourcesListByCompanyId'
+import RELEASE_SOURCE_BY_PK from '@/graphql/queries/ReleaseSourceByPk'
+import UPDATE_RELEASE_SOURCE_BY_PK from '@/graphql/mutations/ReleaseSourceUpdate'
+import ADD_RELEASE_SOURCE_BY_PK from '@/graphql/mutations/AddReleaseSource'
+import RELEASE_SOURCES_LIST_CALC from '@/graphql/queries/ReleaseSourcesCalcList'
+import POLLS_LIST from '@/graphql/queries/PollutantsList'
+import POLL_GROUPS_LIST from '@/graphql/queries/PollGroupsList'
+import POLL_BY_ID from '@/graphql/queries/PollutantById'
+import ADD_POL_TO_GROUP from '@/graphql/mutations/AddPolToGroup'
 
 const api = axios.create({
   baseURL: 'https://ecoapikz.herokuapp.com/',

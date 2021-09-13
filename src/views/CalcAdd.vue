@@ -96,8 +96,8 @@
 
 <script>
 import { fetchReleaseSourcesByCompanyId } from '@/services/api'
-import RELEASE_SOURCES_LIST_CALC from '@/graphql/ReleaseSourcesCalcList.gql'
-import ADD_AIR_CALC from '@/graphql/AddAirCalc.gql'
+import RELEASE_SOURCES_LIST_CALC from '@/graphql/queries/ReleaseSourcesCalcList'
+import ADD_AIR_CALC from '@/graphql/mutations/AddAirCalc'
 import DieselMethod from '@/components/calc-methods/DieselMethod.vue';
 import BlastMethod from '@/components/calc-methods/BlastMethod.vue';
 import PumpMethod from '@/components/calc-methods/PumpMethod.vue';

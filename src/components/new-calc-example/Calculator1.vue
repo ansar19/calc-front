@@ -83,11 +83,7 @@
 
 <script>
 /* eslint-disable */
-import {
-  powerGenerators,
-  stitchedMultiplier,
-  maxArea
-} from '@/components/new-calc-example/constants.js';
+import powerGenerators from '@/components/new-calc-example/constants.js';
 import api from '@/services/api'
 
 import CalcResult from '@/components/new-calc-example/CalcResult.vue'
@@ -112,7 +108,7 @@ export default {
     }
   },
   watch: {
-  
+
     boxes(value) {
       this.$emit('boxes-changed', value);
     }
@@ -139,7 +135,7 @@ export default {
     },
   },
   computed: {
-  
+
     calcSelected() {
       const some = this.selected.map(el => {
         return {

@@ -108,7 +108,7 @@
 
 <script>
 /* eslint-disable */
-import { powerGenerators } from "@/components/new-calc-example/constants.js";
+import powerGenerators from "@/components/new-calc-example/constants.js";
 import { mapMutations } from "vuex";
 
 import JSZip from "jszip";

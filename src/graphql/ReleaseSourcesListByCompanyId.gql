@@ -1,4 +1,4 @@
-query ReleaseSources($company_id: uuid!) {
+query ReleaseSources ($company_id: uuid!) {
   release_sources(where: {emission_source: {facility_location: {facility: {worksite: {company_id: {_eq: $company_id}}}}}}) {
     id
     name

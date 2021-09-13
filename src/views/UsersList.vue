@@ -128,7 +128,7 @@ import Vue from "vue";
 import { ClientTable } from "vue-tables-2";
 import "@/assets/scss/vue-tables.scss";
 // eslint-disable-next-line no-unused-vars
-import EMPLOYEES from "../graphql/EmployeesList.gql";
+import EMPLOYEES from "../graphql/queries/EmployeesList";
 
 Vue.use(ClientTable);
 

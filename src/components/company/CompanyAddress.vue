@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import COUNTRIES from '../../graphql/CountriesList.gql'
+import COUNTRIES from '../../graphql/queries/CountriesList'
 
 export default {
   name: 'company-address',

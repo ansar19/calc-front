@@ -2,7 +2,7 @@
 import Vue from "vue";
 import { ClientTable } from "vue-tables-2";
 import "@/assets/scss/vue-tables.scss";
-import COMPANIES from "../graphql/CompanyList.gql";
+import COMPANIES from "../graphql/queries/CompanyList";
 import { useGlobalState } from '@/useStore'
 
 Vue.use(ClientTable);

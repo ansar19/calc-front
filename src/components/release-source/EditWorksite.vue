@@ -86,7 +86,7 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
-import WORKSITE_CATEGORIES from "@/graphql/WorksiteCategoriesList.gql";
+import WORKSITE_CATEGORIES from "@/graphql/queries/WorksiteCategoriesList";
 
 export default {
   apollo: {
