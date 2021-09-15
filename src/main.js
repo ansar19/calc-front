@@ -1,6 +1,8 @@
 /* eslint-disable */
 import Vue from 'vue';
-import VueCompositionAPI from '@vue/composition-api'
+import VueCompositionAPI, { provide }  from '@vue/composition-api'
+import { DefaultApolloClient } from '@vue/apollo-composable'
+import apolloClient from '@/apollo/client'
 
 import FrappeChart from 'vue2-frappe';
 import FrapChart from 'vue2-frappe';
@@ -186,8 +188,10 @@ Vue.config.productionTip = false;
 Vue.prototype.$eventHub = new Vue();
 // console.log(process.env);
 new Vue({
+  setup () {
+    provide(DefaultApolloClient, apolloClient)
+  },
   store,
   router,
-  apolloProvider,
   render: h => h(App)
 }).$mount('#app');

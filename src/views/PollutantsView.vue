@@ -15,7 +15,8 @@
           </d-card-header>
           <d-card-body>
             <spinner v-if="loading" />
-            <template v-else>
+            <div v-else-if="error">Ошибка: {{ error.message }}</div>
+            <template v-else-if="air_pollutants">
               <vue-good-table
                 @on-row-click="editPolFn"
                 :columns="columns"
@@ -86,23 +87,28 @@
 
 <script>
 import {
-  fetchPollutants,
-  fetchPollsGroups,
   fetchPolById,
   addPolToGroup,
 } from "@/services/api";
 import Spinner from "@/components/Base/Spinner.vue";
 import SlideOut from "@hyjiacan/vue-slideout";
 import "@hyjiacan/vue-slideout/lib/slideout.css";
+import { useQuery, useResult } from '@vue/apollo-composable'
+import POLLS_AND_GROUPS from '@/graphql/queries/PollutantsAndGroups'
 
 export default {
+  setup() {
+    const { result, loading, error } = useQuery(POLLS_AND_GROUPS)
+    const air_pollutants = useResult(result, null, data => data.air_pollutants)
+    const air_pollutant_groups = useResult(result, null, data => data.air_pollutant_groups)
+
+    return { air_pollutants, air_pollutant_groups, loading, error }
+  },
   name: "Pollutants",
   components: { Spinner, SlideOut },
   data() {
     return {
-      loading: true,
-      air_pollutant_groups: [],
-      air_pollutants: [],
+      // loading: true,
       editGroup: "",
       slideOut: {
         visible: false,
@@ -158,20 +164,7 @@ export default {
       ],
     };
   },
-  created() {
-    this.fetchPolls();
-    this.fetchGroups();
-  },
   methods: {
-    async fetchPolls() {
-      this.loading = true;
-      const { data, loading } = await fetchPollutants();
-      this.air_pollutants = data.air_pollutants;
-      this.loading = loading;
-    },
-    async fetchGroups() {
-      this.air_pollutant_groups = await fetchPollsGroups();
-    },
     async savePol() {
       this.loading = true;
       addPolToGroup(this.editPol.id, this.editPol.group.id).then((res) => {
