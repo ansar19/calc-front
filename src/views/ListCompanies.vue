@@ -1,11 +1,10 @@
 <script>
-import Spinner from "@/components/Base/Spinner.vue";
 import COMPANIES from "../graphql/queries/CompanyList";
 import { useGlobalState } from "@/useStore";
 import { useQuery, useResult } from "@vue/apollo-composable";
 
 export default {
-  setup(_, ctx) {
+  setup(props, ctx) {
     const router = ctx.root.$router;
 
     const state = useGlobalState();
@@ -24,7 +23,6 @@ export default {
     }
     return { viewCompany, setCompany, editCompany, companies, loading, error };
   },
-  components: { Spinner },
 
   data() {
     return {

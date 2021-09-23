@@ -11,71 +11,137 @@
     <d-row>
       <d-col lg="12">
         <d-card class="card-small mb-3">
-          <d-card-header class="d-flex border-bottom">
-            <h6 class="d-flex m-0">Детали компании</h6>
-          </d-card-header>
           <div>
-            <div v-if="!loaded">Загружаем данные...</div>
-            <div v-else>
+            <spinner v-if="loading" />
+            <div v-else-if="error">Ошибка: {{ error.message }}</div>
+            <div v-else-if="company">
               <d-card-body>
-                <table
-                  class="table table-bordered"
-                  style="width:100%"
-                  v-for="(c, index) in companies"
-                  :key="index"
-                >
-                  <tr>
-                    <th>Название компании:</th>
-                    <td>{{ c.companyName }}</td>
-                  </tr>
-                  <tr>
-                    <th>Тип юр лица:</th>
-                    <td>{{c.companyType }}</td>
-                  </tr>
-                  <tr>
-                    <th>БИН или ИНН:</th>
-                    <td>{{ c.binInn }}</td>
-                  </tr>
-                  <tr>
-                    <th>Телефон компании:</th>
-                    <td>{{ c.companyPhone }}</td>
-                  </tr>
-                  <tr>
-                    <th>Email Компании:</th>
-                    <td>{{ c.companyEmail }}</td>
-                  </tr>
-                  <tr>
-                    <th>ФИО руководителя:</th>
-                    <td>
-                      {{ c.companyHead.companyHeadFirstname }}
-                      <br />
-                      {{c.companyHead.companyHeadSurename}}
-                      <br />
-                      {{c.companyHead.companyHeadPatronyme}}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Должность руководителя:</th>
-                    <td>{{c.companyHead.companyHeadPosition}}</td>
-                  </tr>
-                  <tr>
-                    <th>Телефон руководителя:</th>
-                    <td>{{c.companyHead.companyHeadPhone}}</td>
-                  </tr>
-                  <tr>
-                    <th>Email руководителя:</th>
-                    <td>{{c.companyHead.companyHeadEmail}}</td>
-                  </tr>
-                  <!-- <tr>
-          <th>Адрес Компании:</th>
-          <td>{{company.address}}</td>
-        </tr>
-                  -->
-                  <tr>
-                    <th>Описание компании:</th>
-                    <td>{{c.companyDescription}}</td>
-                  </tr>
-                </table>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <p class="mb-1">Наименование компании</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.company_name }}</h5>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="mb-1">Тип юридического лица</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.company_type.name }}</h5>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="mb-1">БИН или ИНН</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.iin_bin }}</h5>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="mb-1">Телефон компании</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.company_phone }}</h5>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <p class="mb-1">Email Компании</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.company_email }}</h5>
+                    </div>
+                  </li>
+                  <template v-if="company.company_head">
+                    <li class="list-group-item">
+                      <p class="mb-1">ФИО руководителя</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                          {{ company.company_head.last_name }}
+                          {{ company.company_head.first_name }}
+                          {{ company.company_head.middle_name }}
+                        </h5>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <p class="mb-1">Должность руководителя</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                          {{ company.company_head.position.name }}
+                        </h5>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <p class="mb-1">Телефон руководителя</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ company.company_head.phone }}</h5>
+                      </div>
+                    </li>
+                    <li class="list-group-item">
+                      <p class="mb-1">Email руководителя</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ company.company_head.email }}</h5>
+                      </div>
+                    </li>
+                  </template>
+                  <template v-if="company.company_actual_address">
+                    <li class="list-group-item">
+                      <p class="mb-1">Физический адрес компании</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                          {{ company.company_actual_address.address }},
+                          {{ company.company_actual_address.city.name }},
+                          {{
+                            company.company_actual_address.city.state.country
+                              .name
+                          }}
+                        </h5>
+                      </div>
+                    </li>
+                  </template>
+                  <template v-if="company.company_legal_address">
+                    <li class="list-group-item">
+                      <p class="mb-1">Юридический адрес компании</p>
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">
+                          {{ company.company_legal_address.address }},
+                          {{ company.company_legal_address.city.name }},
+                          {{
+                            company.company_legal_address.city.state.country
+                              .name
+                          }}
+                        </h5>
+                      </div>
+                    </li>
+                  </template>
+                  <li
+                    class="list-group-item"
+                    v-if="company.company_description"
+                  >
+                    <p class="mb-1">Описание компании</p>
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ company.company_description }}</h5>
+                    </div>
+                  </li>
+                  <template v-if="company.bank_accounts">
+                    <li class="list-group-item">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Банковские детали</h5>
+                      </div>
+                      <ul
+                        class="list-group list-group-flush"
+                        v-for="b in company.bank_accounts"
+                        :key="b.id"
+                      >
+                        <li class="list-group-item">
+                          <p class="mb-1">Наименование банка</p>
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ b.bank.name }}</h5>
+                          </div>
+                          <p class="mb-1">
+                            <strong>IBAN</strong> {{ b.iban }}
+                            {{ b.currency.short_name }}
+                          </p>
+                        </li>
+                      </ul>
+                    </li>
+                  </template>
+                </ul>
               </d-card-body>
             </div>
           </div>
@@ -83,7 +149,9 @@
           <d-card-footer class="text-right border-top">
             <div class="d-flex">
               <router-link tag="a" to="/companies">Назад</router-link>
-              <d-button class="ml-auto" theme="warning" @click="goEdit()">Редактировать</d-button>
+              <d-button class="ml-auto" theme="warning" @click="editCompany"
+                >Редактировать</d-button
+              >
             </div>
           </d-card-footer>
         </d-card>
@@ -93,65 +161,23 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const CompanyService = {};
-// eslint-disable-next-line consistent-return
-CompanyService.getCompany = async (id) => {
-  try {
-    const result = await axios.get(`https://ecoapikz.herokuapp.com/companies/${id}`);
-    const companies = {
-    //   name: result.data.name,
-      companyName: result.data.companyName,
-      binInn: result.data.binInn,
-      companyPhone: result.data.companyPhone,
-      companyEmail: result.data.companyEmail,
-      companyHead: result.data.companyHead,
-      companyType: result.data.companyType.text,
-      companyDescription: result.data.companyDescription,
-    };
-    return companies;
-  } catch (error) {
-    //     const errorStatus = error.response.status;
-    //     let errorMessage = '';
-    //     if (errorStatus === 404) {
-    //       errorMessage = 'Пользователь не найден';
-    //     } else {
-    //       errorMessage = 'Произошла ошибка';
-    //     }
-    //     throw new Error(errorMessage);
-  }
-};
+import { useQuery, useResult } from "@vue/apollo-composable";
+import COMPANY_BY_PK from "@/graphql/queries/CompanyViewQuery";
+import Spinner from "@/components/Base/Spinner.vue";
 
 export default {
+  setup(_, ctx) {
+    const id = ctx.root.$route.params.id;
+    const router = ctx.root.$router
+    const { result, loading, error } = useQuery(COMPANY_BY_PK, { id: id });
+    const company = useResult(result, null, (data) => data.companies_by_pk);
+    function editCompany() {
+      router.push({ path: `/edit-company/${id}` });
+    }
+    return { company, loading, error, editCompany };
+  },
   components: {
-  },
-  data() {
-    return {
-      loaded: false,
-      companyId: null,
-      companies: [],
-      error: null,
-    };
-  },
-  mounted() {
-    this.companyId = this.$route.params.id;
-    this.getCompany();
-  },
-  methods: {
-    async getCompany() {
-      this.loaded = false;
-      try {
-        const company = await CompanyService.getCompany(this.companyId);
-        this.companies.push(company); // add to array
-        this.loaded = true;
-      } catch (error) {
-        this.error = error.message;
-      }
-    },
-    goEdit() {
-      this.$router.push({ path: `/edit-company/${this.companyId}` });
-    },
+    Spinner,
   },
 };
 </script>

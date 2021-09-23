@@ -13,8 +13,19 @@ mutation insert_polls_group($pollutant_id: uuid!, $pollutant_group_id: uuid!) {
     }
   ) {
     returning {
-      pollutant_id
-      pollutant_group_id
+      air_pollutant {
+        id
+        label
+        code
+        hazard_class
+        solid
+        voc
+        hydrocarbon
+        group {
+          id
+          label
+        }
+      }
     }
   }
 }

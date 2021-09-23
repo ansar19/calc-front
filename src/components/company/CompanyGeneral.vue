@@ -6,7 +6,7 @@
       type="text"
       name="iin_bin"
       v-validate="'required|digits:12'"
-      v-model="c_iin_bin"
+      v-model="company.iin_bin"
       class="mb-3 form-control"
       placeholder="Введите БИН или ИНН"
     />
@@ -19,7 +19,7 @@
         <input
           id="company_name"
           type="text"
-          v-model="c_company_name"
+          v-model="company.company_name"
           v-validate="'required|min:2'"
           class="mb-3 form-control"
           placeholder="Введите наименование компании без указания формы собственности"
@@ -30,12 +30,14 @@
         >
       </d-col>
       <d-col cols="12" md="6" lg="4">
-        <div class="form-group">
+        <spinner v-if="loading" />
+        <div v-else-if="error">Ошибка: error.message</div>
+        <div class="form-group" v-else-if="company_types">
           <label>Тип юр лица:</label>
           <v-select
             class="mb-3"
             label="name"
-            v-model="c_company_type"
+            v-model="company.type"
             :options="company_types"
             :reduce="(company_type) => company_type.id"
             required
@@ -95,14 +97,23 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import COMPANY_TYPES from "../../graphql/queries/CompanyTypes";
+import { useQuery, useResult } from "@vue/apollo-composable";
 
 export default {
   name: "company-general",
-  apollo: {
-    company_types: {
-      query: COMPANY_TYPES,
+  props: {
+    company: {
+      type: Object,
+      required: true,
     },
   },
+  setup(props) {
+    const { result, loading, error } = useQuery(COMPANY_TYPES)
+    const company_types = useResult(result, null, (data) => data.company_types)
+
+    return { company_types, loading, error }
+  },
+
   computed: {
     ...mapState("company", [
       "company_name",

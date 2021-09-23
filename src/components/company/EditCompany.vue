@@ -13,13 +13,14 @@
       <d-col lg="12" md="12">
         <d-card class="card-small mb-3">
           <d-card-body>
-            <div v-if="!loaded">Загружаем данные...</div>
-            <div v-else>
+            <spinner v-if="loading" />
+            <div v-else-if="error">Ошибка: {{ error.message }}</div>
+            <div v-else-if="company">
               <!-- @submit="updateCompany"  -->
               <d-form class="company" validate>
                 <!--- Start Company General Block -->
                 <company-general
-                  :company="companies.companyGeneral"
+                  :company="company"
                   @input="(newGeneral) => {companyGeneral = newGeneral}"
                 ></company-general>
                 <!--- End Company General Block -->
@@ -78,7 +79,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import Spinner from "@/components/Base/Spinner.vue";
 // eslint-disable-next-line no-unused-vars
 import vSelect from 'vue-select';
 import CompanyGeneral from '@/components/company/CompanyGeneral.vue';
@@ -86,43 +87,19 @@ import CompanyHead from '@/components/company/CompanyHead.vue';
 import CompanyBankDetails from '@/components/company/CompanyBankDetails.vue';
 import CompanyAddress from '@/components/company/CompanyAddress.vue';
 
-const baseURL = 'https://ecoapikz.herokuapp.com/companies';
-const CompanyService = {};
-// eslint-disable-next-line consistent-return
-CompanyService.getCompany = async (id) => {
-  try {
-    const result = await axios.get(`${baseURL}/${id}`);
-    const companies = {
-    //   name: result.data.name,
-      companyGeneral: {
-        binInn: result.data.binInn,
-        companyName: result.data.companyName,
-        companyType: result.data.companyType,
-        companyPhone: result.data.companyPhone,
-        companyEmail: result.data.companyEmail,
-        companyDescription: result.data.companyDescription,
-      },
-      companyHead: result.data.companyHead,
-      companyAccounts: result.data.companyAccounts,
-      companyAddress: result.data.companyAddress,
-    };
-    return companies;
-  } catch (error) {
-    //     const errorStatus = error.response.status;
-    //     let errorMessage = '';
-    //     if (errorStatus === 404) {
-    //       errorMessage = 'Компания не найдена';
-    //     } else {
-    //       errorMessage = 'Произошла ошибка';
-    //     }
-    //     throw new Error(errorMessage);
-  }
-};
+import { useQuery, useResult } from "@vue/apollo-composable";
+import COMPANY_BY_PK from "@/graphql/queries/CompanyViewQuery";
 
 export default {
   name: 'edit-company',
+  setup (_, ctx)  {
+    const id = ctx.root.$route.params.id
+    const { result, loading, error } = useQuery(COMPANY_BY_PK, { id: id })
+    const company = useResult(result, null, (data) => data.companies_by_pk);
+    return { company, loading, error }
+  },
   components: {
-    CompanyGeneral, CompanyHead, CompanyBankDetails, CompanyAddress,
+    Spinner, CompanyGeneral, CompanyHead, CompanyBankDetails, CompanyAddress,
   },
   data() {
     return {
@@ -524,18 +501,6 @@ export default {
         },
       ],
     };
-  },
-  mounted() {
-    this.companyId = this.$route.params.id;
-    this.getCompany();
-  },
-  computed: {
-    // availableCitiesLegal() {
-    //   return this.companyAddress.legal.oblast ? this.companyAddress.legal.oblast.cities : false;
-    // },
-    // availableCitiesActual() {
-    //   return this.c.companyAddress.actual.oblast ? this.c.companyAddress.actual.oblast.cities : false;
-    // },
   },
   methods: {
     async getCompany() {

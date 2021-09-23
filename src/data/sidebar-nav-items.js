@@ -1,19 +1,22 @@
 export default function () {
   return [{
     title: 'Главная панель',
-    items: [{
-      title: 'Панель',
-      to: '/dashboard',
-      htmlBefore: '<i class="material-icons">&#xE917;</i>',
-      htmlAfter: '',
-    },
-    ],
+    to: '/dashboard',
+    // htmlBefore: '<i class="material-icons">home</i>',
+    htmlAfter: '',
+    // items: [{
+    //   title: 'Панель',
+    //   to: '/dashboard',
+    //   htmlBefore: '<i class="material-icons">&#xE917;</i>',
+    //   htmlAfter: '',
+    // },
+    // ],
   }, {
     title: 'Компания',
+    // htmlBefore: '<i class="material-icons">business</i>',
     items: [{
       title: 'Список компании',
       to: '/companies',
-      htmlBefore: '<i class="material-icons">note_add</i>',
       htmlAfter: '',
     },
       // ,

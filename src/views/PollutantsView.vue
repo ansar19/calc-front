@@ -18,7 +18,7 @@
             <div v-else-if="error">Ошибка: {{ error.message }}</div>
             <template v-else-if="air_pollutants">
               <vue-good-table
-                @on-row-click="editPolFn"
+                @on-row-click="editPollutant"
                 :columns="columns"
                 :rows="air_pollutants"
                 :fixed-header="true"
@@ -46,69 +46,61 @@
       show-fullscreen
       fixed
       disable-animation
-      :visible.sync="slideOut.visible"
+      :visible.sync="slide"
     >
-      <div v-if="slideOut.visible">
-        <d-list-group flush>
-          <d-list-group-item class="px-3">
-            <h6>Загрязняющее вещество</h6>
-            <hr />
-            <d-form>
-              <label>Наименование загрязняющего вещества</label>
-              <d-input
-                class="mb-3"
-                type="text"
-                disabled
-                :value="editPol.label"
-              />
-              <label>Выбрать группы ЗВ</label>
-              <v-select
-                :options="air_pollutant_groups"
-                name="label"
-                :id="id"
-                :placeholder="placeholder"
-                v-model="editPol.group"
-                label="label"
-              >
-              </v-select>
-            </d-form>
-            <input
-              type="submit"
-              value="Сохранить"
-              class="btn btn-success mt-3"
-              @click="savePol"
-            />
-          </d-list-group-item>
-        </d-list-group>
-      </div>
+      <pollutant-edit
+        v-if="slide"
+        :pollId="pollId"
+        :slideToggle="slideToggle"
+      ></pollutant-edit>
     </slide-out>
   </div>
 </template>
 
 <script>
-import {
-  fetchPolById,
-  addPolToGroup,
-} from "@/services/api";
-import Spinner from "@/components/Base/Spinner.vue";
+import { fetchPolById, addPolToGroup } from "@/services/api";
 import SlideOut from "@hyjiacan/vue-slideout";
 import "@hyjiacan/vue-slideout/lib/slideout.css";
-import { useQuery, useResult } from '@vue/apollo-composable'
-import POLLS_AND_GROUPS from '@/graphql/queries/PollutantsAndGroups'
+import { useQuery, useResult } from "@vue/apollo-composable";
+import POLLS_LIST from "@/graphql/queries/PollutantsList";
+import PollutantEdit from "@/components/pollutant-edit/pollutant-edit.vue";
+import { ref } from "@vue/composition-api";
 
 export default {
   setup() {
-    const { result, loading, error } = useQuery(POLLS_AND_GROUPS)
-    const air_pollutants = useResult(result, null, data => data.air_pollutants)
-    const air_pollutant_groups = useResult(result, null, data => data.air_pollutant_groups)
+    const { result, loading, error } = useQuery(POLLS_LIST);
+    const air_pollutants = useResult(
+      result,
+      null,
+      (data) => data.air_pollutants
+    );
 
-    return { air_pollutants, air_pollutant_groups, loading, error }
+    const pollId = ref("");
+    const slide = ref(false);
+
+    function slideToggle() {
+      slide.value = !slide.value;
+    }
+
+    function editPollutant(params) {
+      pollId.value = params.row.id;
+      slide.value = true;
+    }
+
+    return {
+      air_pollutants,
+      loading,
+      error,
+      pollId,
+      editPollutant,
+      slide,
+      slideToggle,
+    };
   },
   name: "Pollutants",
-  components: { Spinner, SlideOut },
+  components: { SlideOut, PollutantEdit },
   data() {
     return {
-      // loading: true,
       editGroup: "",
       slideOut: {
         visible: false,

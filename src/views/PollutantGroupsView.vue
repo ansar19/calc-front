@@ -10,7 +10,9 @@
       </div>
     </div>
     <!-- Default Table -->
-    <div v-if="!loading" class="row">
+    <spinner v-if="loading" />
+    <div v-else-if="error">Ошибка: {{ error }}</div>
+    <div v-else-if="air_pollutant_groups" class="row">
       <div class="col">
         <div class="card card-small overflow-hidden mb-4 meta">
           <d-card-header class="border-bottom"> </d-card-header>
@@ -32,7 +34,9 @@
               </template>
               <template slot="table-header-row" slot-scope="props">
                 <span v-if="props.column.field == 'action'">
-                  <button class="btn btn-primary" @click="editGroup">Редактроватьь</button>
+                  <button class="btn btn-primary" @click="editGroup">
+                    Редактроватьь
+                  </button>
                 </span>
                 <span v-else>
                   {{ props.formattedRow[props.column.field] }}
@@ -43,39 +47,32 @@
         </div>
       </div>
     </div>
-    <spinner v-else />
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
-import Spinner from "@/components/Base/Spinner.vue";
+import POLL_GROUPS_LIST from "@/graphql/queries/PollGroupsList";
+import { useQuery, useResult } from "@vue/apollo-composable";
 
 export default {
   name: "PollutantGroupsView",
-  components: { Spinner },
-  apollo: {
-    air_pollutant_groups: gql`
-      query {
-        air_pollutant_groups {
-          id
-          label
-          children: pollutants {
-            id
-            label
-            hazard_class
-            solid
-            voc
-            hydrocarbon
-          }
-        }
-      }
-    `,
+  setup() {
+    const { result, loading, error } = useQuery(POLL_GROUPS_LIST);
+    const air_pollutant_groups = useResult(
+      result,
+      null,
+      (data) => data.air_pollutant_groups
+    );
+
+    function editGroup(id) {
+      console.log("action");
+      console.log(id);
+    }
+
+    return { air_pollutant_groups, loading, error, editGroup };
   },
   data() {
     return {
-      loading: 0,
-      air_pollutant_groups: [],
       columns: [
         { label: "Наименование", field: "label" },
         {
@@ -125,12 +122,6 @@ export default {
       ],
     };
   },
-  methods: {
-    editGroup(id) {
-      console.log('action');
-      console.log(id);
-    }
-  }
 };
 </script>
 <style scoped>

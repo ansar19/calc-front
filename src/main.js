@@ -4,6 +4,8 @@ import VueCompositionAPI, { provide }  from '@vue/composition-api'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import apolloClient from '@/apollo/client'
 
+import Spinner from "@/components/Base/Spinner.vue";
+
 import FrappeChart from 'vue2-frappe';
 import FrapChart from 'vue2-frappe';
 import ShardsVue from 'shards-vue';
@@ -123,6 +125,8 @@ Vue.use(Notifications);
 Vue.use(VueQriously)
 
 Vue.component('downloadExcel', JsonExcel)
+
+Vue.component('Spinner', Spinner)
 
 Vue.use(vueNumeralFilterInstaller, { locale: 'en-gb' });
 
