@@ -18,7 +18,12 @@
             <div v-else-if="error">Ошибка: {{ error.message }}</div>
             <template v-else-if="air_pollutants">
               <vue-good-table
+                mode="remote"
                 @on-row-click="editPollutant"
+                @on-per-page-change="onPerPageChange"
+                @on-page-change="onPageChange"
+                @on-sort-change="onSortChange"
+                :isLoading.sync="loading"
                 :columns="columns"
                 :rows="air_pollutants"
                 :fixed-header="true"
@@ -26,12 +31,14 @@
                 :pagination-options="{
                   enabled: true,
                   mode: 'pages',
+                  setCurrentPage: currentPage,
                   perPageDropdown: [10, 50, 100],
                   rowsPerPageLabel: 'Строк',
                   nextLabel: 'Вперед',
                   prevLabel: 'Назад',
                   allLabel: 'Все',
                 }"
+                :totalRows="air_pollutants_count"
               >
               </vue-good-table>
             </template>
@@ -58,22 +65,53 @@
 </template>
 
 <script>
-import { fetchPolById, addPolToGroup } from "@/services/api";
 import SlideOut from "@hyjiacan/vue-slideout";
 import "@hyjiacan/vue-slideout/lib/slideout.css";
 import { useQuery, useResult } from "@vue/apollo-composable";
 import POLLS_LIST from "@/graphql/queries/PollutantsList";
 import PollutantEdit from "@/components/pollutant-edit/pollutant-edit.vue";
-import { ref } from "@vue/composition-api";
+import { reactive, ref } from "@vue/composition-api";
 
 export default {
   setup() {
-    const { result, loading, error } = useQuery(POLLS_LIST);
+    const variables = reactive({
+      offset: 0,
+      limit: 10,
+      sort: { code: "asc" },
+    });
+    const currentPage = ref(1);
+    const { result, loading, error } = useQuery(POLLS_LIST, variables);
     const air_pollutants = useResult(
       result,
       null,
       (data) => data.air_pollutants
     );
+
+    const air_pollutants_count = useResult(
+      result,
+      null,
+      (data) => data.air_pollutants_aggregate.aggregate.count
+    );
+
+    function onPageChange(params) {
+      if (params.prevPage > params.currentPage) {
+        variables.offset -= variables.limit;
+      } else {
+        variables.offset += variables.limit;
+      }
+      currentPage.value = params.currentPage;
+      console.log(params);
+    }
+
+    function onPerPageChange(params) {
+      variables.limit = params.currentPerPage;
+    }
+
+    function onSortChange(params) {
+      console.log(params);
+      const { field, type } = params[0];
+      variables.sort = { [field]: type !== "none" ? type : "asc" };
+    }
 
     const pollId = ref("");
     const slide = ref(false);
@@ -87,6 +125,56 @@ export default {
       slide.value = true;
     }
 
+    function getGroupLabel(rowObj) {
+      return rowObj.group ? rowObj.group.label : "-";
+    }
+
+    const columns = [
+      { label: "Наименование", field: "label" },
+      { label: "Код", field: "code" },
+      { label: "Группа", field: getGroupLabel },
+      {
+        label: "Класс опасности",
+        field: "hazard_class",
+        filterOptions: {
+          enabled: true, // enable filter for this column
+          placeholder: "все", // placeholder for filter input
+          filterDropdownItems: [0, 1, 2, 3, 4], // dropdown (with selected values) instead of text input
+          trigger: "enter", //only trigger on enter not on keyup
+        },
+      },
+      {
+        label: "Твёрдый",
+        field: "solid",
+        filterOptions: {
+          enabled: true, // enable filter for this column
+          placeholder: "все", // placeholder for filter input
+          filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
+          trigger: "enter", //only trigger on enter not on keyup
+        },
+      },
+      {
+        label: "ЛОС",
+        field: "voc",
+        filterOptions: {
+          enabled: true, // enable filter for this column
+          placeholder: "все", // placeholder for filter input
+          filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
+          trigger: "enter", //only trigger on enter not on keyup
+        },
+      },
+      {
+        label: "Углеводороды",
+        field: "hydrocarbon",
+        filterOptions: {
+          enabled: true, // enable filter for this column
+          placeholder: "все", // placeholder for filter input
+          filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
+          trigger: "enter", //only trigger on enter not on keyup
+        },
+      },
+    ];
+
     return {
       air_pollutants,
       loading,
@@ -95,85 +183,16 @@ export default {
       editPollutant,
       slide,
       slideToggle,
+      air_pollutants_count,
+      onPageChange,
+      onPerPageChange,
+      onSortChange,
+      columns,
+      getGroupLabel,
+      currentPage,
     };
   },
   name: "Pollutants",
   components: { SlideOut, PollutantEdit },
-  data() {
-    return {
-      editGroup: "",
-      slideOut: {
-        visible: false,
-      },
-      editPol: {
-        id: "",
-        label: "",
-      },
-      columns: [
-        { label: "Наименование", field: "label" },
-        { label: "Код", field: "code" },
-        { label: "Группа", field: this.getPolGroup },
-        {
-          label: "Класс опасности",
-          field: "hazard_class",
-          filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: "все", // placeholder for filter input
-            filterDropdownItems: [0, 1, 2, 3, 4], // dropdown (with selected values) instead of text input
-            trigger: "enter", //only trigger on enter not on keyup
-          },
-        },
-        {
-          label: "Твёрдый",
-          field: "solid",
-          filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: "все", // placeholder for filter input
-            filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
-            trigger: "enter", //only trigger on enter not on keyup
-          },
-        },
-        {
-          label: "ЛОС",
-          field: "voc",
-          filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: "все", // placeholder for filter input
-            filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
-            trigger: "enter", //only trigger on enter not on keyup
-          },
-        },
-        {
-          label: "Углеводороды",
-          field: "hydrocarbon",
-          filterOptions: {
-            enabled: true, // enable filter for this column
-            placeholder: "все", // placeholder for filter input
-            filterDropdownItems: [0, 1], // dropdown (with selected values) instead of text input
-            trigger: "enter", //only trigger on enter not on keyup
-          },
-        },
-      ],
-    };
-  },
-  methods: {
-    async savePol() {
-      this.loading = true;
-      addPolToGroup(this.editPol.id, this.editPol.group.id).then((res) => {
-        this.fetchPolls();
-        this.slideOut.visible = false;
-      });
-    },
-
-    async editPolFn(params) {
-      this.slideOut.visible = true;
-      const data = await fetchPolById(params.row.id);
-      this.editPol = Object.assign({}, data);
-    },
-
-    getPolGroup(rowObj) {
-      return rowObj.group ? rowObj.group.label : "-";
-    },
-  },
 };
 </script>
