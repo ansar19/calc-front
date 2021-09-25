@@ -23,7 +23,8 @@
                 @on-per-page-change="onPerPageChange"
                 @on-page-change="onPageChange"
                 @on-sort-change="onSortChange"
-                :isLoading.sync="loading"
+                @on-column-filter="onColumnFilter"
+                @on-search="onSearch"
                 :columns="columns"
                 :rows="air_pollutants"
                 :fixed-header="true"
@@ -38,8 +39,19 @@
                   prevLabel: 'Назад',
                   allLabel: 'Все',
                 }"
+                :search-options="{
+                  enabled: true,
+                  trigger: 'enter',
+                  skipDiacritics: true,
+                  placeholder: 'Найти по коду или наименованию',
+                }"
                 :totalRows="air_pollutants_count"
               >
+                <div slot="table-actions">
+                  <div class="btn btn-secondary" @click="resetFilters">
+                    Сбросить фильтры
+                  </div>
+                </div>
               </vue-good-table>
             </template>
           </d-card-body>
@@ -78,9 +90,10 @@ export default {
       offset: 0,
       limit: 10,
       sort: { code: "asc" },
+      where: {},
     });
     const currentPage = ref(1);
-    const { result, loading, error } = useQuery(POLLS_LIST, variables);
+    const { result, loading, error, refetch } = useQuery(POLLS_LIST, variables);
     const air_pollutants = useResult(
       result,
       null,
@@ -100,7 +113,6 @@ export default {
         variables.offset += variables.limit;
       }
       currentPage.value = params.currentPage;
-      console.log(params);
     }
 
     function onPerPageChange(params) {
@@ -108,9 +120,34 @@ export default {
     }
 
     function onSortChange(params) {
-      console.log(params);
       const { field, type } = params[0];
       variables.sort = { [field]: type !== "none" ? type : "asc" };
+    }
+
+    function onColumnFilter(params) {
+      const { columnFilters } = params;
+      for (const [key, value] of Object.entries(columnFilters)) {
+        if (!value) {
+          delete variables.where[key];
+        } else {
+          variables.where[key] = { _eq: value };
+        }
+      }
+      refetch();
+    }
+
+    function onSearch({ searchTerm }) {
+      variables.where = {
+        _or: [
+          { label: { _ilike: `%${searchTerm}%` } },
+          { code: { _ilike: `%${searchTerm}%` } },
+        ],
+      };
+      refetch();
+    }
+
+    function resetFilters() {
+      variables.where = {};
     }
 
     const pollId = ref("");
@@ -187,6 +224,9 @@ export default {
       onPageChange,
       onPerPageChange,
       onSortChange,
+      onColumnFilter,
+      onSearch,
+      resetFilters,
       columns,
       getGroupLabel,
       currentPage,
