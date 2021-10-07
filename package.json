@@ -79,7 +79,6 @@
     "node-sass": "^4.14.1",
     "sass": "^1.32.13",
     "sass-loader": "^7.3.1",
-    "unplugin-vue2-script-setup": "^0.6.1",
     "vue-cli-plugin-apollo": "~0.22.2",
     "vue-cli-plugin-vite": "~1.4.8",
     "vue-template-compiler": "^2.6.14",
