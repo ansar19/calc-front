@@ -8,6 +8,7 @@ query {
           children: pollutants {
             id
             label
+            code
             hazard_class
             solid
             voc
