@@ -71,10 +71,19 @@ export default {
 
     return { air_pollutant_groups, loading, error, editGroup };
   },
-  data() {
+data() {
     return {
       columns: [
         { label: "Наименование", field: "label" },
+        {
+          label: "Код",
+          field: "code",
+          filterOptions: {
+            enabled: true, // enable filter for this column
+            placeholder: "Введите код",
+            trigger: "enter", //only trigger on enter not on keyup
+          },
+        },
         {
           label: "Класс опасности",
           field: "hazard_class",
@@ -121,6 +130,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    getPolLabelWithCode(row) {
+      return `${row.code} - ${row.label}`
+    }
   },
 };
 </script>
