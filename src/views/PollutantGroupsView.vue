@@ -124,10 +124,10 @@ data() {
             trigger: "enter", //only trigger on enter not on keyup
           },
         },
-        {
-          label: "",
-          field: "action",
-        },
+        // {
+        //   label: "",
+        //   field: "action",
+        // },
       ],
     };
   },
