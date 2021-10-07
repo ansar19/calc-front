@@ -1,12 +1,9 @@
 import gql from "graphql-tag"
 
 const ADD_POL_TO_GROUP = gql`
-mutation insert_polls_group($pollutant_id: uuid!, $pollutant_group_id: uuid!) {
+mutation insert_polls_group($input: air_pollutants_groups_insert_input!) {
   insert_air_pollutants_groups(
-    objects: {
-      pollutant_id: $pollutant_id
-      pollutant_group_id: $pollutant_group_id
-    }
+    objects: $input
     on_conflict: {
       constraint: air_pollutants_groups_pkey
       update_columns: pollutant_group_id
