@@ -1,6 +1,0 @@
-query FacilityLocations {
-  facility_locations {
-    id
-    name
-  }
-}

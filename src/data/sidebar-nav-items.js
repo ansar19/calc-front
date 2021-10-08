@@ -14,55 +14,35 @@ export default function () {
   }, {
     title: 'Компания',
     // htmlBefore: '<i class="material-icons">business</i>',
-    items: [{
-      title: 'Список компании',
-      to: '/companies',
-      htmlAfter: '',
-    },
-      // ,
-      // {
-      //   title: 'Добавить компанию',
-      //   htmlBefore: '<i class="material-icons">note_add</i>',
-      //   to: {
-      //     name: 'new-company',
-      //   },
-      // },
-      // , {
-      //   title: 'Первый руководитель',
-      //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
-      //   to: {
-      //     name: 'new-company-head',
-      //   },
-      // }, {
-      //   title: 'Банковские детали',
-      //   htmlBefore: '<i class="material-icons">&#xE889;</i>',
-      //   to: {
-      //     name: 'new-bank-details',
-      //   },
-      // }, {
-      //   title: 'Адреса компании',
-      //   htmlBefore: '<i class="material-icons">error</i>',
-      //   to: {
-      //     name: 'new-company-address',
-      //   },
-      // }
+    items: [
+      {
+        title: 'Список компании',
+        to: '/companies',
+        htmlAfter: '',
+      },
     ],
   }, {
     title: 'Источники',
-    items: [{
-      title: 'Список источников выделения',
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: {
-        name: 'release-source-list',
+    items: [
+      {
+        title: 'Список источников выделения',
+        htmlBefore: '<i class="material-icons">view_module</i>',
+        to: {
+          name: 'release-source-list',
+        },
       },
-    },
-    {
-      title: 'Добавить координаты',
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: {
-        name: 'emission-source-coordinates',
+      {
+        title: 'Список разрешений',
+        to: '/limit-permissions',
+        htmlAfter: '',
       },
-    }],
+      {
+        title: 'Добавить координаты',
+        htmlBefore: '<i class="material-icons">vertical_split</i>',
+        to: {
+          name: 'emission-source-coordinates',
+        },
+      }],
   }, {
     title: 'Расчеты',
     items: [{

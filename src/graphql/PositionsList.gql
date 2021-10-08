@@ -1,6 +1,0 @@
-query EmployeePositions {
-  employee_positions {
-    id
-    name
-  }
-}

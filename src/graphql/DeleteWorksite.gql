@@ -1,6 +1,0 @@
-mutation DeleteWorksite($id: uuid!) {
-  delete_worksites_by_pk(id: $id) {
-    id
-    name
-  }
-}

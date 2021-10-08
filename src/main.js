@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue';
-import VueCompositionAPI, { provide }  from '@vue/composition-api'
+import VueCompositionAPI, { provide } from '@vue/composition-api'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import apolloClient from '@/apollo/client'
 
@@ -29,8 +29,12 @@ import vueNumeralFilterInstaller from 'vue-numeral-filter';
 
 import DateRangePicker from 'vue-mj-daterangepicker'
 import 'vue-mj-daterangepicker/dist/vue-mj-daterangepicker.css'
-
 Vue.use(DateRangePicker)
+
+import VueDatePicker from '@mathieustan/vue-datepicker';
+import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
+
+Vue.use(VueDatePicker, { lang: 'ru' });
 
 Vue.use(wysiwyg);
 Vue.use(Vuelidate);
@@ -192,7 +196,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$eventHub = new Vue();
 // console.log(process.env);
 new Vue({
-  setup () {
+  setup() {
     provide(DefaultApolloClient, apolloClient)
   },
   store,

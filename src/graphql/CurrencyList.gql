@@ -1,7 +1,0 @@
-query Currencies {
-  currencies {
-    id
-    name
-    short_name
-  }
-}

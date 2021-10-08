@@ -1,6 +1,0 @@
-query Banks {
-  banks {
-    id
-    name
-  }
-}

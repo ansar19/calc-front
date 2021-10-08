@@ -11,6 +11,7 @@ import MainDashboard from '@/views/MainDashboard.vue';
 
 // company
 import ListCompanies from '@/views/ListCompanies.vue';
+import LimitPermissionsList from '@/views/LimitPermissionsList.vue';
 import NewCompany from '@/components/company/NewCompany.vue';
 import ShowCompany from '@/components/company/ShowCompany.vue';
 import EditCompany from '@/components/company/EditCompany.vue';
@@ -253,30 +254,6 @@ export const routes = [
       meta: {
         requiresAuth: true
       },
-      children: [
-        // UserHome will be rendered inside User's <router-view>
-        // when /user/:id is matched
-        // {
-        //   path: '/new-company',
-        //   component: newCompany
-        // },
-        // {
-        //   path: '/company',
-        //   name: 'company',
-        //   component: Company,
-        // },
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
-        // {
-        //   path: '/show-company/:id',
-        //   name: 'show-company',
-        //   component: ShowCompany
-        // },
-
-        // UserPosts will be rendered inside User's <router-view>
-        // when /user/:id/posts is matched
-        // { path: '/edit-company/:id', component: Edit }
-      ]
     },
     {
       path: '/show-company/:id', // show particular company
@@ -294,27 +271,14 @@ export const routes = [
         requiresAuth: true
       }
     },
-    // {
-    //   path: '/company',
-    //   name: 'company',
-    //   component: Company,
-    // },
-    // { path: '/company/:id',
-    //   component: Company,
-    //   children: [
-    //     // UserHome will be rendered inside User's <router-view>
-    //     // when /user/:id is matched
-    //     { path: 'edit', component: Edit },
-
-    //     // UserProfile will be rendered inside User's <router-view>
-    //     // when /user/:id/profile is matched
-    //     { path: 'show', component: Show },
-
-    //     // UserPosts will be rendered inside User's <router-view>
-    //     // when /user/:id/posts is matched
-    //     { path: 'edit', component: Edit }
-    //   ]
-    // },
+    {
+      path: '/limit-permissions',
+      name: 'limit-permissions',
+      component: LimitPermissionsList,
+      meta: {
+        requiresAuth: true
+      },
+    },
     {
       path: '/calculations',
       name: 'calculations',

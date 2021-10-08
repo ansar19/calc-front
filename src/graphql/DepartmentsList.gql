@@ -1,6 +1,0 @@
-query CompanyDepartments {
-  company_departments{
-    id
-    name
-  }
-}

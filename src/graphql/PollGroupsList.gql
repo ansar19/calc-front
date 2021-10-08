@@ -1,7 +1,0 @@
-query {
-  air_pollutant_groups {
-    id
-    label
-    name
-  }
-}

@@ -13,7 +13,7 @@
         <d-card class="mb-2">
           <d-form>
             <d-card-header class="border-bottom">
-              <h6 class="card-title">Данные для чернового расчета</h6>
+              <h6 class="card-title">Данные для расчета</h6>
             </d-card-header>
             <d-card-body>
               <div class="form-group">
