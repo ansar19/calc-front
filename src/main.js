@@ -31,11 +31,6 @@ import DateRangePicker from 'vue-mj-daterangepicker'
 import 'vue-mj-daterangepicker/dist/vue-mj-daterangepicker.css'
 Vue.use(DateRangePicker)
 
-import VueDatePicker from '@mathieustan/vue-datepicker';
-import '@mathieustan/vue-datepicker/dist/vue-datepicker.min.css';
-
-Vue.use(VueDatePicker, { lang: 'ru' });
-
 Vue.use(wysiwyg);
 Vue.use(Vuelidate);
 // Vue.component('tinymce', tinymce);
