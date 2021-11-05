@@ -1,3 +1,21 @@
+<script>
+import { defineComponent } from "@vue/composition-api";
+import { useUserState } from "@/composables/useUser";
+
+export default defineComponent({
+  setup(_, ctx) {
+    const user = useUserState();
+    const router = ctx.root.$router;
+    function logout() {
+      localStorage.removeItem("token");
+      router.push("/login");
+    }
+    return { user, logout };
+  },
+});
+</script>
+
+
 <template>
   <d-navbar-nav class="border-left flex-row">
     <!-- <li class="nav-item border-right dropdown notifications">
@@ -32,50 +50,33 @@
         </d-dropdown-item>
         <d-dropdown-item class="notification__all text-center">View all Notifications</d-dropdown-item>
       </d-collapse>
-    </li>-->
-    <template v-if="user">
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-nowrap px-3"
-          v-d-toggle.user-actions
+    </li> -->
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle text-nowrap px-3"
+        v-d-toggle.user-actions
+      >
+        <span class="d-none d-md-inline-block"
+          ><i class="material-icons">account_circle</i> {{ user.email }}</span
         >
-          <img
-            width="40"
-            class="user-avatar rounded-circle mr-2"
-            src="@/assets/images/avatars/avatar.svg"
-            alt="User Avatar"
-          />
-          <!-- <span v-if="user.employee" class="d-none d-md-inline-block">{{ user.employee.first_name }} {{ user.employee.last_name }}</span> -->
-          <span class="d-none d-md-inline-block">{{ user.email }}</span>
-        </a>
-        <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
-          <d-dropdown-item>
-            <i class="material-icons">&#xe853;</i>
-            <span class="d-none d-md-inline-block">{{ user.role }}</span
-            ><br />
-          </d-dropdown-item>
-          <d-dropdown-item>
-            <i class="material-icons">&#xE7FD;</i>
-            <router-link to="user-profile-lite">Профиль</router-link>
-          </d-dropdown-item>
-          <d-dropdown-item>
-            <i class="material-icons">&#xE8B8;</i> Редактировать
-          </d-dropdown-item>
-          <d-dropdown-divider />
-          <!-- <d-dropdown-item class="text-danger" >
-          <a href="#" @click.prevent="signOut"> Выйти</a>
-        </d-dropdown-item> -->
-          <d-dropdown-item class="text-danger">
-            <span @click="exit">
-              <i class="material-icons text-danger">&#xE879;</i>Выйти
-            </span>
-          </d-dropdown-item>
-        </d-collapse>
-      </li>
-    </template>
-    <template v-else>
-      no user
-    </template>
+      </a>
+      <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
+        <d-dropdown-item
+          ><router-link to="/profile">
+            <i class="material-icons">&#xE7FD;</i> Профиль
+          </router-link>
+        </d-dropdown-item>
+        <d-dropdown-item
+          ><i class="material-icons">&#xE8B8;</i> Edit Profile</d-dropdown-item
+        >
+        <d-dropdown-divider />
+        <d-dropdown-item href="#" class="text-danger">
+          <span @click="logout">
+            <i class="material-icons text-danger">&#xE879;</i> Выйти
+          </span>
+        </d-dropdown-item>
+      </d-collapse>
+    </li>
   </d-navbar-nav>
 </template>
 
@@ -84,22 +85,3 @@
   cursor: pointer;
 }
 </style>
-<script>
-import { logout } from "@/services/auth";
-
-export default {
-  name: "NavbarNav",
-  data: {
-    user: {},
-  },
-  methods: {
-    async exit() {
-      await logout();
-      this.$router.push("/login");
-    },
-  },
-  created() {
-    this.user = JSON.parse(localStorage.getItem("user"));
-  },
-};
-</script>
