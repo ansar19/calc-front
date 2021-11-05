@@ -1,51 +1,41 @@
 <script>
-import { mapMutations } from "vuex";
-import LOGIN from "../graphql/mutations/Login";
-import { login } from "@/services/auth"
+import LOGIN from "@/graphql/mutations/Login";
+import { useMutation } from "@vue/apollo-composable";
+import { ref } from "@vue/composition-api";
+import { useUserState } from "../composables/useUser"
 
 export default {
   name: "Login",
-  data() {
-    return {
-      email: "",
-      password: "",
-      error: false,
-    };
-  },
-  methods: {
-    ...mapMutations("users", ["sign_in"]),
-    enter() {
-      login(this.email, this.password).then(() => {
-        const token = localStorage.getItem("token")
-        if(token) this.$router.push("/dashboard")
-      })
+  setup(_, ctx) {
+    const router = ctx.root.$router
+    const userState = useUserState();
+
+
+    const email = ref("");
+    const password = ref("");
+    const {
+      loading,
+      error,
+      mutate: sendLogin,
+    } = useMutation(LOGIN, () => ({
+      variables: { email: email.value, password: password.value },
+    }));
+
+    async function login() {
+      const loginData = await sendLogin();
+      const { token, email, role } =  loginData.data.login
+      userState.value.email = email
+      userState.value.role = role
+      localStorage.setItem("token", token)
+      router.push('/dashboard')
     }
-    // login() {
-    //   this.$apollo
-    //     .mutate({
-    //       mutation: LOGIN,
-    //       variables: {
-    //         email: this.email,
-    //         password: this.password,
-    //       },
-    //     })
-    //     .then((res) => {
-    //       const { token, ...user } = res.data.login;
-    //       localStorage.setItem("token", token);
-    //       localStorage.setItem("user", JSON.stringify(user));
-    //     })
-    //     .then(() => {
-    //       this.$router.push("/dashboard");
-    //     })
-    //     .catch((e) => {
-    //       console.error(e);
-    //     })
-    // },
+
+    return { email, password, loading, error, login };
   },
 };
 </script>
 <template>
-  <form class="form-signin" @submit.prevent="enter">
+  <form class="form-signin" @submit.prevent="login">
     <img
       class="my-5"
       src="@/assets/images/ecomarine-logo.svg"
@@ -72,9 +62,10 @@ export default {
       placeholder="Пароль"
       required
     />
-    <p style="color: red" v-if="error">Некорректный email или пароль</p>
+    <p style="color: red" v-if="error">Некорректный email или пароль. {{ error.message}}</p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">
-      Войти
+      <spinner v-if="loading"/>
+      <span v-else>Войти</span>
     </button>
   </form>
 </template>

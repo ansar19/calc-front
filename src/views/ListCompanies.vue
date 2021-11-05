@@ -9,7 +9,7 @@ export default {
 
     const state = useGlobalState();
     const { result, loading, error } = useQuery(COMPANIES);
-    const companies = useResult(result, null, (data) => data.companies);
+    const companies = useResult(result, null, (data) => data.companies_own);
     function setCompany(props) {
       state.value.companyId = props.id;
       state.value.companyName = props.company_name;
@@ -28,11 +28,11 @@ export default {
     return {
       componentTitle: "Список компаний",
       columns: [
-        { label: "Название компании", field: "company_name" },
-        { label: "БИН / ИНН", field: "iin_bin" },
-        { label: "Тип юр лица", field: "company_type.short_name" },
-        { label: "Email компании", field: "company_email" },
-        { label: "Телефон компании", field: "company_phone" },
+        { label: "Название компании", field: "company.company_name" },
+        { label: "БИН / ИНН", field: "company.iin_bin" },
+        { label: "Тип юр лица", field: "company.company_type.short_name" },
+        { label: "Email компании", field: "company.company_email" },
+        { label: "Телефон компании", field: "company.company_phone" },
         { label: "", field: "action" },
       ],
 
@@ -86,29 +86,7 @@ export default {
     </d-row>
     <!-- Default Table -->
     <d-card class="card-small mb-3">
-      <d-card-header class="border-bottom">
-        <div class="block-handle" align="right">
-          <d-button
-            size="sm"
-            class="btn-info btn-sm ml-2"
-            v-d-tooltip.hover="'Выгрузить Excel'"
-          >
-            <download-excel
-              :data="companies"
-              title="Список компании"
-              :exportFields="json_fields"
-              name="companies.xls"
-            >
-              <font-awesome-icon icon="download" />
-            </download-excel>
-          </d-button>
-          <d-link to="new-company">
-            <d-button outline size="sm" class="btn-primary btn-sm ml-2">
-              <font-awesome-icon icon="plus" /> Добавить компанию
-            </d-button>
-          </d-link>
-        </div>
-      </d-card-header>
+      <d-card-header class="border-bottom"> </d-card-header>
       <d-card-body>
         <spinner v-if="loading" />
         <div v-else-if="error">Ошибка: {{ error.message }}</div>
@@ -118,6 +96,10 @@ export default {
             :rows="companies"
             :fixed-header="true"
             compactMode
+            :search-options="{
+              enabled: true,
+              placeholder: 'Введите текст для поиска',
+            }"
             :pagination-options="{
               enabled: true,
               mode: 'pages',
@@ -128,31 +110,49 @@ export default {
               allLabel: 'Все',
             }"
           >
+            <div slot="table-actions">
+              <router-link to="/new-company">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm mr-2"
+                >
+                  + Добавить компанию
+                </button>
+              </router-link>
+              <button class="btn btn-outline-primary btn-sm mr-2">
+                <download-excel
+                  :data="companies"
+                  title="Список компании"
+                  :exportFields="json_fields"
+                  name="companies.xls"
+                >
+                  <i class="material-icons">cloud_download</i>
+                </download-excel>
+              </button>
+            </div>
             <template slot="table-row" slot-scope="props">
               <span v-if="props.column.field == 'action'">
-                <div
-                  class="btn-group d-flex"
-                  role="group"
-                  aria-label="Comapny actions"
-                >
                   <button
                     type="button"
                     class="btn btn-white"
-                    @click="setCompany(props.row)"
+                    @click="setCompany(props.row.company)"
                   >
-                    <i class="material-icons">&#xE5CA;</i> Войти
+                    <i class="material-icons">&#xE5CA;</i>
                   </button>
                   <button
                     type="button"
                     class="btn btn-white"
-                    @click="viewCompany(props.row)"
+                    @click="viewCompany(props.row.company)"
                   >
-                    <i class="material-icons">&#xe417;</i> Открыть
+                    <i class="material-icons">visibility</i>
                   </button>
-                  <button type="button" class="btn btn-white" @click="editCompany(props.row)">
-                    <i class="material-icons">&#xE254;</i> Редактировать
+                  <button
+                    type="button"
+                    class="btn btn-white"
+                    @click="editCompany(props.row.company)"
+                  >
+                    <i class="material-icons">&#xE254;</i>
                   </button>
-                </div>
               </span>
               <span v-else>
                 {{ props.formattedRow[props.column.field] }}

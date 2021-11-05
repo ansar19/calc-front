@@ -14,18 +14,10 @@ query companies_by_pk($id: uuid!) {
     iin_bin
     company_email
     company_description
-    company_head {
-      id
-      first_name
-      middle_name
-      last_name
-      position {
-        name
-
-      }
-      phone
-      email
-    }
+    company_head
+    company_head_position
+    company_head_phone
+    company_head_email
     company_legal_address {
       id
       address
