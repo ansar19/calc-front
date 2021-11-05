@@ -24,19 +24,6 @@
             placeholder="Номер разрешения"
             required
           />
-          <label>Выбрать источник эмиссии</label>
-          <v-select
-            :options="emission_sources"
-            name="label"
-            class="mb-3"
-            :id="id"
-            :placeholder="placeholder"
-            v-model="permission.emission_src_id"
-            :reduce="(emission) => emission.id"
-            label="name"
-            required
-          >
-          </v-select>
           <label>Лимит</label>
           <input
             type="text"
@@ -59,7 +46,8 @@
             v-model="permission.end_date"
             required
           />
-          <textarea class="form-control" rows="3" v-model="permission.description"/>
+          <label for="description">Лимит</label>
+          <textarea id="description" class="form-control" rows="3" v-model="permission.description"/>
         <input
           type="submit"
           value="Сохранить"
@@ -94,7 +82,6 @@ export default {
     const permission = reactive({
       name: "",
       number: "",
-      emission_src_id: "",
       start_date: null,
       end_date: null,
       t_year_limit: 0,

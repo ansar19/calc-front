@@ -66,8 +66,6 @@ export default {
       columns: [
         { label: "Наименование", field: "name" },
         { label: "Номер", field: "number" },
-        { label: "Источник эмиссии", field: "emission_source.name" },
-        { label: "Номер источника эмиссии", field: "emission_source.number" },
         { label: "Дата начала", field: "start_date" },
         { label: "Дата конца", field: "end_date" },
         { label: "Лимит", field: "t_year_limit" },

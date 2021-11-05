@@ -10,11 +10,6 @@ query LimitPermissions($company_id: uuid!) {
     start_date
     end_date
     t_year_limit
-    emission_source {
-      id
-      name
-      number
-    }
   }
 }
 `
