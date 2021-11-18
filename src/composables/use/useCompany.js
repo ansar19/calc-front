@@ -1,7 +1,7 @@
 import { createGlobalState, useStorage } from '@vueuse/core'
 
-export const useGlobalState = createGlobalState(
-  () => useStorage('vue-use-local-storage', {
+export const useCompanyState = createGlobalState(
+  () => useStorage('company', {
     companyId: '',
     companyName: ''
   }),

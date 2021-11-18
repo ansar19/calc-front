@@ -1,13 +1,13 @@
 <script>
 import COMPANIES from "../graphql/queries/CompanyList";
-import { useGlobalState } from "@/useStore";
+import { useCompanyState } from "@/composables/use/useCompany";
 import { useQuery, useResult } from "@vue/apollo-composable";
 
 export default {
   setup(props, ctx) {
     const router = ctx.root.$router;
 
-    const state = useGlobalState();
+    const state = useCompanyState();
     const { result, loading, error } = useQuery(COMPANIES);
     const companies = useResult(result, null, (data) => data.companies_own);
     function setCompany(props) {

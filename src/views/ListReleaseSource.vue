@@ -56,14 +56,14 @@
 
 
 <script>
-import { useGlobalState } from "@/useStore"
+import { useCompanyState } from "@/composables/use/useCompany";
 import { fetchReleaseSources } from "@/services/api"
 import { asyncComputed } from '@vueuse/core'
 import router from "@/router"
 
 export default {
   setup() {
-    const state = useGlobalState()
+    const state = useCompanyState()
     const release_sources = asyncComputed(
       async() => await fetchReleaseSources(state.value.companyId),
       null

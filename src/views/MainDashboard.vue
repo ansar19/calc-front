@@ -85,11 +85,11 @@ import FrappeChart from "@/components/common/FrappeChart.vue";
 import FrapChart from "@/components/common/FrapChart.vue";
 import PieFrappe from "@/components/common/PieFrappe.vue";
 // import SummaryBox from '@/components/common/SummaryBox.vue';
-import { useGlobalState } from "@/useStore";
+import { useCompanyState } from "@/composables/use/useCompany";
 
 export default {
   setup() {
-    const state = useGlobalState();
+    const state = useCompanyState();
 
     return { state };
   },

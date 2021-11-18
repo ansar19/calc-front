@@ -68,7 +68,7 @@ import EMISSION_SOURCES_LIST from "@/graphql/queries/EmissionSourcesList";
 import ADD_LIMIT_PERMISSION from "@/graphql/mutations/AddLimitPermission";
 import { useMutation, useQuery, useResult } from "@vue/apollo-composable";
 import { reactive, ref } from "@vue/composition-api";
-import { useGlobalState } from "@/useStore";
+import { useCompanyState } from "@/composables/use/useCompany";
 
 export default {
   props: {
@@ -78,7 +78,7 @@ export default {
     },
   },
   setup(props) {
-    const state = useGlobalState();
+    const state = useCompanyState();
     const permission = reactive({
       name: "",
       number: "",

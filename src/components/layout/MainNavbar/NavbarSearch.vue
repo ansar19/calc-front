@@ -1,5 +1,10 @@
 <template>
   <d-form class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+    <div class="container">
+      <div class="ml-3">
+        <h5>{{ state.companyName }}</h5>
+      </div>
+    </div>
     <!--
         <d-input-group class="ml-3" seamless>
             <d-input-group-text slot="prepend">
@@ -10,3 +15,15 @@
     -->
   </d-form>
 </template>
+
+<script>
+import { useCompanyState } from "@/composables/use/useCompany";
+
+export default {
+  setup() {
+    const state = useCompanyState();
+
+    return { state };
+  },
+};
+</script>

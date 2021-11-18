@@ -1,6 +1,6 @@
 <script>
 import LIMIT_PERMISSIONS from "../graphql/queries/LimitPermissionsList";
-import { useGlobalState } from "@/useStore";
+import { useCompanyState } from "@/composables/use/useCompany";
 import { useQuery, useResult, useMutation } from "@vue/apollo-composable";
 import { ref } from "@vue/composition-api";
 import SlideOut from "@hyjiacan/vue-slideout";
@@ -11,7 +11,7 @@ export default {
   components: { SlideOut, LimitPermissionEdit },
   setup(props, ctx) {
     const router = ctx.root.$router;
-    const state = useGlobalState();
+    const state = useCompanyState();
     const { result, loading, error } = useQuery(LIMIT_PERMISSIONS, {
       company_id: state.value.companyId,
     });

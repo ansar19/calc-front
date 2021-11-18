@@ -27,11 +27,7 @@
               <span v-if="!hideLogoText" class="d-none d-md-inline ml-1"
                 >ЭкоМарин</span
               >
-              <span v-if="state.companyId" class="d-none d-md-inline ml-1">
-                {{ state.companyName }}
-              </span>
               <img
-                v-else
                 id="main-logo"
                 class="d-inline-block align-top mr-1"
                 src="@/assets/images/ecomarine-logo.svg"
@@ -123,15 +119,7 @@
 </template>
 
 <script>
-import { useGlobalState } from "@/useStore";
-
 export default {
-  setup() {
-    const state = useGlobalState();
-
-    return { state };
-  },
-
   name: "main-sidebar",
   props: {
     /**

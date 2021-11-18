@@ -2,14 +2,13 @@
 import LOGIN from "@/graphql/mutations/Login";
 import { useMutation } from "@vue/apollo-composable";
 import { ref } from "@vue/composition-api";
-import { useUserState } from "../composables/useUser"
+import { useUserState } from "../composables/useUser";
 
 export default {
   name: "Login",
   setup(_, ctx) {
-    const router = ctx.root.$router
+    const router = ctx.root.$router;
     const userState = useUserState();
-
 
     const email = ref("");
     const password = ref("");
@@ -23,11 +22,11 @@ export default {
 
     async function login() {
       const loginData = await sendLogin();
-      const { token, email, role } =  loginData.data.login
-      userState.value.email = email
-      userState.value.role = role
-      localStorage.setItem("token", token)
-      router.push('/dashboard')
+      const { token, email, role } = await loginData.data.login;
+      userState.value.email = email;
+      userState.value.role = role;
+      localStorage.setItem("token", token);
+      router.push("/dashboard");
     }
 
     return { email, password, loading, error, login };
@@ -62,9 +61,11 @@ export default {
       placeholder="Пароль"
       required
     />
-    <p style="color: red" v-if="error">Некорректный email или пароль. {{ error.message}}</p>
+    <p style="color: red" v-if="error">
+      Некорректный email или пароль. {{ error.message }}
+    </p>
     <button class="btn btn-lg btn-primary btn-block" type="submit">
-      <spinner v-if="loading"/>
+      <spinner v-if="loading" />
       <span v-else>Войти</span>
     </button>
   </form>

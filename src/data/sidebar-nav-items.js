@@ -14,13 +14,10 @@ export default function () {
   }, {
     title: 'Компания',
     // htmlBefore: '<i class="material-icons">business</i>',
-    items: [
-      {
-        title: 'Список компании',
-        to: '/companies',
-        htmlAfter: '',
-      },
-    ],
+
+    to: '/company',
+    htmlAfter: '',
+
   }, {
     title: 'Источники',
     items: [
